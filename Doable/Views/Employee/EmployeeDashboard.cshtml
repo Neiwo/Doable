@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+    ViewData["Title"] = "Employee";
+    var userId = Context.Session.GetInt32("UserId");
+    if (userId != null)
+    {
+        <divcache class="hid">
+            <p>User ID: @userId</p>
+        </divcache>
+
+    }
+    else
+    {
+        <p>User not logged in.</p>
+    }
+}
+
+<h1>Employee Dashboard</h1>
+<p>Welcome, Employee!</p>
