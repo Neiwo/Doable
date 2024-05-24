@@ -32,8 +32,9 @@ namespace Doable.Controllers
 
                 if (user != null)
                 {
-                    // Store user ID in session
+                    // Store user ID and username in session
                     HttpContext.Session.SetInt32("UserId", user.ID);
+                    HttpContext.Session.SetString("Username", user.Username);
 
                     // Redirect based on role
                     if (user.Role == "Admin")
