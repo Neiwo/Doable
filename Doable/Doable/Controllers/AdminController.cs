@@ -33,6 +33,11 @@ namespace Doable.Controllers
         [HttpGet]
         public async Task<IActionResult> Team()
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var users = await _context.Users
                 .Where(u => u.Role == "Admin" || u.Role == "Employee")
                 .ToListAsync();
@@ -43,6 +48,11 @@ namespace Doable.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View(new User());
         }
 
@@ -57,6 +67,9 @@ namespace Doable.Controllers
                     return View(user);
                 }
 
+                user.CreatedBy = HttpContext.Session.GetString("Username");
+                user.CreationDate = DateTime.Now;
+
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Team));
@@ -68,6 +81,11 @@ namespace Doable.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {
@@ -79,6 +97,11 @@ namespace Doable.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(User user)
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             if (ModelState.IsValid)
             {
                 if (_context.Users.Any(u => u.Email == user.Email && u.ID != user.ID))
@@ -98,6 +121,11 @@ namespace Doable.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var user = await _context.Users.FindAsync(id);
             if (user == null)
             {

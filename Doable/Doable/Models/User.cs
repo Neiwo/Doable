@@ -26,5 +26,13 @@ namespace Doable.Models
         [StringLength(50)]
         public string Role { get; set; }
 
+        [Phone]
+        [StringLength(11)]
+        public string PhoneNumber { get; set; }
+
+        [StringLength(50)]
+        public string CreatedBy { get; set; }
+
+        public DateTime CreationDate { get; set; }
     }
 }
