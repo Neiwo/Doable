@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Doable.Models.Tasklist>
+@{
+    ViewData["Title"] = "Tasklist";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Tasklist</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Task</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Assigned To</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Created Date</th>
+            <th>Deadline</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Description</td>
+                <td>@item.AssignedTo</td>
+                <td>@item.Priority</td>
+                <td>@item.Status</td>
+                <td>@item.CreatedDate</td>
+                <td>@item.Deadline</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

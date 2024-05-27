@@ -29,6 +29,11 @@ namespace Doable.Controllers
             return View();
         }
 
+        public IActionResult Tasks()
+        {
+            return RedirectToAction("Index", "TaskList");
+        }
+
         // Action to list users
         [HttpGet]
         public async Task<IActionResult> Team()
@@ -43,6 +48,7 @@ namespace Doable.Controllers
                 .ToListAsync();
             return View(users);
         }
+
 
         // Action to create user
         [HttpGet]
