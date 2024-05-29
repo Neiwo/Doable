@@ -3,6 +3,14 @@
 @{
     ViewData["Title"] = "Create Task";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var userId = Context.Session.GetInt32("UserId");
+    var username = Context.Session.GetString("Username");
+    if (userId != null)
+    {
+        <div class="hid">
+            <p>User ID: @userId</p>
+        </div>
+    }
 }
 
 <h1>Create Task</h1>
@@ -32,9 +40,9 @@
                 </select>
                 <span asp-validation-for="AssignedTo" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="display:none;>
                 <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
+                <input asp-for="CreatedBy" class="form-control" value="@username" readonly />
                 <span asp-validation-for="CreatedBy" class="text-danger"></span>
             </div>
             <div class="form-group">

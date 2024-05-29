@@ -19,14 +19,30 @@ namespace Doable.Controllers
         }
 
         // GET: TaskList
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-            return View("/Views/Admin/TaskList/Index.cshtml", await _context.Tasklists.ToListAsync());
+
+            var tasks = from t in _context.Tasklists
+                        select t;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tasks = tasks.Where(t =>
+                t.Title.Contains(searchString) ||
+                t.Description.Contains(searchString) ||
+                t.AssignedTo.Contains(searchString) ||
+                t.Priority.Contains(searchString) ||
+                t.Status.Contains(searchString));
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            return View("/Views/Admin/TaskList/Index.cshtml", await tasks.ToListAsync());
         }
 
         // GET: TaskList/Create
