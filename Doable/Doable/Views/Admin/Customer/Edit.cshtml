@@ -1,24 +1,13 @@
 ﻿@model Doable.Models.User
 
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     ViewData["Title"] = "Edit Account";
     var userId = Context.Session.GetInt32("UserId");
-    if (userId != null)
-    {
-        <div class="hid">
-            <p>User ID: @userId</p>
-        </div>
-    }
-    else
-    {
-        <p>User not logged in.</p>
-    }
 }
 
 <h1>Edit Customer</h1>
 
-<h4>Customer</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">

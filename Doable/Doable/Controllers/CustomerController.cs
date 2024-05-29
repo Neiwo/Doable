@@ -19,7 +19,7 @@ namespace Doable.Controllers
 
         // Action to list customers
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -27,10 +27,24 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var customers = await _context.Users
-                .Where(u => u.Role == "Client")
-                .ToListAsync();
-            return View("/Views/Admin/Customer/Index.cshtml", customers);
+            var customers = from c in _context.Users
+                            where c.Role == "Client"
+                            select c;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                customers = customers.Where(c =>
+                    c.ID.ToString().Contains(searchString) ||
+                    c.Username.Contains(searchString) ||
+                    c.Email.Contains(searchString) ||
+                    c.PhoneNumber.ToString().Contains(searchString) ||
+                    c.CreatedBy.Contains(searchString) ||
+                    c.CreationDate.ToString().Contains(searchString)); ;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            return View("/Views/Admin/Customer/Index.cshtml", await customers.ToListAsync());
         }
 
         // Action to create customer
@@ -73,6 +87,7 @@ namespace Doable.Controllers
             }
             return View("/Views/Admin/Customer/Create.cshtml", user);
         }
+
         // Action to edit customer
         [HttpGet]
         public async Task<IActionResult> Edit(int id)

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
-
 </head>
 <body>
     <div class="wrapper">
@@ -25,16 +24,20 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AdminDashboard">Dashboard</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Admin" && ViewContext.RouteData.Values["action"]?.ToString() == "AdminDashboard") ? "active" : "")"
+                                   asp-area="" asp-controller="Admin" asp-action="AdminDashboard">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Tasklist" asp-action="Index">Tasks</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "TaskList" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="TaskList" asp-action="Index">Tasks</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Customer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Team">Accounts</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Admin" && ViewContext.RouteData.Values["action"]?.ToString() == "Team") ? "active" : "")"
+                                   asp-area="" asp-controller="Admin" asp-action="Team">Accounts</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">

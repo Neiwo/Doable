@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,180 +19,196 @@ namespace Doable.Controllers
             _context = context;
         }
 
-        // GET: TaskList
-        public async Task<IActionResult> Index(string searchString)
+        // Action to list tasks with pagination and search
+        [HttpGet]
+        public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
         {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+            try
             {
-                return RedirectToAction("Login", "Account");
+                int? userId = HttpContext.Session.GetInt32("UserId");
+                if (userId == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                var tasks = from t in _context.Tasklists
+                            select t;
+
+                if (!string.IsNullOrEmpty(searchString))
+                {
+                    tasks = tasks.Where(t =>
+                        t.Title.Contains(searchString) ||
+                        t.Description.Contains(searchString) ||
+                        t.AssignedTo.Contains(searchString) ||
+                        t.Priority.Contains(searchString) ||
+                        t.Status.Contains(searchString) ||
+                        t.CreatedDate.ToString().Contains(searchString) ||
+                        t.Deadline.ToString().Contains(searchString));
+                }
+
+                ViewData["CurrentFilter"] = searchString;
+
+                int totalTasks = await tasks.CountAsync();
+                var tasksOnPage = await tasks.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+                var viewModel = new TaskListViewModel
+                {
+                    Tasks = tasksOnPage,
+                    Pagination = new Pagination
+                    {
+                        CurrentPage = pageNumber,
+                        TotalPages = (int)Math.Ceiling(totalTasks / (double)pageSize)
+                    }
+                };
+
+                return View("/Views/Admin/TaskList/Index.cshtml", viewModel);
             }
-
-            var tasks = from t in _context.Tasklists
-                        select t;
-
-            if (!String.IsNullOrEmpty(searchString))
+            catch (Exception ex)
             {
-                tasks = tasks.Where(t =>
-                t.Title.Contains(searchString) ||
-                t.Description.Contains(searchString) ||
-                t.AssignedTo.Contains(searchString) ||
-                t.Priority.Contains(searchString) ||
-                t.Status.Contains(searchString));
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error fetching tasks.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
-
-            ViewData["CurrentFilter"] = searchString;
-
-            return View("/Views/Admin/TaskList/Index.cshtml", await tasks.ToListAsync());
         }
 
-        // GET: TaskList/Create
-        public async Task<IActionResult> Create()
+        [HttpGet]
+        public IActionResult Create()
         {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+            try
             {
-                return RedirectToAction("Login", "Account");
+                int? userId = HttpContext.Session.GetInt32("UserId");
+                if (userId == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+                return View("/Views/Admin/TaskList/Create.cshtml", new Tasklist());
             }
-
-            ViewBag.Employees = await _context.Users
-                .Where(u => u.Role == "Employee")
-                .ToListAsync();
-
-            return View("/Views/Admin/TaskList/Create.cshtml");
+            catch (Exception ex)
+            {
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error showing create task view.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
 
-        // POST: TaskList/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,Description,AssignedTo,CreatedBy,Priority,Status,CreatedDate,Deadline")] Tasklist tasklist)
+        public async Task<IActionResult> Create(Tasklist task)
         {
-            if (ModelState.IsValid)
+            try
             {
-                tasklist.CreatedDate = DateTime.Now; // Set the created date to now
-                _context.Add(tasklist);
+                if (ModelState.IsValid)
+                {
+                    _context.Tasklists.Add(task);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+                return View("/Views/Admin/TaskList/Create.cshtml", task);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error creating task.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+                return View("/Views/Admin/TaskList/Edit.cshtml", task);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error showing edit task view.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Tasklist task)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Update(task);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
+                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+                return View("/Views/Admin/TaskList/Edit.cshtml", task);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error editing task.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+                return View("/Views/Admin/TaskList/Delete.cshtml", task);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error showing delete task view.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                _context.Tasklists.Remove(task);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewBag.Employees = await _context.Users
-                .Where(u => u.Role == "Employee")
-                .ToListAsync();
-
-            return View("/Views/Admin/TaskList/Create.cshtml", tasklist);
+            catch (Exception ex)
+            {
+                // Log the exception and show a user-friendly error page
+                // logger.LogError(ex, "Error deleting task.");
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
         }
+    }
 
-        // GET: TaskList/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            if (id == null)
-            {
-                return NotFound();
-            }
+    public class TaskListViewModel
+    {
+        public IEnumerable<Tasklist> Tasks { get; set; }
+        public Pagination Pagination { get; set; }
+    }
 
-            var tasklist = await _context.Tasklists.FindAsync(id);
-            if (tasklist == null)
-            {
-                return NotFound();
-            }
-
-            ViewBag.Employees = await _context.Users
-                .Where(u => u.Role == "Employee")
-                .ToListAsync();
-
-            return View("/Views/Admin/TaskList/Edit.cshtml", tasklist);
-        }
-
-        // POST: TaskList/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,Description,AssignedTo,CreatedBy,Priority,Status,CreatedDate,Deadline")] Tasklist tasklist)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            if (id != tasklist.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(tasklist);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!TasklistExists(tasklist.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-
-            ViewBag.Employees = await _context.Users
-                .Where(u => u.Role == "Employee")
-                .ToListAsync();
-
-            return View("/Views/Admin/TaskList/Edit.cshtml", tasklist);
-        }
-
-        // GET: TaskList/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var tasklist = await _context.Tasklists
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (tasklist == null)
-            {
-                return NotFound();
-            }
-
-            return View("/Views/Admin/TaskList/Delete.cshtml", tasklist);
-        }
-
-        // POST: TaskList/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            var tasklist = await _context.Tasklists.FindAsync(id);
-            _context.Tasklists.Remove(tasklist);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool TasklistExists(int id)
-        {
-            return _context.Tasklists.Any(e => e.ID == id);
-        }
+    public class Pagination
+    {
+        public int CurrentPage { get; set; }
+        public int TotalPages { get; set; }
     }
 }

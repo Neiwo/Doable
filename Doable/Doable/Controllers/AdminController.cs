@@ -36,19 +36,33 @@ namespace Doable.Controllers
 
         // Action to list users
         [HttpGet]
-        public async Task<IActionResult> Team()
+        public async Task<IActionResult> Team(string searchString)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-            var users = await _context.Users
-                .Where(u => u.Role == "Admin" || u.Role == "Employee")
-                .ToListAsync();
+
+            var users = from u in _context.Users
+                        where u.Role == "Admin" || u.Role == "Employee"
+                        select u;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                users = users.Where(u =>
+                    u.ID.ToString().Contains(searchString) ||
+                    u.Username.Contains(searchString) ||
+                    u.Email.Contains(searchString) ||
+                    u.PhoneNumber.ToString().Contains(searchString) ||
+                    u.CreatedBy.Contains(searchString) ||
+                    u.CreationDate.ToString().Contains(searchString));
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
             return View(users);
         }
-
 
         // Action to create user
         [HttpGet]

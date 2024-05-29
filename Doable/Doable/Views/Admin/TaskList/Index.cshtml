@@ -1,12 +1,15 @@
-﻿@model IEnumerable<Doable.Models.Tasklist>
+﻿@model Doable.Controllers.TaskListViewModel
 @{
     ViewData["Title"] = "Tasklist";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<div class="d-flex justify-content-between mb-3">
+<br />
+<br />
+
+<div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-        <h1><a asp-action="Create" class="btn btn-primary">+ Create Task</a></h1>
+        <a asp-action="Create" class="btn btn-primary">+ Task</a>
     </div>
     <div class="d-flex">
         <form id="searchForm" asp-controller="TaskList" asp-action="Index" method="get" class="form-inline">
@@ -14,6 +17,7 @@
         </form>
     </div>
 </div>
+<br />
 
 <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
     <table class="table table-fixed">
@@ -30,26 +34,50 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Model)
+            @foreach (var item in Model.Tasks)
             {
                 <tr>
-                    <td>@item.Title</td>
+                    <td class="title-column">@item.Title</td>
                     <td class="description-column">@item.Description</td>
-                    <td>@item.AssignedTo</td>
-                    <td>@item.Priority</td>
-                    <td>@item.Status</td>
+                    <td class="assigned-to-column">@item.AssignedTo</td>
+                    <td class="priority-column">@item.Priority</td>
+                    <td class="status-column">@item.Status</td>
                     <td>@item.CreatedDate</td>
                     <td>@item.Deadline</td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a>
-                        <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Delete</a>
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a> |
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Delete</a>
+                        </div>
                     </td>
                 </tr>
             }
-            
         </tbody>
     </table>
 </div>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (Model.Pagination.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Pagination.CurrentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Previous</a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
+        {
+            <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]">@i</a>
+            </li>
+        }
+        @if (Model.Pagination.CurrentPage < Model.Pagination.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Pagination.CurrentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
 
 @section Scripts {
     <script>
@@ -82,7 +110,16 @@
     }
 
     .description-column {
-        max-width: 200px; /* Set your desired max width here */
+        max-width: 150px; /* Set your desired max width here */
+        min-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .title-column, .assigned-to-column, .priority-column, .status-column {
+        max-width: 100px; /* Adjust the max-width as needed */
+        min-width: 100px;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

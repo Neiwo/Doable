@@ -1,22 +1,12 @@
 ﻿@model Doable.Models.User
 
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     ViewData["Title"] = "Create User";
     var userId = Context.Session.GetInt32("UserId");
-    if (userId != null)
-    {
-        <div class="hid">
-            <p>User ID: @userId</p>
-        </div>
-    }
-    else
-    {
-        <p>User not logged in.</p>
-    }
 }
 
-<h1>Create User</h1>
+<h3>Create User</h3>
 
 <hr />
 <div class="row">

@@ -1,23 +1,14 @@
 ﻿@model Doable.Models.User
 
 @{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     ViewData["Title"] = "Create Client Account";
     var userId = Context.Session.GetInt32("UserId");
     var username = Context.Session.GetString("Username");
-    if (userId != null)
-    {
-        <div class="hid">
-            <p>User ID: @userId</p>
-        </div>
-    }
-    else
-    {
-        <p>User not logged in.</p>
-    }
+
 }
 
-<h1>Create Client</h1>
+<h3>Create client account</h3>
 
 <hr />
 <div class="row">
@@ -58,7 +49,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" /> |
-                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
         </form>
     </div>
