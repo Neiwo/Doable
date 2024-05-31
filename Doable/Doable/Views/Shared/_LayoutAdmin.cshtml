@@ -36,8 +36,8 @@
                                    asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Admin" && ViewContext.RouteData.Values["action"]?.ToString() == "Team") ? "active" : "")"
-                                   asp-area="" asp-controller="Admin" asp-action="Team">Accounts</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Team" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Team" asp-action="Index">Accounts</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">

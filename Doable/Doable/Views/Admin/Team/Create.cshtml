@@ -1,0 +1,69 @@
+﻿@model Doable.Models.User
+
+@{
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+    ViewData["Title"] = "Create User";
+    var userId = Context.Session.GetInt32("UserId");
+}
+
+<h3>Create User</h3>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Role" class="control-label"></label>
+                <div class="btn-group btn-group-toggle d-flex" data-toggle="buttons">
+                    <label class="btn btn-secondary @((Model?.Role == "Admin") ? "active" : "")">
+                        <input type="radio" name="Role" value="Admin" @((Model?.Role == "Admin") ? "checked" : "")> Admin
+                    </label>
+                    <label class="btn btn-secondary @((Model?.Role == "Employee") ? "active" : "")">
+                        <input type="radio" name="Role" value="Employee" @((Model?.Role == "Employee") ? "checked" : "")> Employee
+                    </label>
+                </div>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none;">
+                <label asp-for="CreatedBy" class="control-label"></label>
+                <input asp-for="CreatedBy" class="form-control" value="@Context.Session.GetString("Username")" readonly />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" /> |
+                <a asp-action="Index" asp-controller="Team" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(function () {
+            $('.btn-group-toggle .btn').on('click', function () {
+                $(this).siblings().removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+}
