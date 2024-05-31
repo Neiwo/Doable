@@ -1,0 +1,12 @@
+﻿
+.display-4 {
+    font-size: 30px;
+    font: bold;
+    font-family: Arial;
+}
+
+.col-md-6{
+    font-size: 11px;
+    margin-top: 50px;
+    font-family: Arial;
+}

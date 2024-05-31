@@ -2,9 +2,128 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Admin";
     var userId = Context.Session.GetInt32("UserId");
-    
+
+    var totalTasks = ViewData["TotalTasks"];
+    var pendingTasks = ViewData["PendingTasks"];
+    var toReviewTasks = ViewData["ToReviewTasks"];
+    var completedTasks = ViewData["CompletedTasks"];
+
+    var currentBookings = ViewData["CurrentBookings"] as List<Doable.Models.Booking>;
+    var pastBookings = ViewData["PastBookings"] as List<Doable.Models.Booking>;
 }
-<div class="text-center">
-    <h1 class="display-4">Admin Dashboard</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/admindashboard.css" />
+</head>
+<body>
+    <div>
+        <h5 class="display-4">Tasks</h5>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Total</div>
+                <div class="card-body">
+                    <h5 class="card-title">@totalTasks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Pending</div>
+                <div class="card-body">
+                    <h5 class="card-title">@pendingTasks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">To Review</div>
+                <div class="card-body">
+                    <h5 class="card-title">@toReviewTasks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Completed</div>
+                <div class="card-body">
+                    <h5 class="card-title">@completedTasks</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h5 class="display-4">Current Bookings</h5>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Email</th>
+                        <th>Service Type</th>
+                        <th>Service Date From</th>
+                        <th>Service Date To</th>
+                        <th>Status</th>
+                        <th>Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in currentBookings)
+                    {
+                        <tr>
+                            <td>@booking.ID</td>
+                            <td>@booking.CustomerEmail</td>
+                            <td>@booking.ServiceType</td>
+                            <td>@booking.ServiceDateFrom.ToShortDateString()</td>
+                            <td>@booking.ServiceDateTo.ToShortDateString()</td>
+                            <td>@booking.Status</td>
+                            <td>@booking.Payment</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h5 class="display-4">Past Bookings</h5>
+            <hr />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Email</th>
+                        <th>Service Type</th>
+                        <th>Service Date From</th>
+                        <th>Service Date To</th>
+                        <th>Status</th>
+                        <th>Payment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var booking in pastBookings)
+                    {
+                        <tr>
+                            <td>@booking.ID</td>
+                            <td>@booking.CustomerEmail</td>
+                            <td>@booking.ServiceType</td>
+                            <td>@booking.ServiceDateFrom.ToShortDateString()</td>
+                            <td>@booking.ServiceDateTo.ToShortDateString()</td>
+                            <td>@booking.Status</td>
+                            <td>@booking.Payment</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

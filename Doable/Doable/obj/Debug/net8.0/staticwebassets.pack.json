@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Doable.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\Admindashboard.css",
+      "PackagePath": "staticwebassets\\css\\Admindashboard.css"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
