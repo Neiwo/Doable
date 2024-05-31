@@ -32,6 +32,14 @@
                                    asp-area="" asp-controller="TaskList" asp-action="Index">Tasks</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "AdminServices" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="AdminServices" asp-action="Index">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Rentals" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Rentals" asp-action="Index">Rentals</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Customer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>
                             </li>

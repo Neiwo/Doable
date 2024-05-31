@@ -25,10 +25,5 @@ namespace Doable.Controllers
             // Use userId as needed
             return View();
         }
-
-        public IActionResult Tasks()
-        {
-            return RedirectToAction("Index", "TaskList");
-        }
     }
 }

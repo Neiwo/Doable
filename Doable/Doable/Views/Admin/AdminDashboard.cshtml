@@ -2,17 +2,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Admin";
     var userId = Context.Session.GetInt32("UserId");
-    if (userId != null)
-    {
-        <divcache class="hid">
-            <p>User ID: @userId</p>
-        </divcache>
-        
-    }
-    else
-    {
-        <p>User not logged in.</p>
-    }
+    
 }
 <div class="text-center">
     <h1 class="display-4">Admin Dashboard</h1>
