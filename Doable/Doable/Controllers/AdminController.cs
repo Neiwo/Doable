@@ -35,8 +35,13 @@ namespace Doable.Controllers
             ViewData["CompletedTasks"] = completedTasks;
 
             var currentDate = DateTime.Now;
-            var currentBookings = _context.Bookings.Where(b => b.ServiceDateFrom <= currentDate && b.ServiceDateTo >= currentDate).ToList();
-            var pastBookings = _context.Bookings.Where(b => b.ServiceDateTo < currentDate).ToList();
+            var currentBookings = _context.Bookings
+                .Where(b => b.Status != "Completed" && b.Status != "Declined")
+                .ToList();
+
+            var pastBookings = _context.Bookings
+                .Where(b => b.Status == "Completed" || b.Status == "Declined")
+                .ToList();
 
             ViewData["CurrentBookings"] = currentBookings;
             ViewData["PastBookings"] = pastBookings;

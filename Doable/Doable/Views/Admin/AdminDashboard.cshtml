@@ -65,64 +65,82 @@
         <div class="col-md-6">
             <h5 class="display-4">Current Bookings</h5>
             <hr />
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Customer Email</th>
-                        <th>Service Type</th>
-                        <th>Service Date From</th>
-                        <th>Service Date To</th>
-                        <th>Status</th>
-                        <th>Payment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var booking in currentBookings)
-                    {
-                        <tr>
-                            <td>@booking.ID</td>
-                            <td>@booking.CustomerEmail</td>
-                            <td>@booking.ServiceType</td>
-                            <td>@booking.ServiceDateFrom.ToShortDateString()</td>
-                            <td>@booking.ServiceDateTo.ToShortDateString()</td>
-                            <td>@booking.Status</td>
-                            <td>@booking.Payment</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            @if (currentBookings != null && currentBookings.Count > 0)
+            {
+                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th class="customer-email-column">Customer Email</th>
+                                <th class="service-type-column">Service Type</th>
+                                <th>Service Date From</th>
+                                <th>Service Date To</th>
+                                <th class="status-column">Status</th>
+                                <th class="payment-column">Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in currentBookings)
+                            {
+                                <tr>
+                                    <td>@booking.ID</td>
+                                    <td class="customer-email-column">@booking.CustomerEmail</td>
+                                    <td class="service-type-column">@booking.ServiceType</td>
+                                    <td>@booking.ServiceDateFrom.ToShortDateString()</td>
+                                    <td>@booking.ServiceDateTo.ToShortDateString()</td>
+                                    <td class="status-column">@booking.Status</td>
+                                    <td class="payment-column">@booking.Payment</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p>No bookings available</p>
+            }
         </div>
         <div class="col-md-6">
             <h5 class="display-4">Past Bookings</h5>
             <hr />
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Customer Email</th>
-                        <th>Service Type</th>
-                        <th>Service Date From</th>
-                        <th>Service Date To</th>
-                        <th>Status</th>
-                        <th>Payment</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var booking in pastBookings)
-                    {
-                        <tr>
-                            <td>@booking.ID</td>
-                            <td>@booking.CustomerEmail</td>
-                            <td>@booking.ServiceType</td>
-                            <td>@booking.ServiceDateFrom.ToShortDateString()</td>
-                            <td>@booking.ServiceDateTo.ToShortDateString()</td>
-                            <td>@booking.Status</td>
-                            <td>@booking.Payment</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
+            @if (pastBookings != null && pastBookings.Count > 0)
+            {
+                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+                    <table class="table table-fixed">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th class="customer-email-column">Customer Email</th>
+                                <th class="service-type-column">Service Type</th>
+                                <th>Service Date From</th>
+                                <th>Service Date To</th>
+                                <th class="status-column">Status</th>
+                                <th class="payment-column">Payment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var booking in pastBookings)
+                            {
+                                <tr>
+                                    <td>@booking.ID</td>
+                                    <td class="customer-email-column">@booking.CustomerEmail</td>
+                                    <td class="service-type-column">@booking.ServiceType</td>
+                                    <td>@booking.ServiceDateFrom.ToShortDateString()</td>
+                                    <td>@booking.ServiceDateTo.ToShortDateString()</td>
+                                    <td class="status-column">@booking.Status</td>
+                                    <td class="payment-column">@booking.Payment</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <p>No bookings available</p>
+            }
         </div>
     </div>
 </body>
