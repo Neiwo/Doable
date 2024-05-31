@@ -1,26 +1,25 @@
-﻿@model IEnumerable<Doable.Models.User>
-
-@{
+﻿@{
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Accounts";
     var userId = Context.Session.GetInt32("UserId");
+    var users = ViewData["Users"] as List<Doable.Models.User>;
+    var currentPage = (int)ViewData["CurrentPage"];
+    var totalPages = (int)ViewData["TotalPages"];
 }
-
 
 <br />
 <br />
 <div class="d-flex justify-content-between align-items-center mb-3">
-<div>
-    <a asp-action="Create" class="btn btn-primary">+ New Account</a>
-</div>
-<div class="d-flex">
-    <form id="searchForm" asp-controller="Admin" asp-action="Team" method="get" class="form-inline">
-        <input type="text" name="searchString" id="searchInput" class="form-control mr-2" placeholder="Search Accounts..." value="@ViewData["CurrentFilter"]" />
-    </form>
-</div>
+    <div>
+        <a asp-action="Create" class="btn btn-primary">+ New Account</a>
+    </div>
+    <div class="d-flex">
+        <form id="searchForm" asp-controller="Admin" asp-action="Team" method="get" class="form-inline">
+            <input type="text" name="searchString" id="searchInput" class="form-control mr-2" placeholder="Search Accounts..." value="@ViewData["CurrentFilter"]" />
+        </form>
+    </div>
 </div>
 <br />
-
 
 <table class="table">
     <thead>
@@ -36,7 +35,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in users)
         {
             <tr>
                 <td>@item.ID</td>
@@ -54,6 +53,29 @@
         }
     </tbody>
 </table>
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (currentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Team" asp-route-pageNumber="@(currentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Previous</a>
+            </li>
+        }
+        @for (int i = 1; i <= totalPages; i++)
+        {
+            <li class="page-item @(currentPage == i ? "active" : "")">
+                <a class="page-link" asp-action="Team" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]">@i</a>
+            </li>
+        }
+        @if (currentPage < totalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Team" asp-route-pageNumber="@(currentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
 
 @section Scripts {
     <script>

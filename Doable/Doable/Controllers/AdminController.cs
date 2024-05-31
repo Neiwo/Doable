@@ -34,9 +34,9 @@ namespace Doable.Controllers
             return RedirectToAction("Index", "TaskList");
         }
 
-        // Action to list users
+        // Action to list users with pagination and search
         [HttpGet]
-        public async Task<IActionResult> Team(string searchString)
+        public async Task<IActionResult> Team(string searchString, int pageNumber = 1, int pageSize = 6)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -61,7 +61,14 @@ namespace Doable.Controllers
 
             ViewData["CurrentFilter"] = searchString;
 
-            return View(users);
+            int totalUsers = await users.CountAsync();
+            var usersOnPage = await users.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            ViewData["Users"] = usersOnPage;
+            ViewData["CurrentPage"] = pageNumber;
+            ViewData["TotalPages"] = (int)Math.Ceiling(totalUsers / (double)pageSize);
+
+            return View();
         }
 
         // Action to create user

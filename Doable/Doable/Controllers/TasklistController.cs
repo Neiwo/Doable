@@ -82,7 +82,10 @@ namespace Doable.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+                ViewBag.Employees = _context.Users
+                    .Where(u => u.Role == "Employee")
+                    .Select(u => new { u.Username })
+                    .ToList();
                 return View("/Views/Admin/TaskList/Create.cshtml", new Tasklist());
             }
             catch (Exception ex)
@@ -92,6 +95,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create(Tasklist task)
@@ -161,6 +165,7 @@ namespace Doable.Controllers
             }
         }
 
+        // GET: Admin/TaskList/Delete/5
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -171,6 +176,7 @@ namespace Doable.Controllers
                 {
                     return NotFound();
                 }
+
                 return View("/Views/Admin/TaskList/Delete.cshtml", task);
             }
             catch (Exception ex)
@@ -181,12 +187,19 @@ namespace Doable.Controllers
             }
         }
 
+        // POST: Admin/TaskList/Delete/5
+        // POST: Admin/TaskList/Delete/5
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             try
             {
                 var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
                 _context.Tasklists.Remove(task);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -198,6 +211,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
     }
 
     public class TaskListViewModel

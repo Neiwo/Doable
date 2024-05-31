@@ -3,11 +3,13 @@ using Doable.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace Doable.Controllers
 {
+    [Route("admin/customers")]
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -17,9 +19,9 @@ namespace Doable.Controllers
             _context = context;
         }
 
-        // Action to list customers
-        [HttpGet]
-        public async Task<IActionResult> Index(string searchString)
+        // Action to list customers with pagination and search
+        [HttpGet("")]
+        public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -39,16 +41,29 @@ namespace Doable.Controllers
                     c.Email.Contains(searchString) ||
                     c.PhoneNumber.ToString().Contains(searchString) ||
                     c.CreatedBy.Contains(searchString) ||
-                    c.CreationDate.ToString().Contains(searchString)); ;
+                    c.CreationDate.ToString().Contains(searchString));
             }
 
             ViewData["CurrentFilter"] = searchString;
 
-            return View("/Views/Admin/Customer/Index.cshtml", await customers.ToListAsync());
+            int totalCustomers = await customers.CountAsync();
+            var customersOnPage = await customers.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+
+            var viewModel = new CustomerListViewModel
+            {
+                Customers = customersOnPage,
+                Pagination = new Pagination
+                {
+                    CurrentPage = pageNumber,
+                    TotalPages = (int)Math.Ceiling(totalCustomers / (double)pageSize)
+                }
+            };
+
+            return View("/Views/Admin/Customer/Index.cshtml", viewModel);
         }
 
         // Action to create customer
-        [HttpGet]
+        [HttpGet("create")]
         public IActionResult Create()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -59,7 +74,7 @@ namespace Doable.Controllers
             return View("/Views/Admin/Customer/Create.cshtml", new User { Role = "Client" });
         }
 
-        [HttpPost]
+        [HttpPost("create")]
         public async Task<IActionResult> Create(User user)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -89,7 +104,7 @@ namespace Doable.Controllers
         }
 
         // Action to edit customer
-        [HttpGet]
+        [HttpGet("edit/{id}")]
         public async Task<IActionResult> Edit(int id)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -106,7 +121,7 @@ namespace Doable.Controllers
             return View("/Views/Admin/Customer/Edit.cshtml", customer);
         }
 
-        [HttpPost]
+        [HttpPost("edit/{id}")]
         public async Task<IActionResult> Edit(User user)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -131,7 +146,7 @@ namespace Doable.Controllers
         }
 
         // Action to delete customer
-        [HttpGet]
+        [HttpGet("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
@@ -148,13 +163,25 @@ namespace Doable.Controllers
             return View("/Views/Admin/Customer/Delete.cshtml", customer);
         }
 
-        [HttpPost, ActionName("Delete")]
+        [HttpPost("delete/{id}")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var customer = await _context.Users.FindAsync(id);
             _context.Users.Remove(customer);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public class CustomerListViewModel
+        {
+            public IEnumerable<User> Customers { get; set; }
+            public Pagination Pagination { get; set; }
+        }
+
+        public class Pagination
+        {
+            public int CurrentPage { get; set; }
+            public int TotalPages { get; set; }
         }
     }
 }
