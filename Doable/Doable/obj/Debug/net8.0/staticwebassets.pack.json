@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\css\\Admindashboard.css"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\Employeedashboard.css",
+      "PackagePath": "staticwebassets\\css\\Employeedashboard.css"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },

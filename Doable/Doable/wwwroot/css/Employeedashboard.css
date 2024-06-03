@@ -1,0 +1,27 @@
+﻿
+.display-4 {
+    font-size: 30px;
+    font: bold;
+    font-family: Arial;
+}
+
+.col-md-6 {
+    font-size: 9px;
+    margin-top: 50px;
+    font-family: Arial;
+}
+
+.table-fixed thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white; /* Optional: Add background color to the header */
+}
+
+.customer-email-column, .service-type-column, .status-column, .payment-column {
+    max-width: 85px; /* Adjust the max-width as needed */
+    min-width: 85px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

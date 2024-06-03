@@ -2,18 +2,60 @@
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
     ViewData["Title"] = "Employee";
     var userId = Context.Session.GetInt32("UserId");
-    if (userId != null)
-    {
-        <divcache class="hid">
-            <p>User ID: @userId</p>
-        </divcache>
 
-    }
-    else
-    {
-        <p>User not logged in.</p>
-    }
+    var totalTasks = ViewData["TotalTasks"];
+    var pendingTasks = ViewData["PendingTasks"];
+    var toReviewTasks = ViewData["ToReviewTasks"];
+    var completedTasks = ViewData["CompletedTasks"];
 }
 
-<h1>Employee Dashboard</h1>
-<p>Welcome, Employee!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/Employeedashboard.css" />
+</head>
+<body>
+    <div>
+        <h5 class="display-4">Tasks</h5>
+        <hr />
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card text-white bg-primary mb-3">
+                <div class="card-header">Total</div>
+                <div class="card-body">
+                    <h5 class="card-title">@totalTasks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-warning mb-3">
+                <div class="card-header">Pending</div>
+                <div class="card-body">
+                    <h5 class="card-title">@pendingTasks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-info mb-3">
+                <div class="card-header">To Review</div>
+                <div class="card-body">
+                    <h5 class="card-title">@toReviewTasks</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card text-white bg-success mb-3">
+                <div class="card-header">Completed</div>
+                <div class="card-body">
+                    <h5 class="card-title">@completedTasks</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</body>
+</html>
