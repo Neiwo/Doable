@@ -1,0 +1,127 @@
+﻿@model Doable.Controllers.ETaskViewModel
+@{
+    ViewData["Title"] = "Tasklist";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+<br />
+<br />
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <div class="d-flex">
+        <form id="searchForm" asp-controller="ETask" asp-action="Index" method="get" class="form-inline">
+            <input type="text" name="searchString" id="searchInput" class="form-control mr-2" placeholder="Search tasks..." value="@ViewData["CurrentFilter"]" />
+        </form>
+    </div>
+</div>
+<br />
+
+@if (ViewData["NoTasksMessage"] != null)
+{
+    <div class="alert alert-info" role="alert">
+        @ViewData["NoTasksMessage"]
+    </div>
+}
+else
+{
+    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table table-fixed">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Created Date</th>
+                    <th>Deadline</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Tasks)
+                {
+                    <tr>
+                        <td class="title-column">@item.Title</td>
+                        <td class="description-column">@item.Description</td>
+                        <td class="priority-column">@item.Priority</td>
+                        <td class="status-column">@item.Status</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.Deadline</td>
+                        <td>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        @if (Model.Paging.CurrentPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Paging.CurrentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Previous</a>
+            </li>
+        }
+        @for (int i = 1; i <= Model.Paging.TotalPages; i++)
+        {
+            <li class="page-item @(Model.Paging.CurrentPage == i ? "active" : "")">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]">@i</a>
+            </li>
+        }
+        @if (Model.Paging.CurrentPage < Model.Paging.TotalPages)
+        {
+            <li class="page-item">
+                <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Paging.CurrentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Next</a>
+            </li>
+        }
+    </ul>
+</nav>
+
+@section Scripts {
+    <script>
+        // Debounce function to limit the rate at which a function can fire.
+        function debounce(func, wait) {
+            let timeout;
+            return function () {
+                const context = this, args = arguments;
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(context, args), wait);
+            };
+        }
+
+        // Function to submit the form
+        function submitForm() {
+            document.getElementById('searchForm').submit();
+        }
+
+        // Adding keyup event listener to the search input with debounce
+        document.getElementById('searchInput').addEventListener('keyup', debounce(submitForm, 500));
+    </script>
+}
+
+<style>
+    .table-fixed thead th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        background-color: white; /* Optional: Add background color to the header */
+    }
+
+    .description-column {
+        max-width: 150px; /* Set your desired max width here */
+        min-width: 150px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .title-column, .assigned-to-column, .priority-column, .status-column {
+        max-width: 100px; /* Adjust the max-width as needed */
+        min-width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
