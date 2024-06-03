@@ -19,7 +19,6 @@ namespace Doable.Controllers
             _context = context;
         }
 
-        // Action to list customers with pagination and search
         [HttpGet("")]
         public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
         {
@@ -62,7 +61,6 @@ namespace Doable.Controllers
             return View("/Views/Admin/Customer/Index.cshtml", viewModel);
         }
 
-        // Action to create customer
         [HttpGet("create")]
         public IActionResult Create()
         {
@@ -93,7 +91,6 @@ namespace Doable.Controllers
                 user.CreatedBy = HttpContext.Session.GetString("Username");
                 user.CreationDate = DateTime.Now;
 
-                // Ensure the Role is set to Client
                 user.Role = "Client";
 
                 _context.Users.Add(user);
@@ -103,7 +100,6 @@ namespace Doable.Controllers
             return View("/Views/Admin/Customer/Create.cshtml", user);
         }
 
-        // Action to edit customer
         [HttpGet("edit/{id}")]
         public async Task<IActionResult> Edit(int id)
         {
@@ -145,7 +141,6 @@ namespace Doable.Controllers
             return View("/Views/Admin/Customer/Edit.cshtml", user);
         }
 
-        // Action to delete customer
         [HttpGet("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {

@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Doable.Controllers
 {
-    [Route("admin/rentals")]
-    public class RentalController : Controller
+    [Route("employee/bookings")]
+    public class EBookingController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public RentalController(ApplicationDbContext context)
+        public EBookingController(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -52,7 +52,7 @@ namespace Doable.Controllers
             ViewData["CurrentPage"] = pageNumber;
             ViewData["TotalPages"] = (int)Math.Ceiling(totalBookings / (double)pageSize);
 
-            return View("/Views/Admin/Rental/Index.cshtml");
+            return View("/Views/Employee/Bookings/Index.cshtml");
         }
 
         [HttpGet("create")]
@@ -68,7 +68,7 @@ namespace Doable.Controllers
                 .Where(u => u.Role == "Client")
                 .ToListAsync();
 
-            return View("/Views/Admin/Rental/Create.cshtml", new Booking());
+            return View("/Views/Employee/Bookings/Create.cshtml", new Booking());
         }
 
         [HttpPost("create")]
@@ -85,7 +85,7 @@ namespace Doable.Controllers
                 .Where(u => u.Role == "Client")
                 .ToListAsync();
 
-            return View("/Views/Admin/Rental/Create.cshtml", booking);
+            return View("/Views/Employee/Bookings/Create.cshtml", booking);
         }
 
         [HttpGet("edit/{id}")]
@@ -106,7 +106,7 @@ namespace Doable.Controllers
                 .Where(u => u.Role == "Client")
                 .ToListAsync();
 
-            return View("/Views/Admin/Rental/Edit.cshtml", booking);
+            return View("/Views/Employee/Bookings/Edit.cshtml", booking);
         }
 
         [HttpPost("edit/{id}")]
@@ -128,9 +128,8 @@ namespace Doable.Controllers
                 .Where(u => u.Role == "Client")
                 .ToListAsync();
 
-            return View("/Views/Admin/Rental/Edit.cshtml", booking);
+            return View("/Views/Employee/Bookings/Edit.cshtml", booking);
         }
-
 
         [HttpGet("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
@@ -145,7 +144,7 @@ namespace Doable.Controllers
             {
                 return NotFound();
             }
-            return View("/Views/Admin/Rental/Delete.cshtml", booking);
+            return View("/Views/Employee/Bookings/Delete.cshtml", booking);
         }
 
         [HttpPost("delete/{id}")]

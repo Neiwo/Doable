@@ -12,7 +12,6 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            // Use userId as needed
             return View();
         }
     }

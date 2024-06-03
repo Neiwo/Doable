@@ -19,7 +19,6 @@ namespace Doable.Controllers
             _context = context;
         }
 
-        // Action to list tasks with pagination and search
         [HttpGet]
         public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
         {
@@ -65,8 +64,6 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error fetching tasks.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
@@ -90,8 +87,6 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error showing create task view.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
@@ -114,8 +109,6 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error creating task.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
@@ -136,8 +129,6 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error showing edit task view.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
@@ -159,13 +150,9 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error editing task.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
-
-        // GET: Admin/TaskList/Delete/5
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -181,14 +168,9 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error showing delete task view.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
-
-        // POST: Admin/TaskList/Delete/5
-        // POST: Admin/TaskList/Delete/5
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -206,8 +188,6 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-                // Log the exception and show a user-friendly error page
-                // logger.LogError(ex, "Error deleting task.");
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }

@@ -37,6 +37,10 @@
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "ECustomer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="ECustomer" asp-action="Index">Customers</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "EBooking" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="EBooking" asp-action="Index">Bookings</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item dropdown">

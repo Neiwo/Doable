@@ -18,8 +18,6 @@ namespace Doable.Controllers
         {
             _context = context;
         }
-
-        // Action to list users with pagination and search
         [HttpGet("")]
         public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
         {
@@ -56,7 +54,6 @@ namespace Doable.Controllers
             return View("/Views/Admin/Team/Index.cshtml");
         }
 
-        // Action to create user
         [HttpGet("create")]
         public IActionResult Create()
         {
@@ -89,7 +86,7 @@ namespace Doable.Controllers
             return View("/Views/Admin/Team/Create.cshtml", user);
         }
 
-        // Action to edit user
+
         [HttpGet("edit/{id}")]
         public async Task<IActionResult> Edit(int id)
         {
@@ -129,7 +126,6 @@ namespace Doable.Controllers
             return View("/Views/Admin/Team/Edit.cshtml", user);
         }
 
-        // Action to delete user
         [HttpGet("delete/{id}")]
         public async Task<IActionResult> Delete(int id)
         {

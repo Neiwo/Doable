@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
     ViewData["Title"] = "Bookings";
     var bookings = ViewData["Bookings"] as List<Doable.Models.Booking>;
     var currentPage = (int)ViewData["CurrentPage"];
@@ -10,10 +10,10 @@
 <br />
 <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
-        <a asp-action="Create" asp-controller="Rental" class="btn btn-primary">+ New Booking</a>
+        <a asp-action="Create" asp-controller="EBooking" class="btn btn-primary">+ New Booking</a>
     </div>
     <div class="d-flex">
-        <form id="searchForm" asp-controller="Rental" asp-action="Index" method="get" class="form-inline">
+        <form id="searchForm" asp-controller="EBooking" asp-action="Index" method="get" class="form-inline">
             <input type="text" name="searchString" id="searchInput" class="form-control mr-2" placeholder="Search Bookings..." value="@ViewData["CurrentFilter"]" />
         </form>
     </div>
@@ -46,8 +46,8 @@
                     <td class="status-column">@item.Status</td>
                     <td class="payment-column">@item.Payment</td>
                     <td>
-                        <a asp-action="Edit" asp-controller="Rental" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a> |
-                        <a asp-action="Delete" asp-controller="Rental" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Delete</a>
+                        <a asp-action="Edit" asp-controller="EBooking" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a> |
+                        <a asp-action="Delete" asp-controller="EBooking" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Delete</a>
                     </td>
                 </tr>
             }
@@ -60,19 +60,19 @@
         @if (currentPage > 1)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-controller="Rental" asp-route-pageNumber="@(currentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Previous</a>
+                <a class="page-link" asp-action="Index" asp-controller="EBooking" asp-route-pageNumber="@(currentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Previous</a>
             </li>
         }
         @for (int i = 1; i <= totalPages; i++)
         {
             <li class="page-item @(currentPage == i ? "active" : "")">
-                <a class="page-link" asp-action="Index" asp-controller="Rental" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]">@i</a>
+                <a class="page-link" asp-action="Index" asp-controller="EBooking" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]">@i</a>
             </li>
         }
         @if (currentPage < totalPages)
         {
             <li class="page-item">
-                <a class="page-link" asp-action="Index" asp-controller="Rental" asp-route-pageNumber="@(currentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Next</a>
+                <a class="page-link" asp-action="Index" asp-controller="EBooking" asp-route-pageNumber="@(currentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Next</a>
             </li>
         }
     </ul>
@@ -80,6 +80,7 @@
 
 @section Scripts {
     <script>
+        // Debounce function to limit the rate at which a function can fire.
         function debounce(func, wait) {
             let timeout;
             return function () {
@@ -89,9 +90,12 @@
             };
         }
 
+        // Function to submit the form
         function submitForm() {
             document.getElementById('searchForm').submit();
         }
+
+        // Adding keyup event listener to the search input with debounce
         document.getElementById('searchInput').addEventListener('keyup', debounce(submitForm, 500));
     </script>
 }
