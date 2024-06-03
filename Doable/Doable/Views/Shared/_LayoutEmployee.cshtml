@@ -37,14 +37,18 @@
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "ECustomer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="ECustomer" asp-action="Index">Customers</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "EAccount" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="EAccount" asp-action="Index">Account</a>
-                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("Logout", "Account")">Logout</a>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Account
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                    <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "EAccount" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                       asp-area="" asp-controller="EAccount" asp-action="Index">Account</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="@Url.Action("Logout", "Account")">Logout</a>
+                                </div>
                             </li>
                         </ul>
                     </div>
