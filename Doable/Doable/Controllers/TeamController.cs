@@ -38,6 +38,7 @@ namespace Doable.Controllers
                     u.Username.Contains(searchString) ||
                     u.Email.Contains(searchString) ||
                     u.PhoneNumber.ToString().Contains(searchString) ||
+                    u.Role.Contains(searchString) ||
                     u.CreatedBy.Contains(searchString) ||
                     u.CreationDate.ToString().Contains(searchString));
             }

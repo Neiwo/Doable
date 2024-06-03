@@ -5,6 +5,11 @@
     ViewData["Title"] = "Create Booking";
     var clients = ViewData["Clients"] as List<Doable.Models.User>;
 }
+<html>
+ <head>
+    <link rel="stylesheet" href="~/css/create.css" asp-append-version="true" />
+ </head>
+ <body>
 
 <h3>Create Booking</h3>
 
@@ -44,10 +49,12 @@
                 <input asp-for="Payment" class="form-control" />
                 <span asp-validation-for="Payment" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="buton">
                 <input type="submit" value="Create" class="btn btn-primary" /> |
                 <a asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
         </form>
     </div>
 </div>
+</body>
+</html>

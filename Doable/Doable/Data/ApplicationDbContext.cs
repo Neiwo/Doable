@@ -11,7 +11,7 @@ namespace Doable.Data
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Tasklist> Tasklists { get; set; } // Add this line
+        public DbSet<Tasklist> Tasklists { get; set; }
         public DbSet<Booking> Bookings { get; set; }
     }
 }

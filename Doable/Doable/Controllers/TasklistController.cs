@@ -124,7 +124,11 @@ namespace Doable.Controllers
                     return NotFound();
                 }
 
-                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+                ViewBag.Employees = _context.Users
+                    .Where(u => u.Role == "Employee")
+                    .Select(u => new { u.Username })
+                    .ToList();
+
                 return View("/Views/Admin/TaskList/Edit.cshtml", task);
             }
             catch (Exception ex)
@@ -132,6 +136,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Edit(Tasklist task)

@@ -38,13 +38,13 @@
             @foreach (var item in bookings)
             {
                 <tr>
-                    <td>@item.ID</td>
-                    <td class="customer-email-column">@item.CustomerEmail</td>
-                    <td class="service-type-column">@item.ServiceType</td>
+                    <td># @item.ID</td>
+                    <td>@item.CustomerEmail</td>
+                    <td>@item.ServiceType</td>
                     <td>@item.ServiceDateFrom</td>
                     <td>@item.ServiceDateTo</td>
-                    <td class="status-column">@item.Status</td>
-                    <td class="payment-column">@item.Payment</td>
+                    <td>@item.Status</td>
+                    <td>@item.Payment</td>
                     <td>
                         <a asp-action="Edit" asp-controller="Rental" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a> |
                         <a asp-action="Delete" asp-controller="Rental" asp-route-id="@item.ID" class="btn btn-sm btn-danger">Delete</a>

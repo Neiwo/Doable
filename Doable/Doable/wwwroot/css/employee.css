@@ -19,12 +19,12 @@
 .nav-link.active {
     background-color: #0d6efd;
     border-radius: 5px;
-    color: white !important; /* Ensures the font color is white */
+    color: white !important; 
 }
 
-    /* Ensure the font color remains white for active nav links */
+   
     .nav-link.active,
     .nav-link.active:hover,
     .nav-link.active:focus {
-        color: white !important; /* Ensures the font color is white even on hover or focus */
+        color: white !important; 
     }

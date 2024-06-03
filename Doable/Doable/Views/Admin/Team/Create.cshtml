@@ -5,7 +5,11 @@
     ViewData["Title"] = "Create User";
     var userId = Context.Session.GetInt32("UserId");
 }
-
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/create.css" asp-append-version="true" />
+</head>
+<body>
 <h3>Create User</h3>
 
 <hr />
@@ -55,6 +59,9 @@
         </form>
     </div>
 </div>
+</body>
+</html>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

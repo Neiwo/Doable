@@ -15,11 +15,11 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: white; /* Optional: Add background color to the header */
+    background-color: white; 
 }
 
 .customer-email-column, .service-type-column, .status-column, .payment-column {
-    max-width: 85px; /* Adjust the max-width as needed */
+    max-width: 85px; 
     min-width: 85px;
     white-space: nowrap;
     overflow: hidden;

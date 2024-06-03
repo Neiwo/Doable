@@ -21,6 +21,10 @@
       "PackagePath": "staticwebassets\\css\\client.css"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\create.css",
+      "PackagePath": "staticwebassets\\css\\create.css"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\employee.css",
       "PackagePath": "staticwebassets\\css\\employee.css"
     },
