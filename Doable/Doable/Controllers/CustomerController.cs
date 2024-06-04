@@ -88,6 +88,12 @@ namespace Doable.Controllers
                     return View("/Views/Admin/Customer/Create.cshtml", user);
                 }
 
+                if (_context.Users.Any(u => u.Username == user.Username))
+                {
+                    ModelState.AddModelError("Username", "Username is already taken.");
+                    return View("/Views/Admin/Customer/Create.cshtml", user);
+                }
+
                 user.CreatedBy = HttpContext.Session.GetString("Username");
                 user.CreationDate = DateTime.Now;
 
