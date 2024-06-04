@@ -30,7 +30,7 @@ namespace Doable.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                var tasks = _context.Tasklists.Where(t => t.AssignedTo == username);
+                var tasks = _context.Tasklists.Where(t => t.AssignedTo == username && t.Status != "To Review" && t.Status != "Completed");
 
                 if (!tasks.Any())
                 {
@@ -172,7 +172,6 @@ namespace Doable.Controllers
             }
             catch (Exception ex)
             {
-
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
@@ -198,6 +197,54 @@ namespace Doable.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                if (task.Status != "Opened")
+                {
+                    task.Status = "Opened";
+                    _context.Tasklists.Update(task);
+                    await _context.SaveChangesAsync();
+                }
+
+                return View("/Views/Employee/Task/Details.cshtml", task);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CompleteTask(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                task.Status = "To Review";
+                _context.Tasklists.Update(task);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
     }
 
     public class ETaskViewModel

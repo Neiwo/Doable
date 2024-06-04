@@ -41,7 +41,9 @@ else
                 @foreach (var item in Model.Tasks)
                 {
                     <tr>
-                        <td class="title-column">@item.Title</td>
+                        <td class="title-column">
+                            <a asp-action="Details" asp-route-id="@item.ID">@item.Title</a>
+                        </td>
                         <td class="description-column">@item.Description</td>
                         <td class="priority-column">@item.Priority</td>
                         <td class="status-column">@item.Status</td>
@@ -117,7 +119,7 @@ else
         text-overflow: ellipsis;
     }
 
-    .title-column, .assigned-to-column, .priority-column, .status-column {
+    .title-column, .priority-column, .status-column {
         max-width: 100px; /* Adjust the max-width as needed */
         min-width: 100px;
         white-space: nowrap;

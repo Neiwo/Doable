@@ -1,0 +1,36 @@
+﻿.col-sm-10 {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.description-box {
+    border: 1px solid #ccc;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+    line-height: 1.5;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+.row {
+    width: 1365px;
+}
+
+.details-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+    .details-buttons .btn {
+        margin-left: 10px;
+    }
+
+    .details-buttons .btn-success {
+        background-color: green;
+        border-color: green;
+    }

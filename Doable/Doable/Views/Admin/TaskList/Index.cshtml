@@ -1,4 +1,5 @@
 ﻿@model Doable.Controllers.TaskListViewModel
+
 @{
     ViewData["Title"] = "Tasklist";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -37,7 +38,9 @@
             @foreach (var item in Model.Tasks)
             {
                 <tr>
-                    <td class="title-column">@item.Title</td>
+                    <td class="title-column">
+                        <a asp-action="Details" asp-route-id="@item.ID">@item.Title</a>
+                    </td>
                     <td class="description-column">@item.Description</td>
                     <td class="assigned-to-column">@item.AssignedTo</td>
                     <td class="priority-column">@item.Priority</td>

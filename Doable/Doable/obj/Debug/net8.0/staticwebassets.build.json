@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "y+pQyKhb875Jt9tiIBiSyfsINFiWCyeT65k//vOFE4k=",
+  "Hash": "dbX76asRwcMUkWhqca1zDMOLru52d8uX3O62b3bwtyQ=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -129,6 +129,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\create.css"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\details.css",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "css/details.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\details.css"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\edit.css",

@@ -91,7 +91,6 @@ namespace Doable.Controllers
             }
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Create(Tasklist task)
         {
@@ -137,7 +136,6 @@ namespace Doable.Controllers
             }
         }
 
-
         [HttpPost]
         public async Task<IActionResult> Edit(Tasklist task)
         {
@@ -158,6 +156,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -176,6 +175,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -197,6 +197,24 @@ namespace Doable.Controllers
             }
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Details(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                return View("/Views/Admin/TaskList/Details.cshtml", task);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
     }
 
     public class TaskListViewModel

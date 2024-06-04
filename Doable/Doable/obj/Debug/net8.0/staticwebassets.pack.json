@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\css\\create.css"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\details.css",
+      "PackagePath": "staticwebassets\\css\\details.css"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\edit.css",
       "PackagePath": "staticwebassets\\css\\edit.css"
     },
