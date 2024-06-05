@@ -1,0 +1,110 @@
+﻿/* CSS NG ABOUT */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    /*    height: 100%;*/
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    width: 100%;
+    height: 250px;
+    background-color: #005E9B;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+    .header h1 {
+        font-size: 35px;
+        font-family: 'DM Serif Display', serif;
+        margin: 0;
+    }
+
+.footer-like h1 {
+    font-size: 35px;
+    font-family: 'DM Serif Display', serif;
+    margin: 0;
+    text-align: center;
+    padding: 30px;
+    margin-bottom: 50px;
+}
+
+h2 {
+    text-align: center;
+    padding: 30px;
+    text-decoration: underline;
+    font-family: 'DM Serif Display', serif;
+}
+
+p {
+    font-family: 'Josefin Sans', serif;
+    text-align: center;
+    margin-top: 40px;
+}
+
+h4 {
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    font-size: 20px;
+}
+
+.team-dets {
+    /*	border: 1px solid black;*/
+    font-family: 'Josefin Sans', serif;
+    padding: 15px;
+    text-align: center;
+    width: 80%;
+    margin-left: 125px;
+    margin-top: -60px;
+}
+
+.mid {
+    /*    border: 1px solid black;*/
+    padding: 20px;
+    text-align: center;
+    margin: 20px auto;
+    width: 60%;
+    flex: 1; /* Allow mid section to grow */
+    box-sizing: border-box;
+}
+
+.footer-like {
+    padding: 20px;
+    background-color: #DDDDDD;
+    width: 100%;
+    margin-top: auto; /* Ensure footer is pushed to bottom */
+    box-sizing: border-box;
+}
+
+.man {
+    width: 30%;
+    margin-top: 25px;
+    float: left;
+}
+
+.man-2 {
+    width: 30%;
+    float: left;
+    margin-top: 25px;
+    margin-left: 55px;
+}
+
+.man-3 {
+    width: 30%;
+    margin-top: 25px;
+    float: right;
+
+}
+
+.immg {
+    width: 200px;
+    height: 200px;
+    margin-left: 90px;
+    box-sizing: border-box;
+}

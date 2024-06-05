@@ -1,0 +1,67 @@
+﻿/* CSS for Services */
+
+body {
+    background-color: #0d6efd;
+}
+
+.heading {
+    width: 60%;
+    height: auto;
+    padding: 20px;
+    margin-top: 40px;
+    margin-left: 255px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: white;
+}
+
+h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 50px;
+}
+
+p {
+    font-family: 'Josefin Sans', serif;
+    margin-top: -20px;
+}
+
+
+.accordion {
+    background-color: #005E9B;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    width: 55%;
+    text-align: center;
+    outline: none;
+    font-size: 20px;
+    transition: 0.4s;
+    font-family: 'DM Serif Display', serif;
+    margin-left: 310px;
+    margin-bottom: 40px;
+}
+
+    .accordion:hover,
+    .accordion.active {
+        background-color: #00386C;
+    }
+
+.panel {
+    width: 54.5%;
+    background-color: white;
+    border: 2px solid black;
+    display: none; /* Initially hide the panels */
+    height: auto;
+    margin-left: 312px;
+    margin-bottom: 30px;
+    padding-top: 30px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.content {
+    text-align: center;
+    font-family: 'Josefin Sans', serif;
+    color: black;
+    padding: 20px;
+}

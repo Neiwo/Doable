@@ -1,0 +1,124 @@
+﻿/* CSS NG CONTACT */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    background-color: whitesmoke;
+}
+
+.container {
+    margin-top: 35px;
+    margin-left: 290px;
+    max-width: 60%;
+    background-color: whitesmoke;
+    /*    border: 1px solid black;*/
+    flex: 1;
+}
+
+h1 {
+    text-align: center;
+    font-size: 60px;
+    font-family: "DM Serif Display", serif;
+}
+
+p {
+    font-size: 13px;
+    text-align: center;
+    margin-top: -25px;
+    font-weight: bolder;
+    font-family: 'Josefin Sans', serif;
+}
+
+form {
+    margin-top: 30px;
+    margin-left: 90px;
+    display: inline-block;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bolder;
+    margin-left: 20px;
+    font-family: 'Josefin Sans', serif;
+}
+
+input[type=text], [type=email] {
+    width: 30%;
+    margin: 11px;
+    height: 30px;
+    background-color: #DADADA;
+    text-align: center;
+    font-family: "Josefin Sans", serif;
+}
+
+input[type=submit] {
+    width: 95%;
+    height: 35px;
+    background-color: #0d6efd;
+    margin: 16px;
+    color: white;
+    cursor: pointer;
+    font-weight: bolder;
+    font-family: "Josefin Sans", serif;
+}
+
+.footer-like {
+    height: 250px;
+    width: 100%;
+    background-color: #0d6efd;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.immg {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    margin-left: 145px;
+}
+
+.phone {
+    width: 30%;
+    margin-top: 35px;
+    float: left;
+}
+
+.facebook {
+    width: 30%;
+    float: left;
+    margin-top: 35px;
+    margin-left: 55px;
+}
+
+.email {
+    width: 30%;
+    margin-top: 35px;
+    float: right;
+}
+
+h4 {
+    font-size: 20px;
+    margin-top: -4px;
+    text-align: center;
+    color: white;
+    font-family: 'DM Serif Display', serif;
+}
+
+.details {
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+    font-family: 'Josefin Sans', serif;
+}
+
+a {
+    color: white;
+}

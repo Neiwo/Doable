@@ -45,12 +45,52 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-a.css",
+      "PackagePath": "staticwebassets\\css\\style-a.css"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-b.css",
+      "PackagePath": "staticwebassets\\css\\style-b.css"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-c.css",
+      "PackagePath": "staticwebassets\\css\\style-c.css"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-d.css",
+      "PackagePath": "staticwebassets\\css\\style-d.css"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\facebook.png",
+      "PackagePath": "staticwebassets\\images\\facebook.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mail.png",
+      "PackagePath": "staticwebassets\\images\\mail.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man-2.png",
+      "PackagePath": "staticwebassets\\images\\man-2.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man-3.png",
+      "PackagePath": "staticwebassets\\images\\man-3.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man.png",
+      "PackagePath": "staticwebassets\\images\\man.png"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mini-logo.png",
       "PackagePath": "staticwebassets\\images\\mini-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\telephone.png",
+      "PackagePath": "staticwebassets\\images\\telephone.png"
     },
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\js\\site.js",
