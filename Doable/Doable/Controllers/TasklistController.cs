@@ -215,6 +215,50 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+        [HttpPost]
+        public async Task<IActionResult> Complete(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                task.Status = "Completed"; // Update the status to Completed
+                _context.Update(task);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> Return(int id)
+        {
+            try
+            {
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                task.Status = "Returned"; // Update the status to Returned
+                _context.Update(task);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
     }
 
     public class TaskListViewModel

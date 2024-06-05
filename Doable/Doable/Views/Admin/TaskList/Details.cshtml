@@ -10,18 +10,40 @@
 </head>
 <body>
 
-<h2>@Model.Title</h2>
-<hr />
+    <h2>@Model.Title</h2>
+    <hr />
 
     <div class="row">
-    <dl>
-        <dd class="col-sm-10 description-box">
-            @Model.Description
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-</div>
+        <dl>
+            <dd class="col-sm-10 description-box">
+                @Model.Description
+            </dd>
+        </dl>
+    </div>
+    
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <div class="button-container">
+        <form asp-action="Return" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.ID" />
+            <input type="submit" value="Return Work" class="btn btn-danger" />
+        </form>
+        <form asp-action="Complete" method="post" style="display:inline;">
+            <input type="hidden" name="id" value="@Model.ID" />
+            <input type="submit" value="Complete Task" class="btn btn-success" />
+        </form>
+    </div>
+
 </body>
 </html>
+
+<style>
+    .button-container {
+        display: flex;
+        align-items: center;
+        float: right;
+    }
+
+        .button-container form {
+            margin-left: 10px;
+        }
+</style>
