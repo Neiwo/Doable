@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+    ViewData["Title"] = "Add Notes";
+    int taskId = ViewBag.TaskId;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+</head>
+<body>
+
+    <h2>Add Notes to Task</h2>
+    <hr />
+
+    <form asp-action="AddNotes" method="post">
+        <input type="hidden" name="id" value="@taskId" />
+        <div class="form-group">
+            <label for="remarks">Notes</label>
+            <textarea class="form-control" name="remarks" rows="5"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Notes" class="btn btn-primary" />
+        </div>
+    </form>
+
+    <a asp-action="Details" asp-route-id="@taskId" class="btn btn-secondary">Back to Details</a>
+
+</body>
+</html>

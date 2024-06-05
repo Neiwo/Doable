@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Doable.Models
@@ -33,5 +34,8 @@ namespace Doable.Models
         public DateTime CreatedDate { get; set; }
 
         public DateTime? Deadline { get; set; }
+
+        // Add this property
+        public ICollection<Notes> Notes { get; set; } = new List<Notes>();
     }
 }

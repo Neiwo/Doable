@@ -20,8 +20,18 @@
             </dd>
         </dl>
     </div>
-    
-        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
+    <div class="row">
+        <h4>Notes</h4>
+        <ul>
+            @foreach (var note in Model.Notes)
+            {
+                <li>@note.Remarks (@note.CreatedDate.ToShortDateString())</li>
+            }
+        </ul>
+    </div>
+
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     <div class="button-container">
         <form asp-action="Return" method="post" style="display:inline;">
             <input type="hidden" name="id" value="@Model.ID" />
@@ -31,6 +41,7 @@
             <input type="hidden" name="id" value="@Model.ID" />
             <input type="submit" value="Complete Task" class="btn btn-success" />
         </form>
+        <a asp-action="AddNotes" asp-route-id="@Model.ID" class="btn btn-info" style="margin-left: 10px;">Add Notes</a>
     </div>
 
 </body>

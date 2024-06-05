@@ -61,6 +61,32 @@ namespace Doable.Migrations
                     b.ToTable("Bookings");
                 });
 
+            modelBuilder.Entity("Doable.Models.Notes", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Remarks")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<int>("TaskID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TaskID");
+
+                    b.ToTable("Notes");
+                });
+
             modelBuilder.Entity("Doable.Models.Tasklist", b =>
                 {
                     b.Property<int>("ID")
@@ -154,6 +180,22 @@ namespace Doable.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("Doable.Models.Notes", b =>
+                {
+                    b.HasOne("Doable.Models.Tasklist", "Tasklist")
+                        .WithMany("Notes")
+                        .HasForeignKey("TaskID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tasklist");
+                });
+
+            modelBuilder.Entity("Doable.Models.Tasklist", b =>
+                {
+                    b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618
         }

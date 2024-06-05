@@ -198,11 +198,73 @@ namespace Doable.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> AddNotes(int id)
+        {
+            try
+            {
+                int? userId = HttpContext.Session.GetInt32("UserId");
+                if (userId == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                ViewBag.TaskId = id;
+                return View("/Views/Admin/TaskList/AddNotes.cshtml");
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddNotes(int id, string remarks)
+        {
+            try
+            {
+                int? userId = HttpContext.Session.GetInt32("UserId");
+                if (userId == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+
+                var task = await _context.Tasklists.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
+
+                var note = new Notes
+                {
+                    TaskID = id,
+                    Remarks = remarks,
+                };
+
+                _context.Notes.Add(note);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = id });
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             try
             {
-                var task = await _context.Tasklists.FindAsync(id);
+                var task = await _context.Tasklists
+                    .Include(t => t.Notes)
+                    .FirstOrDefaultAsync(t => t.ID == id);
                 if (task == null)
                 {
                     return NotFound();
