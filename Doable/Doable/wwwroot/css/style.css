@@ -1,0 +1,530 @@
+﻿/*BUTTON PARA BUMALIK SA TAAS HUHUHU*/
+#scrollToTop {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+    #scrollToTop.show {
+        display: block;
+        opacity: 1;
+    }
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Ensure it stays above other content */
+    height: 50px;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    padding-left: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+    .navbar li {
+        margin: 0 15px;
+    }
+
+    .navbar a {
+        color: black;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+section {
+    margin: 0;
+    padding: 0;
+    height: auto;
+}
+
+#section1 {
+    background-color: #f1f1f1;
+}
+
+#section2 {
+    background-color: #e2e2e2;
+}
+
+#section3 {
+    background-color: #d3d3d3;
+    height: 1360px;
+}
+
+#section4 {
+    background-color: whitesmoke;
+    height: 700px
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+        .navbar li {
+            margin: 10px 0;
+        }
+}
+
+/*CSS NG SLIDESHOW*/
+
+.slideshow-container {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    width: 100%;
+}
+
+.mySlides {
+    display: none;
+}
+
+.pic-slides {
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.next {
+    right: 0;
+    border-radius: 0 3px 3px 0;
+}
+
+    .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+    }
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+    .active, .dot:hover {
+        background-color: #717171;
+    }
+
+
+/*CSS NG SECTION 2 - SERVICES*/
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+}
+
+p {
+    font-family: 'Josefin Sans', serif;
+    margin-top: -20px;
+}
+
+.heading-services {
+    width: 60%;
+    height: auto;
+    padding: 20px;
+    margin-top: 5px;
+    margin-left: 265px;
+    margin-bottom: 60px;
+    text-align: center;
+    color: black;
+    /*    border: 1px solid black;*/
+}
+
+.of-service {
+    /*    border: 1px solid black;*/
+    height: 300px;
+    margin-top: 30px;
+}
+
+.details-service {
+    /*    border: 1px solid black;*/
+    width: 50%;
+    height: 300px;
+    float: right;
+}
+
+    .details-service h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 30px;
+        text-align: center;
+        margin-left: 20px;
+    }
+
+    .details-service p {
+        font-size: 15px;
+        margin-top: 15px;
+        width: 80%;
+        margin-left: 70px;
+        text-align: center;
+        font-family: 'Josefin Sans', serif;
+    }
+
+.sample-pic {
+    float: left;
+    width: 460px;
+    height: 190px;
+    margin-top: 55px;
+    margin-left: 85px;
+}
+
+.sample-pic-right {
+    float: right;
+    width: 460px;
+    height: 190px;
+    margin-top: 55px;
+    margin-right: 85px;
+}
+
+.details-service-left {
+    /*    border: 1px solid black;*/
+    width: 50%;
+    height: 300px;
+    float: left;
+}
+
+    .details-service-left h1 {
+        font-family: 'DM Serif Display', serif;
+        font-size: 30px;
+        text-align: center;
+        margin-left: 20px;
+    }
+
+    .details-service-left p {
+        font-size: 15px;
+        margin-top: 15px;
+        width: 80%;
+        margin-left: 70px;
+        text-align: center;
+        font-family: 'Josefin Sans', serif;
+    }
+
+/*CSS NG SECTION 3 - ABOUT*/
+
+.header-about {
+    width: 100%;
+    height: 250px;
+    background-color: #005E9B;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+    .header-about h1 {
+        font-size: 35px;
+        font-family: 'DM Serif Display', serif;
+        margin: 0;
+    }
+
+.mid-about {
+    /*    border: 1px solid black;*/
+    padding: 20px;
+    text-align: center;
+    margin: 20px auto;
+    width: 60%;
+    flex: 1; /* Allow mid section to grow */
+    box-sizing: border-box;
+}
+
+    .mid-about h2 {
+        text-align: center;
+        padding: 30px;
+        text-decoration: underline;
+        font-family: 'DM Serif Display', serif;
+        margin-bottom: 30px;
+    }
+
+    .mid-about p {
+        font-family: 'Josefin Sans', serif;
+        padding: 15px;
+        text-align: center;
+        margin-top: -40px;
+        padding-bottom: 30px;
+    }
+
+.footer-like-about {
+    padding: 20px;
+    background-color: #DDDDDD;
+    width: 100%;
+    margin-top: auto; /* Ensure footer is pushed to bottom */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+    .footer-like-about h1 {
+        margin-left: 32px;
+    }
+
+.team-dets {
+    /*    border: 1px solid black;*/
+    font-size: 15px;
+    font-family: 'Josefin Sans', serif;
+    padding: 35px;
+    text-align: center;
+    width: 80%;
+    margin-left: 105px;
+    margin-top: -60px;
+}
+
+.man {
+    width: 30%;
+    margin-top: 25px;
+    float: left;
+}
+
+    .man h4 {
+        font-family: 'DM Serif Display', serif;
+        text-align: center;
+        font-size: 25px;
+        margin-top: -2px;
+    }
+
+    .man p {
+        font-family: 'Josefin Sans', serif;
+        padding: 15px;
+        text-align: center;
+        margin-top: -40px;
+        color: black;
+        text-decoration: none;
+    }
+
+.man-2 {
+    width: 30%;
+    float: left;
+    margin-top: 25px;
+    margin-left: 55px;
+}
+
+    .man-2 h4 {
+        font-family: 'DM Serif Display', serif;
+        text-align: center;
+        font-size: 25px;
+        margin-top: -2px;
+    }
+
+    .man-2 p {
+        font-family: 'Josefin Sans', serif;
+        padding: 15px;
+        text-align: center;
+        margin-top: -40px;
+        color: black;
+        text-decoration: none;
+    }
+
+.man-3 {
+    width: 30%;
+    margin-top: 25px;
+    float: right;
+}
+
+    .man-3 h4 {
+        font-family: 'DM Serif Display', serif;
+        text-align: center;
+        font-size: 25px;
+        margin-top: -2px;
+    }
+
+    .man-3 p {
+        font-family: 'Josefin Sans', serif;
+        padding: 15px;
+        text-align: center;
+        margin-top: -40px;
+        color: black;
+        text-decoration: none;
+    }
+
+.pic-team {
+    width: 200px;
+    height: 200px;
+    margin-top: 55px;
+    box-sizing: border-box;
+}
+
+/*CSS NG SECTION 4 - CONTACT*/
+
+.container-contact {
+    max-width: 600px;
+    margin-top: 20px;
+    margin: 35px auto;
+    padding: 20px;
+    background-color: whitesmoke;
+    /*    border: 1px solid black;*/
+    text-align: center;
+    transform: translateX(20px); /* Move the container 20px to the right */
+}
+
+form {
+    font-family: Arial, Helvetica, sans-serif
+    margin-top: 30px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 0p;
+    margin-top: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: calc(100% - 22px); /* Subtracting margin from the width */
+    margin: 5px 0;
+    padding: 8px;
+    background-color: #DADADA;
+    border-radius: 2px;
+    box-sizing: border-box; /* Include padding and border in the width */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+    height: 150px; /* Adjust as needed */
+}
+
+input[type="submit"] {
+    width: 96%;
+    height: 35px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    background-color: #005E9B;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.footer-like-contact {
+    height: 250px;
+    width: 100%;
+    background-color: #00386C;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+.pic-contact {
+    width: 90px;
+    height: 90px;
+    padding: 10px;
+    margin-left: 145px;
+}
+
+.phone {
+    width: 30%;
+    margin-top: 35px;
+    float: left;
+}
+
+.facebook {
+    width: 30%;
+    float: left;
+    margin-top: 35px;
+    margin-left: 55px;
+}
+
+.email {
+    width: 30%;
+    margin-top: 35px;
+    float: right;
+}
+
+.title {
+    font-size: 20px;
+    margin-top: -4px;
+    text-align: center;
+    color: white;
+    font-family: 'DM Serif Display', serif;
+}
+
+.details {
+    font-size: 15px;
+    padding: 5px;
+    text-align: center;
+    text-decoration: underline;
+    color: white;
+    font-family: 'Josefin Sans', serif;
+    margin-top: 5px;
+}
+
+    .details a {
+        color: white;
+    }

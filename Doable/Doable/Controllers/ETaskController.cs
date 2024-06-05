@@ -264,6 +264,12 @@ namespace Doable.Controllers
         [HttpPost]
         public async Task<IActionResult> AddFiles(int tasklistId, IFormFile file)
         {
+            string username = HttpContext.Session.GetString("Username");
+            if (string.IsNullOrEmpty(username))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             if (file != null && file.Length > 0)
             {
                 var filePath = Path.Combine(_environment.WebRootPath, "uploads", file.FileName);
@@ -278,7 +284,8 @@ namespace Doable.Controllers
                     TasklistID = tasklistId,
                     FileName = file.FileName,
                     FilePath = filePath,
-                    UploadedDate = DateTime.Now
+                    UploadedDate = DateTime.Now,
+                    Uploadedby = username // Save the uploader's username
                 };
 
                 _context.Docus.Add(docu);

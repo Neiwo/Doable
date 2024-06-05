@@ -21,6 +21,8 @@ namespace Doable.Models
         [Required]
         public DateTime UploadedDate { get; set; }
 
+        public string Uploadedby { get; set; }
+
         // Navigation property
         public Tasklist Tasklist { get; set; }
     }

@@ -16,7 +16,12 @@
     border-radius: 5px;
 }
 .row {
-    width: 1365px;
+    width: 122%;
+}
+
+.rowy {
+    width: 100%;
+    margin-top: 0;
 }
 
 .details-buttons {
@@ -34,3 +39,7 @@
         background-color: green;
         border-color: green;
     }
+
+.button-container {
+    margin-top: 20px;
+}

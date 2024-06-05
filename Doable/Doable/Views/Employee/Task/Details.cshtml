@@ -3,6 +3,8 @@
 @{
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     ViewData["Title"] = Model.Title;
+    var userId = Context.Session.GetInt32("UserId");
+    var username = Context.Session.GetString("Username");
 }
 
 <html>
@@ -20,25 +22,28 @@
                 @Model.Description
             </dd>
         </dl>
-        @if (Model.Docus.Any())
-        {
-            <div class="row" style="font-size: small">
-                <h5>Attached Files:</h5>
-
-                    @foreach (var docu in Model.Docus)
-                    {
-                        <ul>
-                            <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>
-                         </ul>
-                    }
-            </div>
-        }
+        
     </div>
+    @if (Model.Docus.Any())
+    {
+        <div class="rowy" style="font-size: small">
+            <h5>Attached Files:</h5>
+
+            @foreach (var docu in Model.Docus.Where(d => d.Uploadedby != "username"))
+            {
+                <ul>
+                    <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>
+                </ul>
+
+            }
+        </div>
+        <hr />
+
+    }
 
     @if (Model.Notes.Any())
     {
-        <hr />
-        <div class="row" style="font-size: small">
+        <div class="rowy" style="font-size: small">
             <h5>Remarks:</h5>
             <ul>
                 @foreach (var note in Model.Notes)
@@ -46,10 +51,10 @@
                     <li>@note.Remarks (@note.CreatedDate.ToShortDateString())</li>
                 }
             </ul>
+            <hr />
         </div>
+       
     }
-
-    
 
     <div class="d-flex justify-content-between">
         <a asp-action="Index" class="btn btn-secondary">Back to List</a>
@@ -59,7 +64,6 @@
             <button type="submit" class="btn btn-success">Complete Task</button>
         </form>
     </div>
-
 
 </body>
 </html>

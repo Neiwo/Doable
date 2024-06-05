@@ -20,27 +20,27 @@
                 @Model.Description
             </dd>
         </dl>
-        @if (Model.Docus != null && Model.Docus.Any())
-        {
-            <h5>Clipped files</h5>
-            <div class="row" style="margin-top: 0px; font-size: small;">
-                @foreach (var docu in Model.Docus)
-                {
-                    <ul>
-                        <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })" download="@docu.FileName">@docu.FileName</a>
-
-                        <form method="post" asp-action="DeleteFile" asp-route-id="@docu.ID" style="display:inline;">
-                            <input type="submit" value="Delete" class="dl" onclick="return confirm('Are you sure you want to delete this file?');" />
-                        </form>
-                    </ul>
-                }
-            </div>
-        }
     </div>
+    @if (Model.Docus != null && Model.Docus.Any())
+    {
+        <h5>Clipped files</h5>
+        <div class="row" style="margin-top: 0px; font-size: small;">
+            @foreach (var docu in Model.Docus)
+            {
+                <ul>
+                    <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })" download="@docu.FileName">@docu.FileName</a>
+
+                    <form method="post" asp-action="DeleteFile" asp-route-id="@docu.ID" style="display:inline;">
+                        <input type="submit" value="Delete" class="dl" onclick="return confirm('Are you sure you want to delete this file?');" />
+                    </form>
+                </ul>
+            }
+        </div>
+        <hr />
+    }
 
     @if (Model.Notes != null && Model.Notes.Any())
     {
-        <hr />
         <div class="row" style="margin-top: 5px; font-size: small;">
             <h5>Notes</h5>
             <ul>
@@ -55,13 +55,16 @@
                 }
             </ul>
         </div>
+        <hr />
     }
 
 
 
 
-    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    
+
     <div class="button-container">
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
         <a asp-action="AddNotes" asp-route-id="@Model.ID" class="btn btn-primary" style="margin-left: 10px; color: white;">+ Notes</a>
         <a asp-action="AddFiles" asp-route-id="@Model.ID" class="btn btn-info" style="margin-left: 10px; color: white;">+ Files</a> <!-- New button -->
         <form asp-action="Return" method="post" style="display:inline;">

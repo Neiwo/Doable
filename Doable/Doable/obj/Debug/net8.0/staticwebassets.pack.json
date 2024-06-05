@@ -61,8 +61,16 @@
       "PackagePath": "staticwebassets\\css\\style-d.css"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style.css",
+      "PackagePath": "staticwebassets\\css\\style.css"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\doable logo.png",
+      "PackagePath": "staticwebassets\\images\\doable logo.png"
     },
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\facebook.png",
@@ -87,6 +95,18 @@
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mini-logo.png",
       "PackagePath": "staticwebassets\\images\\mini-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\1.png",
+      "PackagePath": "staticwebassets\\images\\slideshow\\1.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\2.png",
+      "PackagePath": "staticwebassets\\images\\slideshow\\2.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\3.png",
+      "PackagePath": "staticwebassets\\images\\slideshow\\3.png"
     },
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\telephone.png",
@@ -325,16 +345,32 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Activity - Working with Files (1).docx",
+      "PackagePath": "staticwebassets\\uploads\\Activity - Working with Files (1).docx"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Activity - Working with Files.docx",
       "PackagePath": "staticwebassets\\uploads\\Activity - Working with Files.docx"
     },
     {
-      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\CapstoneFormat - Proposal Defense Evaluation.docx",
-      "PackagePath": "staticwebassets\\uploads\\CapstoneFormat - Proposal Defense Evaluation.docx"
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Activity-4-GNED09-.docx",
+      "PackagePath": "staticwebassets\\uploads\\Activity-4-GNED09-.docx"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Activity 4.docx",
+      "PackagePath": "staticwebassets\\uploads\\Laboratory Activity 4.docx"
     },
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory-Activity-4_ZMAGHUYOP.pdf",
       "PackagePath": "staticwebassets\\uploads\\Laboratory-Activity-4_ZMAGHUYOP.pdf"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\mini-logo.png",
+      "PackagePath": "staticwebassets\\uploads\\mini-logo.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style.css",
+      "PackagePath": "staticwebassets\\uploads\\style.css"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Doable.Microsoft.AspNetCore.StaticWebAssets.props",

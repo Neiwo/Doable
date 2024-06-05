@@ -84,6 +84,10 @@ namespace Doable.Migrations
                     b.Property<DateTime>("UploadedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Uploadedby")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
                     b.HasIndex("TasklistID");
