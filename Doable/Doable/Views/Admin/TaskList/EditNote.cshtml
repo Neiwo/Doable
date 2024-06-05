@@ -1,0 +1,28 @@
+﻿@model Doable.Models.Notes
+
+@{
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+    ViewData["Title"] = "Edit Note";
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+</head>
+<body>
+
+    <h2>Edit Note</h2>
+    <hr />
+
+    <form asp-action="EditNote">
+        <div class="form-group">
+            <label for="Remarks">Remarks</label>
+            <textarea class="form-control" id="Remarks" name="Remarks" rows="3">@Model.Remarks</textarea>
+        </div>
+        <input type="hidden" name="ID" value="@Model.ID" />
+        <input type="hidden" name="TaskID" value="@Model.TaskID" />
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a asp-action="Details" asp-route-id="@Model.TaskID" class="btn btn-secondary">Cancel</a>
+    </form>
+
+</body>
+</html>

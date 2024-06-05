@@ -277,6 +277,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
         [HttpPost]
         public async Task<IActionResult> Complete(int id)
         {
@@ -321,6 +322,44 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+        [HttpGet]
+        public async Task<IActionResult> EditNote(int id)
+        {
+            try
+            {
+                var note = await _context.Notes.FindAsync(id);
+                if (note == null)
+                {
+                    return NotFound();
+                }
+
+                return View("/Views/Admin/TaskList/EditNote.cshtml", note);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditNote(Notes note)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _context.Update(note);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Details", new { id = note.TaskID });
+                }
+                return View("/Views/Admin/TaskList/EditNote.cshtml", note);
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
     }
 
     public class TaskListViewModel

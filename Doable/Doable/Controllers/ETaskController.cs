@@ -202,7 +202,9 @@ namespace Doable.Controllers
         {
             try
             {
-                var task = await _context.Tasklists.FindAsync(id);
+                var task = await _context.Tasklists
+                    .Include(t => t.Notes)
+                    .FirstOrDefaultAsync(t => t.ID == id);
                 if (task == null)
                 {
                     return NotFound();
@@ -222,6 +224,8 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
+
 
         [HttpPost]
         public async Task<IActionResult> CompleteTask(int id)

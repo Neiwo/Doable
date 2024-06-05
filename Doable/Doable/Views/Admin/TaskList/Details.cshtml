@@ -21,18 +21,26 @@
         </dl>
     </div>
 
-    <div class="row">
-        <h4>Notes</h4>
-        <ul>
-            @foreach (var note in Model.Notes)
-            {
-                <li>@note.Remarks (@note.CreatedDate.ToShortDateString())</li>
-            }
-        </ul>
-    </div>
+    @if (Model.Notes != null && Model.Notes.Any())
+    {
+        <hr />
+        <div class="row" style="margin-top: 5px; font-size: small;">
+            <h5>Notes</h5>
+            <ul>
+                @foreach (var note in Model.Notes)
+                {
+                    <li>
+                        @note.Remarks (@note.CreatedDate.ToShortDateString())
+                        <a asp-action="EditNote" asp-route-id="@note.ID" style="margin-left: 10px;">- Edit</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    }
 
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     <div class="button-container">
+        <a asp-action="AddNotes" asp-route-id="@Model.ID" class="btn btn-primary" style="margin-left: 10px; color: white;">+ Notes</a>
         <form asp-action="Return" method="post" style="display:inline;">
             <input type="hidden" name="id" value="@Model.ID" />
             <input type="submit" value="Return Work" class="btn btn-danger" />
@@ -41,13 +49,17 @@
             <input type="hidden" name="id" value="@Model.ID" />
             <input type="submit" value="Complete Task" class="btn btn-success" />
         </form>
-        <a asp-action="AddNotes" asp-route-id="@Model.ID" class="btn btn-info" style="margin-left: 10px;">Add Notes</a>
+
     </div>
 
 </body>
 </html>
-
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
     .button-container {
         display: flex;
         align-items: center;

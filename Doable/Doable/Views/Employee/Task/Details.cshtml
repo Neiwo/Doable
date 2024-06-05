@@ -20,6 +20,21 @@
             </dd>
         </dl>
     </div>
+
+    @if (Model.Notes.Any())
+    {
+        <hr />
+        <div class="row" style="font-size: small">
+            <h5>Remarks:</h5>
+            <ul>
+                @foreach (var note in Model.Notes)
+                {
+                    <li>@note.Remarks (@note.CreatedDate.ToShortDateString())</li>
+                }
+            </ul>
+        </div>
+    }
+
     <div class="d-flex justify-content-between">
         <a asp-action="Index" class="btn btn-secondary">Back to List</a>
         <form asp-action="CompleteTask" method="post" class="mb-0">
@@ -27,5 +42,17 @@
             <button type="submit" class="btn btn-success">Complete Task</button>
         </form>
     </div>
+
 </body>
 </html>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+</style>
+
+
+
