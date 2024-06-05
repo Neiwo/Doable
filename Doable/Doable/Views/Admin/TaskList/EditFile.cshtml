@@ -1,0 +1,29 @@
+﻿@model Doable.Models.Docu
+
+@{
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+    ViewData["Title"] = "Edit File";
+}
+
+<h2>Edit File</h2>
+<hr />
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="fileName">File Name:</label>
+        <input type="text" id="fileName" name="fileName" class="form-control" value="@Model.FileName" readonly />
+    </div>
+    <div class="form-group">
+        <label for="file">Choose File:</label>
+        <input type="file" id="file" name="file" class="form-control-file" />
+    </div>
+    <input type="submit" value="Save" class="btn btn-primary" />
+    <a asp-action="Details" asp-route-id="@Model.TasklistID" class="btn btn-secondary">Cancel</a>
+</form>
+
+
+<form method="post" asp-action="DeleteFile" asp-route-id="@Model.ID">
+    <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this file?');" />
+</form>
+
+

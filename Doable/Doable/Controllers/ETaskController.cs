@@ -13,10 +13,12 @@ namespace Doable.Controllers
     public class ETaskController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public ETaskController(ApplicationDbContext context)
+        public ETaskController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [HttpGet]
@@ -198,13 +200,16 @@ namespace Doable.Controllers
         }
 
         [HttpGet]
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             try
             {
                 var task = await _context.Tasklists
                     .Include(t => t.Notes)
+                    .Include(t => t.Docus) // Include the Docus navigation property
                     .FirstOrDefaultAsync(t => t.ID == id);
+
                 if (task == null)
                 {
                     return NotFound();
@@ -249,6 +254,45 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+        [HttpGet]
+        public IActionResult AddFiles(int tasklistId)
+        {
+            ViewBag.TasklistID = tasklistId;
+            return View("/Views/Employee/Task/AddFiles.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFiles(int tasklistId, IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                var filePath = Path.Combine(_environment.WebRootPath, "uploads", file.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                var docu = new Docu
+                {
+                    TasklistID = tasklistId,
+                    FileName = file.FileName,
+                    FilePath = filePath,
+                    UploadedDate = DateTime.Now
+                };
+
+                _context.Docus.Add(docu);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = tasklistId });
+            }
+
+            ViewBag.TasklistID = tasklistId;
+            return View("/Views/Employee/Task/AddFiles.cshtml");
+        }
+
+
+
     }
 
     public class ETaskViewModel

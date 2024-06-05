@@ -35,7 +35,8 @@ namespace Doable.Models
 
         public DateTime? Deadline { get; set; }
 
-        // Add this property
         public ICollection<Notes> Notes { get; set; } = new List<Notes>();
+
+        public ICollection<Docu> Docus { get; set; } = new List<Docu>(); // Add this property
     }
 }

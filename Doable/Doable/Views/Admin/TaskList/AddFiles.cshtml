@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Add Files";
+}
+
+<h2>Add Files</h2>
+
+<form asp-action="AddFiles" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="tasklistId" value="@ViewBag.TasklistID" />
+    <div class="form-group">
+        <label for="file">Select file</label>
+        <input type="file" name="file" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+</form>
+
+<a asp-action="Details" asp-route-id="@ViewBag.TasklistID" class="btn btn-secondary">Back to Details</a>

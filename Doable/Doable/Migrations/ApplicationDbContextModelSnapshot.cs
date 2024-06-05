@@ -61,6 +61,36 @@ namespace Doable.Migrations
                     b.ToTable("Bookings");
                 });
 
+            modelBuilder.Entity("Doable.Models.Docu", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TasklistID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UploadedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TasklistID");
+
+                    b.ToTable("Docus");
+                });
+
             modelBuilder.Entity("Doable.Models.Notes", b =>
                 {
                     b.Property<int>("ID")
@@ -182,6 +212,17 @@ namespace Doable.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Doable.Models.Docu", b =>
+                {
+                    b.HasOne("Doable.Models.Tasklist", "Tasklist")
+                        .WithMany("Docus")
+                        .HasForeignKey("TasklistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tasklist");
+                });
+
             modelBuilder.Entity("Doable.Models.Notes", b =>
                 {
                     b.HasOne("Doable.Models.Tasklist", "Tasklist")
@@ -195,6 +236,8 @@ namespace Doable.Migrations
 
             modelBuilder.Entity("Doable.Models.Tasklist", b =>
                 {
+                    b.Navigation("Docus");
+
                     b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618

@@ -3,20 +3,26 @@ using Doable.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Doable.Controllers
 {
     public class TaskListController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-        public TaskListController(ApplicationDbContext context)
+        public TaskListController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
+            _environment = environment;
         }
 
         [HttpGet]
@@ -264,6 +270,7 @@ namespace Doable.Controllers
             {
                 var task = await _context.Tasklists
                     .Include(t => t.Notes)
+                    .Include(t => t.Docus) // Include the Docus navigation property
                     .FirstOrDefaultAsync(t => t.ID == id);
                 if (task == null)
                 {
@@ -277,6 +284,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Complete(int id)
@@ -359,8 +367,124 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+        [HttpGet]
+        public IActionResult AddFiles(int id)
+        {
+            ViewBag.TasklistID = id;
+            return View("/Views/Admin/TaskList/AddFiles.cshtml");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddFiles(int tasklistId, IFormFile file)
+        {
+            if (file != null && file.Length > 0)
+            {
+                var filePath = Path.Combine(_environment.WebRootPath, "uploads", file.FileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                var docu = new Docu
+                {
+                    TasklistID = tasklistId,
+                    FileName = file.FileName,
+                    FilePath = filePath,
+                    UploadedDate = DateTime.Now
+                };
+
+                _context.Docus.Add(docu);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = tasklistId });
+            }
+
+            ViewBag.TasklistID = tasklistId;
+            return View("/Views/Admin/TaskList/AddFiles.cshtml");
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteNote(int id)
+        {
+            try
+            {
+                var note = await _context.Notes.FindAsync(id);
+                if (note == null)
+                {
+                    return NotFound();
+                }
+
+                _context.Notes.Remove(note);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = note.TaskID });
+            }
+            catch (Exception ex)
+            {
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteFile(int id)
+        {
+            var docu = await _context.Docus.FindAsync(id);
+            if (docu == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                // Delete the file from the file system
+                System.IO.File.Delete(docu.FilePath);
+
+                // Remove the file entry from the database
+                _context.Docus.Remove(docu);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = docu.TasklistID });
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
+        [HttpGet]
+        public async Task<IActionResult> DownloadFile(int id)
+        {
+            var docu = await _context.Docus.FindAsync(id);
+            if (docu == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                // Check if the file exists at the specified path
+                if (!System.IO.File.Exists(docu.FilePath))
+                {
+                    return NotFound(); // File not found, return a 404 Not Found response
+                }
+
+                // Get the file bytes
+                var fileBytes = await System.IO.File.ReadAllBytesAsync(docu.FilePath);
+
+                // Return the file as a byte array
+                return File(fileBytes, "application/octet-stream", docu.FileName);
+            }
+            catch (Exception ex)
+            {
+                // Log the exception or handle it as needed
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
 
     }
+
+
+
 
     public class TaskListViewModel
     {

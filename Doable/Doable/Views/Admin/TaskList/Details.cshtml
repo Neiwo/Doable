@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     ViewData["Title"] = Model.Title;
 }
+
 <html>
 <head>
     <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
@@ -19,6 +20,22 @@
                 @Model.Description
             </dd>
         </dl>
+        @if (Model.Docus != null && Model.Docus.Any())
+        {
+            <h5>Clipped files</h5>
+            <div class="row" style="margin-top: 0px; font-size: small;">
+                @foreach (var docu in Model.Docus)
+                {
+                    <ul>
+                        <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })" download="@docu.FileName">@docu.FileName</a>
+
+                        <form method="post" asp-action="DeleteFile" asp-route-id="@docu.ID" style="display:inline;">
+                            <input type="submit" value="Delete" class="dl" onclick="return confirm('Are you sure you want to delete this file?');" />
+                        </form>
+                    </ul>
+                }
+            </div>
+        }
     </div>
 
     @if (Model.Notes != null && Model.Notes.Any())
@@ -31,16 +48,22 @@
                 {
                     <li>
                         @note.Remarks (@note.CreatedDate.ToShortDateString())
-                        <a asp-action="EditNote" asp-route-id="@note.ID" style="margin-left: 10px;">- Edit</a>
+                        <form method="post" asp-action="DeleteNote" asp-route-id="@note.ID" style="display:inline;">
+                            <input type="submit" value="Delete" class="dl" onclick="return confirm('Are you sure you want to delete this note?');" />
+                        </form>
                     </li>
                 }
             </ul>
         </div>
     }
 
+
+
+
     <a asp-action="Index" class="btn btn-secondary">Back to List</a>
     <div class="button-container">
         <a asp-action="AddNotes" asp-route-id="@Model.ID" class="btn btn-primary" style="margin-left: 10px; color: white;">+ Notes</a>
+        <a asp-action="AddFiles" asp-route-id="@Model.ID" class="btn btn-info" style="margin-left: 10px; color: white;">+ Files</a> <!-- New button -->
         <form asp-action="Return" method="post" style="display:inline;">
             <input type="hidden" name="id" value="@Model.ID" />
             <input type="submit" value="Return Work" class="btn btn-danger" />
@@ -49,7 +72,6 @@
             <input type="hidden" name="id" value="@Model.ID" />
             <input type="submit" value="Complete Task" class="btn btn-success" />
         </form>
-
     </div>
 
 </body>
@@ -60,13 +82,20 @@
         padding: 0;
         overflow-x: hidden; /* Prevent horizontal scrolling */
     }
+
     .button-container {
         display: flex;
         align-items: center;
         float: right;
     }
 
-        .button-container form {
-            margin-left: 10px;
-        }
+    .dl {
+        border: none;
+        background-color: white;
+        color: red;
+    }
+
+    .button-container form {
+        margin-left: 10px;
+    }
 </style>
