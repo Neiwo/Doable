@@ -16,6 +16,7 @@ namespace Doable.Data
         public DbSet<Booking> Bookings { get; set; }
         public DbSet<Member> Members { get; set; }
         public DbSet<Notes> Notes { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -30,6 +31,18 @@ namespace Doable.Data
                 .HasMany(t => t.Members)
                 .WithOne(m => m.Tasklist)
                 .HasForeignKey(m => m.TasklistID);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Receiver)
+                .WithMany()
+                .HasForeignKey(m => m.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

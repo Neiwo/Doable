@@ -50,6 +50,10 @@
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Team" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="Team" asp-action="Index">Accounts</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Message" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Message" asp-action="Index">Messages</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">

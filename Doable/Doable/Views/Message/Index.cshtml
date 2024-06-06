@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Doable.Models.Message>
+
+@{
+    ViewData["Title"] = "Messages";
+}
+
+<h2>Messages</h2>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Message" asp-action="SendMessage">Send New Message</a>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Sender</th>
+            <th>Receiver</th>
+            <th>Content</th>
+            <th>Timestamp</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+            <tr>
+                <td>@(message.Sender?.Username ?? "Unknown Sender")</td>
+                <td>@(message.Receiver?.Username ?? "Unknown Receiver")</td>
+                <td>@message.Content</td>
+                <td>@message.Timestamp</td>
+            </tr>
+        }
+    </tbody>
+</table>
