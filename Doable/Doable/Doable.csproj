@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Client\Message\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 

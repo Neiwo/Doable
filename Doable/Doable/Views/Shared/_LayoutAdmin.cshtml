@@ -17,7 +17,7 @@
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Employee" asp-action="EmployeeDashboard">
+                    <a class="navbar-brand" asp-area="" asp-controller="Admin" asp-action="AdminDashboard">
                         <img src="~/images/mini-logo.png" alt="Doable Logo" style="height: 40px;">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -34,14 +34,14 @@
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "TaskList" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="TaskList" asp-action="Index">Tasks</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "AdminServices" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="AdminServices" asp-action="Index">Services</a>
+                            @*<li class="nav-item">
+                            <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "AdminServices" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                            asp-area="" asp-controller="AdminServices" asp-action="Index">Services</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Rental" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="Rental" asp-action="Index">Booking</a>
-                            </li>
+                            <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Rental" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                            asp-area="" asp-controller="Rental" asp-action="Index">Booking</a>
+                            </li>*@
                             <li class="nav-item">
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Customer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>

@@ -17,215 +17,215 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Doable
 build_property.RootNamespace = Doable
-build_property.ProjectDir = C:\Users\admin\Source\Repos\Doable\Doable\Doable\
+build_property.ProjectDir = C:\Users\admin\source\repos\Doable\Doable\Doable\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\admin\Source\Repos\Doable\Doable\Doable
+build_property.MSBuildProjectDirectory = C:\Users\admin\source\repos\Doable\Doable\Doable
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Account/Login.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/AdminDashboard.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/AdminDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5EYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/AdminServices/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/AdminServices/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWRtaW5TZXJ2aWNlc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Customer/Create.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Customer/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Customer/Delete.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Customer/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Customer/Edit.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Customer/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Customer/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Customer/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Rental/Create.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Rental/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVudGFsXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Rental/Delete.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Rental/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVudGFsXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Rental/Edit.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Rental/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVudGFsXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Rental/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Rental/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVudGFsXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/AddFiles.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/AddFiles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcQWRkRmlsZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/AddNotes.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/AddNotes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcQWRkTm90ZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/Create.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/Delete.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/Details.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/Edit.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/EditFile.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/EditFile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcRWRpdEZpbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/EditNote.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/EditNote.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcRWRpdE5vdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/TaskList/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/TaskList/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGFza0xpc3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Team/Create.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Team/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVhbVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Team/Delete.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Team/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVhbVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Team/Edit.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Team/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVhbVxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Team/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Admin/Team/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVGVhbVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Client/ClientDashboard.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Client/ClientDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XENsaWVudERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Account/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Account/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQWNjb3VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Bookings/Create.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Bookings/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQm9va2luZ3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Bookings/Delete.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Bookings/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQm9va2luZ3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Bookings/Edit.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Bookings/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQm9va2luZ3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Bookings/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Bookings/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQm9va2luZ3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Customers/Create.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Customers/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3VzdG9tZXJzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Customers/Delete.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Customers/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3VzdG9tZXJzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Customers/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Customers/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcQ3VzdG9tZXJzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/EmployeeDashboard.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/EmployeeDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcRW1wbG95ZWVEYXNoYm9hcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Task/AddFiles.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Task/AddFiles.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVGFza1xBZGRGaWxlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Task/Details.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Task/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVGFza1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Employee/Task/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Employee/Task/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW1wbG95ZWVcVGFza1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Home/About.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Home/About.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Home/Contact.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Home/Index.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Home/Services.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Home/Services.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTZXJ2aWNlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/Error.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_LayoutAdmin.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_LayoutClient.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_LayoutClient.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRDbGllbnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_LayoutEmployee.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_LayoutEmployee.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRFbXBsb3llZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_LayoutHome.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_LayoutHome.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRIb21lLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_LayoutNoNav.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_LayoutNoNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXROb05hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/_ViewImports.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/_ViewStart.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Shared/_Layout.cshtml]
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-dfhosleqii

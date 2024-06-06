@@ -31,11 +31,11 @@ else
                     <th>Subject</th>
                     <th>Description</th>
                     <th>Leader</th>
+                    <th>Members</th>
                     <th>Priority</th>
                     <th>Status</th>
                     <th>Created Date</th>
                     <th>Deadline</th>
-                    <th>Members</th> <!-- Added column for members -->
                 </tr>
             </thead>
             <tbody>
@@ -47,10 +47,6 @@ else
                         </td>
                         <td class="description-column">@item.Description</td>
                         <td class="description-column">@item.AssignedTo</td>
-                        <td class="priority-column">@item.Priority</td>
-                        <td class="status-column">@item.Status</td>
-                        <td>@item.CreatedDate</td>
-                        <td>@item.Deadline</td>
                         <td>
                             <ul>
                                 @foreach (var member in item.Members)
@@ -59,6 +55,10 @@ else
                                 }
                             </ul>
                         </td>
+                        <td class="priority-column">@item.Priority</td>
+                        <td class="status-column">@item.Status</td>
+                        <td>@item.CreatedDate</td>
+                        <td>@item.Deadline</td>
                     </tr>
                 }
             </tbody>

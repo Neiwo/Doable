@@ -431,13 +431,15 @@ namespace Doable.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
+                var uploadedby = HttpContext.Session.GetString("Username");
 
                 var docu = new Docu
                 {
                     TasklistID = tasklistId,
                     FileName = file.FileName,
                     FilePath = filePath,
-                    UploadedDate = DateTime.Now
+                    UploadedDate = DateTime.Now,
+                    Uploadedby = uploadedby
                 };
 
                 _context.Docus.Add(docu);

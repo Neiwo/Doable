@@ -1,20 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Antiforgery
+
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Client</title>
+    <title>@ViewData["Title"] - Admin</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/client.css" asp-append-version="true" />
-
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
 </head>
 <body>
     <div class="wrapper">
         <header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-area="" asp-controller="Client" asp-action="ClientDashboard">Doable</a>
+                    <a class="navbar-brand" asp-area="" asp-controller="Client" asp-action="ClientDashboard">
+                        <img src="~/images/mini-logo.png" alt="Doable Logo" style="height: 40px;">
+                    </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -22,16 +27,28 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="ClientDashboard">Dashboard</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Cllient" && ViewContext.RouteData.Values["action"]?.ToString() == "ClientDashboard") ? "active" : "")"
+                                   asp-area="" asp-controller="Client" asp-action="ClietDashboard">Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Services">Services</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "TaskList" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="TaskList" asp-action="Index">Tasks</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="anopa">anopa</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "AdminServices" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="AdminServices" asp-action="Index">Services</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="Account">Employees</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Rental" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Rental" asp-action="Index">Booking</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Customer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Team" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="Team" asp-action="Index">Accounts</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
@@ -52,7 +69,7 @@
         </div>
         <footer class="border-top footer text-muted">
             <div class="container">
-                &copy; 2024 - Doable - <a asp-area="" asp-controller="Client" asp-action="ClientDashboard">Admin</a>
+                &copy; 2024 - Doable - <a asp-area="" asp-controller="Client" asp-action="ClientDashboard">Home</a>
             </div>
         </footer>
     </div>
