@@ -9,37 +9,43 @@
     string otherUsername = isSender ? Model.Receiver?.Username : Model.Sender?.Username;
 }
 
-<div>
-    <h3><p><strong>@otherUsername</strong></p></h3>
-    <hr />
-</div>
-
-<div>
-    @if (Model.Replies != null && Model.Replies.Any())
-    {
-        <ul>
-            @foreach (var reply in Model.Replies)
+<div class="card">
+    <div class="card-header">
+        <h3><p><strong>@otherUsername</strong></p></h3>
+    </div>
+    <div class="card-body">
+        <div>
+            @if (Model.Replies != null && Model.Replies.Any())
             {
-                <li>
-                    <p><strong>@(reply.SenderId == userId ? "You" : reply.Sender?.Username ?? "Unknown Sender"):</strong> </p>
-                    <p>@reply.Content </p>
-                </li>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <p><strong>@(Model.SenderId == userId ? "You" : Model.Sender?.Username ?? "Unknown Sender"):</strong></p>
+                        <p>@Model.Content - <small class="text-muted">@Model.Timestamp</small></p>
+                    </li>
+                    @foreach (var reply in Model.Replies.OrderBy(r => r.Timestamp))
+                    {
+                        <li class="mb-3">
+                            <p><strong>@(reply.SenderId == userId ? "You" : reply.Sender?.Username ?? "Unknown Sender"):</strong></p>
+                            <p>@reply.Content - <small class="text-muted">@reply.Timestamp</small></p>
+                        </li>
+                    }
+                </ul>
             }
-        </ul>
-    }
-    else
-    {
-        <p>No replies yet.</p>
-    }
-</div>
+            else
+            {
+                <p>No replies yet.</p>
+            }
+        </div>
 
-<form asp-action="ReplyMessage" method="post" class="form-horizontal">
-    <input type="hidden" name="originalMessageId" value="@Model.MessageId" />
-    <div class="form-group">
-        <label for="content" class="control-label"></label>
-        <textarea name="content" class="form-control"></textarea>
+        <form asp-action="ReplyMessage" method="post" class="form-horizontal mt-4">
+            <input type="hidden" name="originalMessageId" value="@Model.MessageId" />
+            <div class="form-group">
+                <label for="content" class="control-label"></label>
+                <textarea name="content" class="form-control" placeholder="Send a message"></textarea>
+            </div>
+            <div class="form-group mt-2">
+                <button type="submit" class="btn btn-primary">Send</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary">Send</button>
-    </div>
-</form>
+</div>
