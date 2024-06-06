@@ -32,11 +32,23 @@ namespace Doable.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                var tasks = _context.Tasklists.Where(t => t.AssignedTo == username && t.Status != "To Review" && t.Status != "Completed");
+                // Query tasks assigned to the user
+                var assignedTasks = _context.Tasklists
+                    .Where(t => t.AssignedTo == username && t.Status != "To Review" && t.Status != "Completed")
+                    .Include(t => t.Members);
+
+                // Query tasks where the user is a member
+                var memberTasks = _context.Tasklists
+                    .Where(t => t.Members.Any(m => m.Username == username) && t.Status != "To Review" && t.Status != "Completed")
+                    .Include(t => t.Members);
+
+                // Combine both queries
+                var tasks = assignedTasks
+                    .Union(memberTasks);
 
                 if (!tasks.Any())
                 {
-                    ViewData["NoTasksMessage"] = "There is no Task currently Available";
+                    ViewData["NoTasksMessage"] = "There are no tasks currently available.";
                 }
 
                 if (!string.IsNullOrEmpty(searchString))
@@ -73,6 +85,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
         [HttpGet]
         public IActionResult Create()
