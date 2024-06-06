@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Doable.Data;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Doable.Controllers
 {
@@ -17,7 +18,7 @@ namespace Doable.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -25,14 +26,23 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var messages = _context.Messages
+            var messages = await _context.Messages
                 .Where(m => (m.ReceiverId == userId || m.SenderId == userId) && m.ParentMessageId == null)
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
-                .OrderByDescending(m => m.Timestamp)
+                .Include(m => m.Replies)
+                .ToListAsync();
+
+            var sortedMessages = messages
+                .Select(m => new
+                {
+                    Message = m,
+                    LatestReply = m.Replies.OrderByDescending(r => r.Timestamp).FirstOrDefault()
+                })
+                .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View(messages);
+            return View(sortedMessages);
         }
 
         [HttpGet]
@@ -127,6 +137,4 @@ namespace Doable.Controllers
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
     }
-
-
 }
