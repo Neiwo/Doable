@@ -37,6 +37,22 @@ namespace Doable.Models
 
         public ICollection<Notes> Notes { get; set; } = new List<Notes>();
 
-        public ICollection<Docu> Docus { get; set; } = new List<Docu>(); // Add this property
+        public ICollection<Docu> Docus { get; set; } = new List<Docu>();
+
+        // New property to store members
+        public ICollection<Member> Members { get; set; } = new List<Member>();
+    }
+
+    public class Member
+    {
+        [Key]
+        public int ID { get; set; }
+
+        public int TasklistID { get; set; }
+
+        public Tasklist Tasklist { get; set; }
+
+        [StringLength(50)]
+        public string Username { get; set; }
     }
 }

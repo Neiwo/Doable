@@ -36,8 +36,9 @@ namespace Doable.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                var tasks = from t in _context.Tasklists
-                            select t;
+                var tasks = _context.Tasklists
+                    .Include(t => t.Members)
+                    .AsQueryable();
 
                 if (!string.IsNullOrEmpty(searchString))
                 {
@@ -47,6 +48,7 @@ namespace Doable.Controllers
                         t.AssignedTo.Contains(searchString) ||
                         t.Priority.Contains(searchString) ||
                         t.Status.Contains(searchString) ||
+                        t.CreatedBy.Contains(searchString) ||
                         t.CreatedDate.ToString().Contains(searchString) ||
                         t.Deadline.ToString().Contains(searchString));
                 }
@@ -54,7 +56,10 @@ namespace Doable.Controllers
                 ViewData["CurrentFilter"] = searchString;
 
                 int totalTasks = await tasks.CountAsync();
-                var tasksOnPage = await tasks.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+                var tasksOnPage = await tasks
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToListAsync();
 
                 var viewModel = new TaskListViewModel
                 {
@@ -73,6 +78,10 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
+
+
+
 
         [HttpGet]
         public IActionResult Create()
@@ -104,6 +113,10 @@ namespace Doable.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    // Get the current user's username or ID to set as the creator
+                    var createdBy = HttpContext.Session.GetString("Username") ?? "Unknown User";
+                    task.CreatedBy = createdBy;
+
                     _context.Tasklists.Add(task);
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
@@ -118,12 +131,15 @@ namespace Doable.Controllers
             }
         }
 
+
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
             try
             {
-                var task = await _context.Tasklists.FindAsync(id);
+                var task = await _context.Tasklists
+                    .Include(t => t.Members)
+                    .FirstOrDefaultAsync(t => t.ID == id);
                 if (task == null)
                 {
                     return NotFound();
@@ -143,25 +159,55 @@ namespace Doable.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Tasklist task)
+        public async Task<IActionResult> Edit(Tasklist task, List<string> selectedMembers)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    var existingTask = await _context.Tasklists.AsNoTracking().FirstOrDefaultAsync(t => t.ID == task.ID);
+
+                    if (existingTask == null)
+                    {
+                        return NotFound();
+                    }
+
+                    // Preserve the CreatedBy field from the existing task
+                    task.CreatedBy = existingTask.CreatedBy;
+
+                    // Update the task
                     _context.Update(task);
+
+                    // Update the members
+                    var existingMembers = await _context.Members.Where(m => m.TasklistID == task.ID).ToListAsync();
+                    _context.Members.RemoveRange(existingMembers);
+
+                    foreach (var memberUsername in selectedMembers)
+                    {
+                        _context.Members.Add(new Member
+                        {
+                            TasklistID = task.ID,
+                            Username = memberUsername
+                        });
+                    }
+
                     await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
-
-                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
-                return View("/Views/Admin/TaskList/Edit.cshtml", task);
             }
             catch (Exception ex)
             {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+                ModelState.AddModelError(string.Empty, $"An error occurred: {ex.Message}");
             }
+
+            ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
+            return View("/Views/Admin/TaskList/Edit.cshtml", task);
         }
+
+
+
+
+
 
         [HttpGet]
         public async Task<IActionResult> Delete(int id)

@@ -26,11 +26,12 @@
             <tr>
                 <th>Subject</th>
                 <th>Description</th>
-                <th>Assignee</th>
+                <th>Leader</th>
                 <th>Priority</th>
                 <th>Status</th>
                 <th>Created Date</th>
                 <th>Deadline</th>
+                <th>Members</th>
                 <th></th>
             </tr>
         </thead>
@@ -47,6 +48,14 @@
                     <td class="status-column">@item.Status</td>
                     <td>@item.CreatedDate</td>
                     <td>@item.Deadline</td>
+                    <td>
+                        @foreach (var member in item.Members)
+                        {
+                            <span>@member.Username,</span>
+                                
+                        
+                        }
+                    </td>
                     <td>
                         <div>
                             <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-sm btn-warning">Edit</a> |
@@ -84,7 +93,6 @@
 
 @section Scripts {
     <script>
-        // Debounce function to limit the rate at which a function can fire.
         function debounce(func, wait) {
             let timeout;
             return function () {
@@ -94,12 +102,10 @@
             };
         }
 
-        // Function to submit the form
         function submitForm() {
             document.getElementById('searchForm').submit();
         }
 
-        // Adding keyup event listener to the search input with debounce
         document.getElementById('searchInput').addEventListener('keyup', debounce(submitForm, 500));
     </script>
 }
@@ -109,11 +115,11 @@
         position: sticky;
         top: 0;
         z-index: 1;
-        background-color: white; /* Optional: Add background color to the header */
+        background-color: white;
     }
 
     .description-column {
-        max-width: 150px; /* Set your desired max width here */
+        max-width: 150px;
         min-width: 150px;
         white-space: nowrap;
         overflow: hidden;
@@ -121,7 +127,7 @@
     }
 
     .title-column, .assigned-to-column, .priority-column, .status-column {
-        max-width: 100px; /* Adjust the max-width as needed */
+        max-width: 100px;
         min-width: 100px;
         white-space: nowrap;
         overflow: hidden;

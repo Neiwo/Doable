@@ -95,6 +95,29 @@ namespace Doable.Migrations
                     b.ToTable("Docus");
                 });
 
+            modelBuilder.Entity("Doable.Models.Member", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("TasklistID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TasklistID");
+
+                    b.ToTable("Members");
+                });
+
             modelBuilder.Entity("Doable.Models.Notes", b =>
                 {
                     b.Property<int>("ID")
@@ -227,6 +250,17 @@ namespace Doable.Migrations
                     b.Navigation("Tasklist");
                 });
 
+            modelBuilder.Entity("Doable.Models.Member", b =>
+                {
+                    b.HasOne("Doable.Models.Tasklist", "Tasklist")
+                        .WithMany("Members")
+                        .HasForeignKey("TasklistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tasklist");
+                });
+
             modelBuilder.Entity("Doable.Models.Notes", b =>
                 {
                     b.HasOne("Doable.Models.Tasklist", "Tasklist")
@@ -241,6 +275,8 @@ namespace Doable.Migrations
             modelBuilder.Entity("Doable.Models.Tasklist", b =>
                 {
                     b.Navigation("Docus");
+
+                    b.Navigation("Members");
 
                     b.Navigation("Notes");
                 });
