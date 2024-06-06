@@ -27,29 +27,8 @@
                     <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                         <ul class="navbar-nav flex-grow-1">
                             <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Cllient" && ViewContext.RouteData.Values["action"]?.ToString() == "ClientDashboard") ? "active" : "")"
-                                   asp-area="" asp-controller="Client" asp-action="ClietDashboard">Dashboard</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "TaskList" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="TaskList" asp-action="Index">Tasks</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "AdminServices" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="AdminServices" asp-action="Index">Services</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Rental" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="Rental" asp-action="Index">Booking</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Customer" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="Customer" asp-action="Index">Clients</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Team" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="Team" asp-action="Index">Accounts</a>
-                            </li>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Client" && ViewContext.RouteData.Values["action"]?.ToString() == "ClientDashboard") ? "active" : "")"
+                                   asp-area="" asp-controller="Client" asp-action="ClientDashboard">Dashboard</a>
                             <li class="nav-item">
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Message" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="Message" asp-action="Index">Messages</a>

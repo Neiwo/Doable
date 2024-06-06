@@ -2,11 +2,11 @@
 
 @{
     ViewData["Title"] = "Messages";
-    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
 
 <div class="mb-3">
-    <a class="btn btn-primary" asp-controller="Message" asp-action="SendMessage">Send New Message</a>
+    <a class="btn btn-primary" asp-controller="EMessage" asp-action="SendMessage">Send New Message</a>
 </div>
 
 <div class="list-group">
@@ -17,7 +17,7 @@
         var displayContent = latestReply != null ? latestReply.Content : message.Content;
         var displayTimestamp = latestReply != null ? latestReply.Timestamp : message.Timestamp;
 
-        <a href="@Url.Action("ViewMessage", "Message", new { id = message.MessageId })" class="list-group-item list-group-item-action">
+        <a href="@Url.Action("ViewMessage", "EMessage", new { id = message.MessageId })" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? "" + message.Receiver?.Username : "" + message.Sender?.Username) ?? "Unknown")</h5>
                 <small>@displayTimestamp</small>

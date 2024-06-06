@@ -10,11 +10,16 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/employee.css" asp-append-version="true" />
+    <style>
+        .content {
+            margin-top: 80px; /* Adjust this value if your navbar height changes */
+        }
+    </style>
 </head>
 <body>
     <div class="wrapper">
         <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow fixed-top">
                 <div class="container-fluid">
                     <a class="navbar-brand" asp-area="" asp-controller="Employee" asp-action="EmployeeDashboard">
                         <img src="~/images/mini-logo.png" alt="Doable Logo" style="height: 40px;">
@@ -38,8 +43,8 @@
                                    asp-area="" asp-controller="ECustomer" asp-action="Index">Customers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "EBooking" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                   asp-area="" asp-controller="EBooking" asp-action="Index">Bookings</a>
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "EMessage" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="EMessage" asp-action="Index">Messages</a>
                             </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
@@ -49,7 +54,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
                                     <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "EAccount" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
-                                       style= "text-align: center;" asp-area="" asp-controller="EAccount" asp-action="Index">Account</a>
+                                       style="text-align: center;" asp-area="" asp-controller="EAccount" asp-action="Index">Account</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="@Url.Action("Logout", "Account")">Logout</a>
                                 </div>

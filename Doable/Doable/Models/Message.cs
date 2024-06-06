@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Doable.Models
@@ -26,5 +27,8 @@ namespace Doable.Models
 
         public User Sender { get; set; }
         public User Receiver { get; set; }
+
+        [Required]
+        public string Status { get; set; } = "Active"; // Default to "Active"
     }
 }
