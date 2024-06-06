@@ -26,21 +26,14 @@ namespace Doable.Controllers
             }
 
             var messages = _context.Messages
-                .Where(m => m.ReceiverId == userId || m.SenderId == userId)
+                .Where(m => (m.ReceiverId == userId || m.SenderId == userId) && m.ParentMessageId == null)
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .OrderByDescending(m => m.Timestamp)
                 .ToList();
 
-            foreach (var message in messages)
-            {
-                Console.WriteLine($"Message ID: {message.MessageId}, Sender ID: {message.SenderId}, Sender Username: {message.Sender?.Username}");
-            }
-
             return View(messages);
         }
-
-
 
         [HttpGet]
         public async Task<IActionResult> SendMessage()
@@ -72,5 +65,68 @@ namespace Doable.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult ViewMessage(int id)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var message = _context.Messages
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
+                .Include(m => m.Replies)
+                    .ThenInclude(r => r.Sender)
+                .Include(m => m.Replies)
+                    .ThenInclude(r => r.Receiver)
+                .FirstOrDefault(m => m.MessageId == id);
+
+            if (message == null || (message.ReceiverId != userId && message.SenderId != userId))
+            {
+                return NotFound();
+            }
+
+            return View(message);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ReplyMessage(int originalMessageId, string content)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var originalMessage = await _context.Messages
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
+                .FirstOrDefaultAsync(m => m.MessageId == originalMessageId);
+
+            if (originalMessage == null)
+            {
+                return NotFound();
+            }
+
+            var receiverId = originalMessage.SenderId == userId ? originalMessage.ReceiverId : originalMessage.SenderId;
+
+            var replyMessage = new Message
+            {
+                SenderId = userId.Value,
+                ReceiverId = receiverId,
+                Content = content,
+                Timestamp = DateTime.Now,
+                ParentMessageId = originalMessageId
+            };
+
+            _context.Messages.Add(replyMessage);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("ViewMessage", new { id = originalMessageId });
+        }
     }
+
+
 }

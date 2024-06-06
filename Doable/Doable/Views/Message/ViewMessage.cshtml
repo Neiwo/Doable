@@ -1,0 +1,45 @@
+﻿@model Doable.Models.Message
+
+@{
+    ViewData["Title"] = "View Message";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    int? userId = Context.Session.GetInt32("UserId");
+    bool isSender = userId == Model.SenderId;
+    string otherUsername = isSender ? Model.Receiver?.Username : Model.Sender?.Username;
+}
+
+<div>
+    <h3><p><strong>@otherUsername</strong></p></h3>
+    <hr />
+</div>
+
+<div>
+    @if (Model.Replies != null && Model.Replies.Any())
+    {
+        <ul>
+            @foreach (var reply in Model.Replies)
+            {
+                <li>
+                    <p><strong>@(reply.SenderId == userId ? "You" : reply.Sender?.Username ?? "Unknown Sender"):</strong> </p>
+                    <p>@reply.Content </p>
+                </li>
+            }
+        </ul>
+    }
+    else
+    {
+        <p>No replies yet.</p>
+    }
+</div>
+
+<form asp-action="ReplyMessage" method="post" class="form-horizontal">
+    <input type="hidden" name="originalMessageId" value="@Model.MessageId" />
+    <div class="form-group">
+        <label for="content" class="control-label"></label>
+        <textarea name="content" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+</form>

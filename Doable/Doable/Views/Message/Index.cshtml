@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Messages";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
 <h2>Messages</h2>
@@ -17,6 +18,7 @@
             <th>Receiver</th>
             <th>Content</th>
             <th>Timestamp</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +29,9 @@
                 <td>@(message.Receiver?.Username ?? "Unknown Receiver")</td>
                 <td>@message.Content</td>
                 <td>@message.Timestamp</td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Message" asp-action="ViewMessage" asp-route-id="@message.MessageId">View</a>
+                </td>
             </tr>
         }
     </tbody>

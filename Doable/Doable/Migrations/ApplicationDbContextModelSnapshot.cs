@@ -131,6 +131,9 @@ namespace Doable.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
+                    b.Property<int?>("ParentMessageId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ReceiverId")
                         .HasColumnType("int");
 
@@ -141,6 +144,8 @@ namespace Doable.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("MessageId");
+
+                    b.HasIndex("ParentMessageId");
 
                     b.HasIndex("ReceiverId");
 
@@ -294,17 +299,24 @@ namespace Doable.Migrations
 
             modelBuilder.Entity("Doable.Models.Message", b =>
                 {
+                    b.HasOne("Doable.Models.Message", "ParentMessage")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentMessageId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
                     b.HasOne("Doable.Models.User", "Receiver")
                         .WithMany()
                         .HasForeignKey("ReceiverId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Doable.Models.User", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("ParentMessage");
 
                     b.Navigation("Receiver");
 
@@ -320,6 +332,11 @@ namespace Doable.Migrations
                         .IsRequired();
 
                     b.Navigation("Tasklist");
+                });
+
+            modelBuilder.Entity("Doable.Models.Message", b =>
+                {
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("Doable.Models.Tasklist", b =>

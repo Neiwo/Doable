@@ -20,6 +20,10 @@ namespace Doable.Models
 
         public DateTime Timestamp { get; set; }
 
+        public int? ParentMessageId { get; set; }
+        public Message ParentMessage { get; set; }
+        public ICollection<Message> Replies { get; set; }
+
         public User Sender { get; set; }
         public User Receiver { get; set; }
     }
