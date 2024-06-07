@@ -5,121 +5,148 @@
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
 }
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <link rel="stylesheet" href="~/css/edit.css" asp-append-version="true" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/edit.css" asp-append-version="true">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .btn-group-toggle .btn.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        .btn-group-toggle .btn {
+            background-color: #f8f9fa;
+            color: #495057;
+            border-color: #ced4da;
+        }
+    </style>
 </head>
+
 <body>
-    <h3>Edit Task</h3>
-    <hr />
-    <div class="row">
-        <div class="col-md-6">
-            <form asp-action="Edit" method="post">
-                <div class="form-group">
-                    <label asp-for="Title" class="control-label">Subject</label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <textarea asp-for="Description" class="form-control"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="AssignedTo" class="control-label">Leader</label>
-                    <input asp-for="AssignedTo" class="form-control" readonly />
-                    <span asp-validation-for="AssignedTo" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Priority" class="control-label"></label>
-                    <select asp-for="Priority" class="form-control">
-                        <option value="Urgent">Urgent</option>
-                        <option value="High">High</option>
-                        <option value="Normal">Normal</option>
-                        <option value="Low">Low</option>
-                    </select>
-                    <span asp-validation-for="Priority" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Status" class="control-label"></label>
-                    <input asp-for="Status" class="form-control" />
-                    <span asp-validation-for="Status" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Deadline" class="control-label"></label>
-                    <input asp-for="Deadline" class="form-control" type="date" />
-                    <span asp-validation-for="Deadline" class="text-danger"></span>
-                </div>
-                <!-- Include CreatedBy field -->
-                <div class="form-group">
-                    <label asp-for="CreatedBy" class="control-label"></label>
-                    <input asp-for="CreatedBy" class="form-control" readonly />
-                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Add Member</label>
-                    <div class="input-group">
-                        <select id="memberSelect" class="form-control">
-                            @foreach (var employee in ViewBag.Employees)
-                            {
-                                <option value="@employee.Username">@employee.Username</option>
-                            }
+    <div class="container mt-5">
+        <h3 class="text-center">Edit Task</h3>
+        <hr />
+        <form asp-action="Edit" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label">Subject</label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="AssignedTo" class="control-label">Leader</label>
+                        <input asp-for="AssignedTo" class="form-control" readonly />
+                        <span asp-validation-for="AssignedTo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Priority" class="control-label"></label>
+                        <select asp-for="Priority" class="form-control">
+                            <option value="Urgent">Urgent</option>
+                            <option value="High">High</option>
+                            <option value="Normal">Normal</option>
+                            <option value="Low">Low</option>
                         </select>
-                        <button type="button" class="btn btn-secondary" onclick="addMember()">Add</button>
+                        <span asp-validation-for="Priority" class="text-danger"></span>
+                    </div>
+                    <!-- Include CreatedBy field -->
+                    <div class="form-group">
+                        <label asp-for="CreatedBy" class="control-label"></label>
+                        <input asp-for="CreatedBy" class="form-control" readonly />
+                        <span asp-validation-for="CreatedBy" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label">Members</label>
-                    <ul id="memberList" class="list-group">
-                        @foreach (var member in Model.Members)
-                        {
-                            <li class="list-group-item">
-                                @member.Username
-                                <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeMember(this)">Remove</button>
-                                <input type="hidden" name="selectedMembers" value="@member.Username" />
-                            </li>
-                        }
-                    </ul>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Deadline" class="control-label"></label>
+                        <input asp-for="Deadline" class="form-control" type="date" />
+                        <span asp-validation-for="Deadline" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Status" class="control-label"></label>
+                        <input asp-for="Status" class="form-control" />
+                        <span asp-validation-for="Status" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Add Member</label>
+                        <div class="input-group">
+                            <select id="memberSelect" class="form-control">
+                                @foreach (var employee in ViewBag.Employees)
+                                {
+                                    <option value="@employee.Username">@employee.Username</option>
+                                }
+                            </select>
+                            <button type="button" class="btn btn-secondary" onclick="addMember()">Add</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Members</label>
+                        <ul id="memberList" class="list-group">
+                            @foreach (var member in Model.Members)
+                            {
+                                <li class="list-group-item">
+                                    @member.Username
+                                    <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeMember(this)">Remove</button>
+                                    <input type="hidden" name="selectedMembers" value="@member.Username" />
+                                </li>
+                            }
+                        </ul>
+                    </div>
                 </div>
-                <div class="buton">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group text-center mt-3">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
     </div>
 
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-        <script>
-            function addMember() {
-                var select = document.getElementById('memberSelect');
-                var selectedMember = select.options[select.selectedIndex].value;
-                var memberList = document.getElementById('memberList');
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIqDMRHmRlLB7gSU5U1xT9Ge2m/1pAiIzA+fkF8t45z5/g2AMhZ" crossorigin="anonymous"></script>
+    <script>
+        function addMember() {
+            var select = document.getElementById('memberSelect');
+            var selectedMember = select.options[select.selectedIndex].value;
+            var memberList = document.getElementById('memberList');
 
-                // Check if member is already added
-                var existingMembers = memberList.querySelectorAll('input[name="selectedMembers"]');
-                for (var i = 0; i < existingMembers.length; i++) {
-                    if (existingMembers[i].value === selectedMember) {
-                        alert('This member is already added.');
-                        return;
-                    }
+            // Check if member is already added
+            var existingMembers = memberList.querySelectorAll('input[name="selectedMembers"]');
+            for (var i = 0; i < existingMembers.length; i++) {
+                if (existingMembers[i].value === selectedMember) {
+                    alert('This member is already added.');
+                    return;
                 }
-
-                // Create new list item
-                var li = document.createElement('li');
-                li.className = 'list-group-item';
-                li.innerHTML = selectedMember + ' <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeMember(this)">Remove</button>' +
-                    '<input type="hidden" name="selectedMembers" value="' + selectedMember + '" />';
-                memberList.appendChild(li);
             }
 
-            function removeMember(button) {
-                var li = button.parentNode;
-                li.parentNode.removeChild(li);
-            }
-        </script>
-    }
-    }
+            // Create new list item
+            var li = document.createElement('li');
+            li.className = 'list-group-item';
+            li.innerHTML = selectedMember + ' <button type="button" class="btn btn-danger btn-sm float-right" onclick="removeMember(this)">Remove</button>' +
+                '<input type="hidden" name="selectedMembers" value="' + selectedMember + '" />';
+            memberList.appendChild(li);
+        }
+
+        function removeMember(button) {
+            var li = button.parentNode;
+            li.parentNode.removeChild(li);
+        }
+    </script>
 </body>
+
 </html>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,8 +1,49 @@
-﻿.buton {
-    margin-top: 15px;
+﻿.create-user-container {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-group {
-    font-family: 'Arial Rounded MT';
-    margin-top: 10px;
+    .create-user-container h3 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Arial Rounded MT', sans-serif;
+    }
+
+.form-group label {
+    font-weight: bold;
+}
+
+.btn-group-toggle .btn {
+    flex: 1;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+.btn-secondary.active {
+    background-color: #6c757d !important;
+    border-color: #6c757d !important;
+}
+
+.btn-group-toggle .btn {
+    border-radius: 0;
+}
+
+    .btn-group-toggle .btn + .btn {
+        margin-left: -1px;
+    }
+
+.text-danger {
+    margin-top: 5px;
 }
