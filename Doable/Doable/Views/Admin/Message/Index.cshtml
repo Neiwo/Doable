@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<dynamic>
 
 @{
-    ViewData["Title"] = "Messages";
-    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+    ViewData["Title"] = "Admin Messages";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
 <div class="mb-3">
-    <a class="btn btn-primary" asp-controller="EMessage" asp-action="SendMessage">Send New Message</a>
+    <a class="btn btn-primary" asp-controller="AdminMessage" asp-action="SendMessage">Send New Message</a>
 </div>
 
 <div class="list-group">
@@ -23,7 +23,7 @@
         var otherUser = message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver : message.Sender;
         var otherUserRole = message.SenderId == Context.Session.GetInt32("UserId") ? receiverRole : senderRole;
 
-        <a href="@Url.Action("ViewMessage", "EMessage", new { id = message.MessageId })" class="list-group-item list-group-item-action">
+        <a href="@Url.Action("ViewMessage", "AdminMessage", new { id = message.MessageId })" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver?.Username : message.Sender?.Username) ?? "Unknown") <small style="font-size: 15px">(@otherUserRole)</small> </h5>
             </div>

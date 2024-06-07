@@ -54,6 +54,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Message/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWVzc2FnZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Message/SendMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWVzc2FnZVxTZW5kTWVzc2FnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Message/ViewMessage.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWVzc2FnZVxWaWV3TWVzc2FnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/admin/Source/Repos/Doable/Doable/Doable/Views/Admin/Rental/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmVudGFsXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Doable.Models;
+using Doable.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
-using Doable.Data;
-using Microsoft.EntityFrameworkCore;
 using System;
 
 namespace Doable.Controllers
@@ -37,21 +37,22 @@ namespace Doable.Controllers
                 .Select(m => new
                 {
                     Message = m,
-                    LatestReply = m.Replies.OrderByDescending(r => r.Timestamp).FirstOrDefault()
+                    LatestReply = m.Replies.OrderByDescending(r => r.Timestamp).FirstOrDefault(),
+                    SenderRole = m.Sender?.Role,
+                    ReceiverRole = m.Receiver?.Role
                 })
                 .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View(sortedMessages);
+            return View("~/Views/Employee/Message/Index.cshtml", sortedMessages);
         }
-
 
         [HttpGet]
         public async Task<IActionResult> SendMessage()
         {
             var users = await _context.Users.ToListAsync();
             ViewBag.Users = users;
-            return View();
+            return View("~/Views/Employee/Message/SendMessage.cshtml");
         }
 
         [HttpPost]
@@ -77,7 +78,7 @@ namespace Doable.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult ViewMessage(int id)
+        public async Task<IActionResult> ViewMessage(int id)
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             if (userId == null)
@@ -85,21 +86,21 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var message = _context.Messages
+            var message = await _context.Messages
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .Include(m => m.Replies)
                     .ThenInclude(r => r.Sender)
                 .Include(m => m.Replies)
                     .ThenInclude(r => r.Receiver)
-                .FirstOrDefault(m => m.MessageId == id);
+                .FirstOrDefaultAsync(m => m.MessageId == id);
 
             if (message == null || (message.ReceiverId != userId && message.SenderId != userId))
             {
                 return NotFound();
             }
 
-            return View(message);
+            return View("~/Views/Employee/Message/ViewMessage.cshtml", message);
         }
 
         [HttpPost]
@@ -137,6 +138,7 @@ namespace Doable.Controllers
 
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
+
         [HttpPost]
         public async Task<IActionResult> ArchiveMessage(int id)
         {
@@ -158,5 +160,25 @@ namespace Doable.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public async Task<IActionResult> DeleteMessage(int id)
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            if (userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null || (message.ReceiverId != userId && message.SenderId != userId))
+            {
+                return NotFound();
+            }
+
+            _context.Messages.Remove(message);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
     }
 }

@@ -9,25 +9,25 @@ using System;
 
 namespace Doable.Controllers
 {
-    public class EMessageController : Controller
+    public class AdminMessageController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public EMessageController(ApplicationDbContext context)
+        public AdminMessageController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+            int? adminId = HttpContext.Session.GetInt32("UserId");
+            if (adminId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
 
             var messages = await _context.Messages
-                .Where(m => (m.ReceiverId == userId || m.SenderId == userId) && m.ParentMessageId == null && m.Status != "Archived")
+                .Where(m => (m.ReceiverId == adminId || m.SenderId == adminId) && m.ParentMessageId == null && m.Status != "Archived")
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .Include(m => m.Replies)
@@ -44,7 +44,7 @@ namespace Doable.Controllers
                 .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View("~/Views/Employee/Message/Index.cshtml", sortedMessages);
+            return View("~/Views/Admin/Message/Index.cshtml", sortedMessages);
         }
 
         [HttpGet]
@@ -52,7 +52,7 @@ namespace Doable.Controllers
         {
             var users = await _context.Users.ToListAsync();
             ViewBag.Users = users;
-            return View("~/Views/Employee/Message/SendMessage.cshtml");
+            return View("~/Views/Admin/Message/SendMessage.cshtml");
         }
 
         [HttpPost]
@@ -80,8 +80,8 @@ namespace Doable.Controllers
 
         public async Task<IActionResult> ViewMessage(int id)
         {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+            int? adminId = HttpContext.Session.GetInt32("UserId");
+            if (adminId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -95,19 +95,19 @@ namespace Doable.Controllers
                     .ThenInclude(r => r.Receiver)
                 .FirstOrDefaultAsync(m => m.MessageId == id);
 
-            if (message == null || (message.ReceiverId != userId && message.SenderId != userId))
+            if (message == null || (message.ReceiverId != adminId && message.SenderId != adminId))
             {
                 return NotFound();
             }
 
-            return View("~/Views/Employee/Message/ViewMessage.cshtml", message);
+            return View("~/Views/Admin/Message/ViewMessage.cshtml", message);
         }
 
         [HttpPost]
         public async Task<IActionResult> ReplyMessage(int originalMessageId, string content)
         {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
+            int? adminId = HttpContext.Session.GetInt32("UserId");
+            if (adminId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -122,11 +122,11 @@ namespace Doable.Controllers
                 return NotFound();
             }
 
-            var receiverId = originalMessage.SenderId == userId ? originalMessage.ReceiverId : originalMessage.SenderId;
+            var receiverId = originalMessage.SenderId == adminId ? originalMessage.ReceiverId : originalMessage.SenderId;
 
             var replyMessage = new Message
             {
-                SenderId = userId.Value,
+                SenderId = adminId.Value,
                 ReceiverId = receiverId,
                 Content = content,
                 Timestamp = DateTime.Now,
@@ -139,46 +139,5 @@ namespace Doable.Controllers
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> ArchiveMessage(int id)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            var message = await _context.Messages.FindAsync(id);
-            if (message == null || (message.ReceiverId != userId && message.SenderId != userId))
-            {
-                return NotFound();
-            }
-
-            message.Status = "Archived";
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> DeleteMessage(int id)
-        {
-            int? userId = HttpContext.Session.GetInt32("UserId");
-            if (userId == null)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            var message = await _context.Messages.FindAsync(id);
-            if (message == null || (message.ReceiverId != userId && message.SenderId != userId))
-            {
-                return NotFound();
-            }
-
-            _context.Messages.Remove(message);
-            await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index");
-        }
     }
 }

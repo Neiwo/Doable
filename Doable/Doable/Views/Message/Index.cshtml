@@ -17,12 +17,17 @@
         var displayContent = latestReply != null ? latestReply.Content : message.Content;
         var displayTimestamp = latestReply != null ? latestReply.Timestamp : message.Timestamp;
 
+        var senderRole = item.SenderRole;
+        var receiverRole = item.ReceiverRole;
+
+        var otherUser = message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver : message.Sender;
+        var otherUserRole = message.SenderId == Context.Session.GetInt32("UserId") ? receiverRole : senderRole;
+
         <a href="@Url.Action("ViewMessage", "Message", new { id = message.MessageId })" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? "" + message.Receiver?.Username : "" + message.Sender?.Username) ?? "Unknown")</h5>
-                <small>@displayTimestamp</small>
+                <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver?.Username : message.Sender?.Username) ?? "Unknown") <small style="font-size: 15px">(@otherUserRole)</small> </h5>
             </div>
-            <p class="mb-1">@displayContent</p>
+            <p class="mb-1">@displayContent - <small>@displayTimestamp</small></p>
         </a>
     }
 </div>

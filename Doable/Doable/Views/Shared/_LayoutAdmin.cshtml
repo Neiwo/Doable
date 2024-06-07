@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+    
 </head>
 <body>
     <div class="wrapper">
@@ -30,6 +31,11 @@
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "Admin" && ViewContext.RouteData.Values["action"]?.ToString() == "AdminDashboard") ? "active" : "")"
                                    asp-area="" asp-controller="Admin" asp-action="AdminDashboard">Dashboard</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "AdminMessage" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="AdminMessage" asp-action="Index">Messages</a>
+                            </li>
+        
                             <li class="nav-item">
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "TaskList" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="TaskList" asp-action="Index">Tasks</a>
