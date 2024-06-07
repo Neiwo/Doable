@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Y5WAZyg4M0SeepN0JCjAfc5uwEwNf5V4IM3U0Am7wSs=",
+  "Hash": "hYitXRCRK0BgNJREq6bGMUjYpdnPov67VuAJk7XLCVQ=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -1727,6 +1727,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\CapstoneFormat - Proposal Defense Evaluation (1).docx"
     },
     {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\CF-AAR-005-PRACTICUM INCIDENT REPORT.docx",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/CF-AAR-005-PRACTICUM INCIDENT REPORT.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\CF-AAR-005-PRACTICUM INCIDENT REPORT.docx"
+    },
+    {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx",
       "SourceId": "Doable",
       "SourceType": "Discovered",
@@ -1744,6 +1763,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\home.html",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/home.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\home.html"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Activity 4.docx",
@@ -1839,6 +1877,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\sample.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style (1) (1).css",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/style (1) (1).css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\style (1) (1).css"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style.css",
