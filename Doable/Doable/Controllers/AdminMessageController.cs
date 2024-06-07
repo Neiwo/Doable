@@ -138,6 +138,35 @@ namespace Doable.Controllers
 
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
+        [HttpPost]
+        public async Task<IActionResult> ArchiveMessage(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }
 
+            message.Status = "Archived";
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeleteMessage(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            _context.Messages.Remove(message);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
     }
 }
+

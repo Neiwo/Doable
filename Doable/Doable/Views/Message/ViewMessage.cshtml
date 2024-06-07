@@ -2,7 +2,7 @@
 
 @{
     ViewData["Title"] = "View Message";
-    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
 
     int? userId = Context.Session.GetInt32("UserId");
     bool isSender = userId == Model.SenderId;

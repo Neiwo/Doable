@@ -44,7 +44,7 @@ namespace Doable.Controllers
                 .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View("~/Views/Employee/Message/Index.cshtml", sortedMessages);
+            return View(sortedMessages);
         }
 
         [HttpGet]
@@ -52,7 +52,7 @@ namespace Doable.Controllers
         {
             var users = await _context.Users.ToListAsync();
             ViewBag.Users = users;
-            return View("~/Views/Employee/Message/SendMessage.cshtml");
+            return View();
         }
 
         [HttpPost]
@@ -100,7 +100,7 @@ namespace Doable.Controllers
                 return NotFound();
             }
 
-            return View("~/Views/Employee/Message/ViewMessage.cshtml", message);
+            return View(message);
         }
 
         [HttpPost]

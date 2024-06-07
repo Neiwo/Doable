@@ -1,383 +1,383 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Doable.bundle.scp.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Doable.bundle.scp.css",
       "PackagePath": "staticwebassets\\Doable.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\Admindashboard.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\Admindashboard.css",
       "PackagePath": "staticwebassets\\css\\Admindashboard.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\Employeedashboard.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\Employeedashboard.css",
       "PackagePath": "staticwebassets\\css\\Employeedashboard.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\admin.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\admin.css",
       "PackagePath": "staticwebassets\\css\\admin.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\client.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\client.css",
       "PackagePath": "staticwebassets\\css\\client.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\create.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\create.css",
       "PackagePath": "staticwebassets\\css\\create.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\details.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\details.css",
       "PackagePath": "staticwebassets\\css\\details.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\edit.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\edit.css",
       "PackagePath": "staticwebassets\\css\\edit.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\employee.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\employee.css",
       "PackagePath": "staticwebassets\\css\\employee.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\login.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\site.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-a.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-a.css",
       "PackagePath": "staticwebassets\\css\\style-a.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-b.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-b.css",
       "PackagePath": "staticwebassets\\css\\style-b.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-c.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-c.css",
       "PackagePath": "staticwebassets\\css\\style-c.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-d.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style-d.css",
       "PackagePath": "staticwebassets\\css\\style-d.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\style.css",
       "PackagePath": "staticwebassets\\css\\style.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\doable logo.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\doable logo.png",
       "PackagePath": "staticwebassets\\images\\doable logo.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\facebook.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\facebook.png",
       "PackagePath": "staticwebassets\\images\\facebook.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mail.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mail.png",
       "PackagePath": "staticwebassets\\images\\mail.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man-2.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man-2.png",
       "PackagePath": "staticwebassets\\images\\man-2.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man-3.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man-3.png",
       "PackagePath": "staticwebassets\\images\\man-3.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\man.png",
       "PackagePath": "staticwebassets\\images\\man.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mini-logo.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\mini-logo.png",
       "PackagePath": "staticwebassets\\images\\mini-logo.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\1.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\1.png",
       "PackagePath": "staticwebassets\\images\\slideshow\\1.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\2.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\2.png",
       "PackagePath": "staticwebassets\\images\\slideshow\\2.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\3.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\slideshow\\3.png",
       "PackagePath": "staticwebassets\\images\\slideshow\\3.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\images\\telephone.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\images\\telephone.png",
       "PackagePath": "staticwebassets\\images\\telephone.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\js\\site.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\Jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\Jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\Jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\Jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\Jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\Jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\445374209_485923443875587_2856461052699380112_n.jpg",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\445374209_485923443875587_2856461052699380112_n.jpg",
       "PackagePath": "staticwebassets\\uploads\\445374209_485923443875587_2856461052699380112_n.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Activity - Working with Files (1).docx",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Activity - Working with Files (1).docx",
       "PackagePath": "staticwebassets\\uploads\\Activity - Working with Files (1).docx"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\CapstoneFormat - Proposal Defense Evaluation (1).docx",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\CapstoneFormat - Proposal Defense Evaluation (1).docx",
       "PackagePath": "staticwebassets\\uploads\\CapstoneFormat - Proposal Defense Evaluation (1).docx"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx",
       "PackagePath": "staticwebassets\\uploads\\Copy of Copy of MORALITA -2A.docx"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Activity 4.docx",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Activity 4.docx",
       "PackagePath": "staticwebassets\\uploads\\Laboratory Activity 4.docx"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\login-pic (1).jpg",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\login-pic (1).jpg",
       "PackagePath": "staticwebassets\\uploads\\login-pic (1).jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\mini-logo.png",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\mini-logo.png",
       "PackagePath": "staticwebassets\\uploads\\mini-logo.png"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\sample.jpg",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\sample.jpg",
       "PackagePath": "staticwebassets\\uploads\\sample.jpg"
     },
     {
-      "Id": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style.css",
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style.css",
       "PackagePath": "staticwebassets\\uploads\\style.css"
     },
     {
