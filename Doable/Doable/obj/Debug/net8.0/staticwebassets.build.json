@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Nu/saIpCTnKpXZiW8usnBXwKTfR9DxW+d1lIuKUTmbs=",
+  "Hash": "U/TvIFHZok0urNUq3eL4C9PhQQueyuctOnKcn3FCMRs=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -1784,6 +1784,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx"
     },
     {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.pdf",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/Copy of Copy of MORALITA -2A.pdf",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Copy of Copy of MORALITA -2A.pdf"
+    },
+    {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\home.html",
       "SourceId": "Doable",
       "SourceType": "Discovered",
@@ -1822,6 +1841,25 @@
       "OriginalItemSpec": "wwwroot\\uploads\\Laboratory Activity 4.docx"
     },
     {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Midterm.docx",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/Laboratory Midterm.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Laboratory Midterm.docx"
+    },
+    {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\login-pic (1).jpg",
       "SourceId": "Doable",
       "SourceType": "Discovered",
@@ -1839,6 +1877,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\login-pic (1).jpg"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\man-3 (1).png",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/man-3 (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\man-3 (1).png"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\mini-logo.png",
@@ -1898,6 +1955,44 @@
       "OriginalItemSpec": "wwwroot\\uploads\\sample.jpg"
     },
     {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Screenshot 2024-03-11 143744.png",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/Screenshot 2024-03-11 143744.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2024-03-11 143744.png"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Screenshot 2024-05-21 121158.png",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/Screenshot 2024-05-21 121158.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2024-05-21 121158.png"
+    },
+    {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style (1) (1).css",
       "SourceId": "Doable",
       "SourceType": "Discovered",
@@ -1934,6 +2029,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\style.css"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\telephone (1).png",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/telephone (1).png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\telephone (1).png"
     }
   ]
 }

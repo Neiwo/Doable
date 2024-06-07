@@ -34,17 +34,16 @@ namespace Doable.Controllers
 
                 // Query tasks assigned to the user
                 var assignedTasks = _context.Tasklists
-                    .Where(t => t.AssignedTo == username && t.Status != "To Review" && t.Status != "Completed")
+                    .Where(t => t.AssignedTo == username)
                     .Include(t => t.Members);
 
                 // Query tasks where the user is a member
                 var memberTasks = _context.Tasklists
-                    .Where(t => t.Members.Any(m => m.Username == username) && t.Status != "To Review" && t.Status != "Completed")
+                    .Where(t => t.Members.Any(m => m.Username == username) )
                     .Include(t => t.Members);
 
                 // Combine both queries
-                var tasks = assignedTasks
-                    .Union(memberTasks);
+                var tasks = assignedTasks.Union(memberTasks);
 
                 if (!tasks.Any())
                 {
@@ -54,9 +53,8 @@ namespace Doable.Controllers
                 if (!string.IsNullOrEmpty(status))
                 {
                     tasks = tasks.Where(t => t.Status == status);
-
                 }
-               
+
                 if (!string.IsNullOrEmpty(searchString))
                 {
                     tasks = tasks.Where(t =>
@@ -68,6 +66,9 @@ namespace Doable.Controllers
                         t.CreatedDate.ToString().Contains(searchString) ||
                         t.Deadline.ToString().Contains(searchString));
                 }
+
+                // Always sort by CreatedDate in descending order
+                tasks = tasks.OrderByDescending(t => t.CreatedDate);
 
                 ViewData["CurrentFilter"] = searchString;
 
@@ -219,7 +220,6 @@ namespace Doable.Controllers
         }
 
         [HttpGet]
-        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             try
@@ -234,20 +234,30 @@ namespace Doable.Controllers
                     return NotFound();
                 }
 
-                if (task.Status != "Opened")
-                {
-                    task.Status = "Opened";
-                    _context.Tasklists.Update(task);
-                    await _context.SaveChangesAsync();
-                }
+                var username = HttpContext.Session.GetString("Username");
+                var canEdit = task.Status != "Completed" && task.AssignedTo == username;
 
-                return View("/Views/Employee/Task/Details.cshtml", task);
+                // Allow members to upload files if the status is not "Completed"
+                var canUploadFiles = task.Status != "Completed";
+
+                var viewModel = new TaskDetailsViewModel
+                {
+                    Task = task,
+                    CanEdit = canEdit,
+                    CanUploadFiles = canUploadFiles
+                };
+
+                return View("/Views/Employee/Task/Details.cshtml", viewModel);
             }
             catch (Exception ex)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
+
+
+
 
 
 

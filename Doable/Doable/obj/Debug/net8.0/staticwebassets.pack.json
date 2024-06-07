@@ -365,12 +365,28 @@
       "PackagePath": "staticwebassets\\uploads\\Copy of Copy of MORALITA -2A.docx"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.pdf",
+      "PackagePath": "staticwebassets\\uploads\\Copy of Copy of MORALITA -2A.pdf"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Activity 4.docx",
       "PackagePath": "staticwebassets\\uploads\\Laboratory Activity 4.docx"
     },
     {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Midterm.docx",
+      "PackagePath": "staticwebassets\\uploads\\Laboratory Midterm.docx"
+    },
+    {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\PAOLO-MORALITA_APPLICANT (1).docx",
       "PackagePath": "staticwebassets\\uploads\\PAOLO-MORALITA_APPLICANT (1).docx"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Screenshot 2024-03-11 143744.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-03-11 143744.png"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Screenshot 2024-05-21 121158.png",
+      "PackagePath": "staticwebassets\\uploads\\Screenshot 2024-05-21 121158.png"
     },
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\a4263dc4-735e-4ad9-a430-fa654055bcb9.jpg",
@@ -383,6 +399,10 @@
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\login-pic (1).jpg",
       "PackagePath": "staticwebassets\\uploads\\login-pic (1).jpg"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\man-3 (1).png",
+      "PackagePath": "staticwebassets\\uploads\\man-3 (1).png"
     },
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\mini-logo.png",
@@ -399,6 +419,10 @@
     {
       "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style.css",
       "PackagePath": "staticwebassets\\uploads\\style.css"
+    },
+    {
+      "Id": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\telephone (1).png",
+      "PackagePath": "staticwebassets\\uploads\\telephone (1).png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Doable.Microsoft.AspNetCore.StaticWebAssets.props",

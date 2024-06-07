@@ -40,23 +40,9 @@ namespace Doable.Controllers
                     .Include(t => t.Members)
                     .AsQueryable();
 
-                if (!string.IsNullOrEmpty(searchString))
-                {
-                    tasks = tasks.Where(t =>
-                        t.Title.Contains(searchString) ||
-                        t.Description.Contains(searchString) ||
-                        t.AssignedTo.Contains(searchString) ||
-                        t.Priority.Contains(searchString) ||
-                        t.Status.Contains(searchString) ||
-                        t.CreatedBy.Contains(searchString) ||
-                        t.CreatedDate.ToString().Contains(searchString) ||
-                        t.Deadline.ToString().Contains(searchString));
-                }
-
-                if (!string.IsNullOrEmpty(status))
-                {
-                    tasks = tasks.Where(t => t.Status == status);
-                }
+                tasks = SearchTasks(tasks, searchString);
+                tasks = FilterTasksByStatus(tasks, status);
+                tasks = SortTasksByNewest(tasks);
 
                 ViewData["CurrentFilter"] = searchString;
                 ViewData["CurrentStatus"] = status;
@@ -83,6 +69,37 @@ namespace Doable.Controllers
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
+        }
+
+        private IQueryable<Tasklist> SearchTasks(IQueryable<Tasklist> tasks, string searchString)
+        {
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                tasks = tasks.Where(t =>
+                    t.Title.Contains(searchString) ||
+                    t.Description.Contains(searchString) ||
+                    t.AssignedTo.Contains(searchString) ||
+                    t.Priority.Contains(searchString) ||
+                    t.Status.Contains(searchString) ||
+                    t.CreatedBy.Contains(searchString) ||
+                    t.CreatedDate.ToString().Contains(searchString) ||
+                    t.Deadline.ToString().Contains(searchString));
+            }
+            return tasks;
+        }
+
+        private IQueryable<Tasklist> FilterTasksByStatus(IQueryable<Tasklist> tasks, string status)
+        {
+            if (!string.IsNullOrEmpty(status))
+            {
+                tasks = tasks.Where(t => t.Status == status);
+            }
+            return tasks;
+        }
+
+        private IQueryable<Tasklist> SortTasksByNewest(IQueryable<Tasklist> tasks)
+        {
+            return tasks.OrderByDescending(t => t.CreatedDate);
         }
 
 
