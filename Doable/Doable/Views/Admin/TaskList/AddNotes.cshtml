@@ -4,27 +4,33 @@
     int taskId = ViewBag.TaskId;
 }
 
-<html>
-<head>
-    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
-</head>
-<body>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4">Add Notes to Task</h2>
+            <hr />
 
-    <h2>Add Notes to Task</h2>
-    <hr />
-
-    <form asp-action="AddNotes" method="post">
-        <input type="hidden" name="id" value="@taskId" />
-        <div class="form-group">
-            <label for="remarks">Notes</label>
-            <textarea class="form-control" name="remarks" rows="5"></textarea>
+            <form asp-action="AddNotes" method="post">
+                <input type="hidden" name="id" value="@taskId" />
+                <div class="form-group">
+                    <label for="remarks" class="form-label"></label>
+                    <textarea class="form-control" name="remarks" rows="5"></textarea>
+                </div>
+                <div class="form-group mt-3">
+                    <input type="submit" value="Add Notes" class="btn btn-primary" />
+                    <a asp-action="Details" asp-route-id="@taskId" class="btn btn-danger ml-2">cancel</a>
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Add Notes" class="btn btn-primary" />
-        </div>
-    </form>
+    </div>
+</div>
 
-    <a asp-action="Details" asp-route-id="@taskId" class="btn btn-secondary">Back to Details</a>
+<style>
+    .form-label {
+        font-weight: bold;
+    }
 
-</body>
-</html>
+    .btn {
+        width: 120px;
+    }
+</style>

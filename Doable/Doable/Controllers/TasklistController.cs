@@ -26,7 +26,7 @@ namespace Doable.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
+        public async Task<IActionResult> Index(string searchString, string status, int pageNumber = 1, int pageSize = 6)
         {
             try
             {
@@ -53,7 +53,13 @@ namespace Doable.Controllers
                         t.Deadline.ToString().Contains(searchString));
                 }
 
+                if (!string.IsNullOrEmpty(status))
+                {
+                    tasks = tasks.Where(t => t.Status == status);
+                }
+
                 ViewData["CurrentFilter"] = searchString;
+                ViewData["CurrentStatus"] = status;
 
                 int totalTasks = await tasks.CountAsync();
                 var tasksOnPage = await tasks
@@ -78,6 +84,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
 
 

@@ -138,7 +138,7 @@
 
         <div class="button-container">
             <a asp-action="Index" class="btn btn-secondary">Back to List</a>
-            <a asp-action="AddFiles" asp-route-tasklistId="@Model.ID" class="btn btn-info">+ Files</a>
+            <a asp-action="AddFiles" asp-route-tasklistId="@Model.ID" class="btn btn-primary"style="color: white">+ Files</a>
             <form asp-action="CompleteTask" method="post" class="mb-0">
                 <input type="hidden" name="id" value="@Model.ID" />
                 <button type="submit" class="btn btn-success">Complete Task</button>

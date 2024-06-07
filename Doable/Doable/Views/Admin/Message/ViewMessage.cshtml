@@ -4,7 +4,7 @@
     ViewData["Title"] = "View Admin Message";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 
-    int? adminId = Context.Session.GetInt32("AdminId");
+    int? adminId = Context.Session.GetInt32("UserId");
     bool isSender = adminId == Model.SenderId;
     string otherUsername = isSender ? Model.Receiver?.Username : Model.Sender?.Username;
 }

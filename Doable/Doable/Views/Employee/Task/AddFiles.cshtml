@@ -3,15 +3,30 @@
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
 }
 
-<h2>Add Files</h2>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <h2 class="mb-4">Add Files</h2>
 
-<form asp-action="AddFiles" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="tasklistId" value="@ViewBag.TasklistID" />
-    <div class="form-group">
-        <label for="file">Select file</label>
-        <input type="file" name="file" class="form-control" />
+            <form asp-action="AddFiles" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="tasklistId" value="@ViewBag.TasklistID" />
+                <div class="form-group">
+                    <label for="file" class="form-label">Select file</label>
+                    <input type="file" name="file" class="form-control" />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Upload</button>
+                <a asp-action="Details" asp-route-id="@ViewBag.TasklistID" class="btn btn-danger mt-3 ml-2">Cancel</a>
+            </form>
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary">Upload</button>
-</form>
+</div>
 
-<a asp-action="Details" asp-route-id="@ViewBag.TasklistID" class="btn btn-secondary">Back to Details</a>
+<style>
+    .form-label {
+        font-weight: bold;
+    }
+
+    .btn {
+        width: 100px;
+    }
+</style>

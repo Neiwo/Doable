@@ -5,24 +5,35 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
+<br />
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <a asp-action="Create" class="btn btn-primary">+ Task</a>
         <form id="searchForm" asp-controller="TaskList" asp-action="Index" method="get" class="form-inline">
+            <select name="status" id="statusDropdown" class="form-control ml-2">
+                <option value="">All Statuses</option>
+                <option value="Pending">Pending</option>
+                <option value="Opened">Opened</option>
+                <option value="Returned">Returned</option>
+                <option value="To Review">To Review</option>
+                <option value="Completed">Completed</option>
+                
+            </select>
+            <button type="submit" class="btn btn-secondary ml-2">Sort</button>
             <input type="text" name="searchString" id="searchInput" class="form-control" placeholder="Search tasks..." value="@ViewData["CurrentFilter"]" />
+
         </form>
     </div>
 
     <div class="table-responsive" style="max-height: 500px; overflow-y: auto;">
         <table class="table table-hover table-bordered">
-            <thead class="thead-dark">
+            <thead class="thead-dark text-center">
                 <tr>
                     <th>Subject</th>
                     <th>Description</th>
                     <th>Leader</th>
                     <th>Priority</th>
                     <th>Status</th>
-                    <th>Created Date</th>
                     <th>Deadline</th>
                     <th>Members</th>
                     <th></th>
@@ -39,19 +50,19 @@
                         <td class="assigned-to-column">@item.AssignedTo</td>
                         <td class="priority-column">@item.Priority</td>
                         <td class="status-column">@item.Status</td>
-                        <td>@item.CreatedDate.ToShortDateString()</td>
                         <td>@item.Deadline</td>
-                        <td>
+                        <td><small>
                             <ul>
                                 @foreach (var member in item.Members)
                                 {
                                     <span>@member.Username</span>
                                     @if (member != item.Members.Last())
                                     {
-
+                                        <span>,</span>
                                     }
                                 }
                             </ul>
+                            </small>
                         </td>
                         <td>
                             <div class="dropdown">
@@ -75,19 +86,19 @@
             @if (Model.Pagination.CurrentPage > 1)
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Pagination.CurrentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Previous</a>
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Pagination.CurrentPage - 1)" asp-route-searchString="@ViewData["CurrentFilter"]" asp-route-status="@ViewData["CurrentStatus"]">Previous</a>
                 </li>
             }
             @for (int i = 1; i <= Model.Pagination.TotalPages; i++)
             {
                 <li class="page-item @(Model.Pagination.CurrentPage == i ? "active" : "")">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]">@i</a>
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@i" asp-route-searchString="@ViewData["CurrentFilter"]" asp-route-status="@ViewData["CurrentStatus"]">@i</a>
                 </li>
             }
             @if (Model.Pagination.CurrentPage < Model.Pagination.TotalPages)
             {
                 <li class="page-item">
-                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Pagination.CurrentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]">Next</a>
+                    <a class="page-link" asp-action="Index" asp-route-pageNumber="@(Model.Pagination.CurrentPage + 1)" asp-route-searchString="@ViewData["CurrentFilter"]" asp-route-status="@ViewData["CurrentStatus"]">Next</a>
                 </li>
             }
         </ul>

@@ -143,7 +143,7 @@
         <div class="button-container">
             <a asp-action="Index" class="btn btn-secondary">Back to List</a>
             <a asp-action="AddNotes" asp-route-id="@Model.ID" class="btn btn-primary">+ Notes</a>
-            <a asp-action="AddFiles" asp-route-id="@Model.ID" class="btn btn-info">+ Files</a>
+            <a asp-action="AddFiles" asp-route-id="@Model.ID" class="btn btn-primary" style="color: white;">+ Files</a>
             <form asp-action="Return" method="post" style="display:inline;">
                 <input type="hidden" name="id" value="@Model.ID" />
                 <input type="submit" value="Return Work" class="btn btn-danger" />
