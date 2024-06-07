@@ -22,7 +22,7 @@ namespace Doable.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index(string searchString, int pageNumber = 1, int pageSize = 6)
+        public async Task<IActionResult> Index(string searchString, string status, int pageNumber = 1, int pageSize = 6)
         {
             try
             {
@@ -51,6 +51,12 @@ namespace Doable.Controllers
                     ViewData["NoTasksMessage"] = "There are no tasks currently available.";
                 }
 
+                if (!string.IsNullOrEmpty(status))
+                {
+                    tasks = tasks.Where(t => t.Status == status);
+
+                }
+               
                 if (!string.IsNullOrEmpty(searchString))
                 {
                     tasks = tasks.Where(t =>

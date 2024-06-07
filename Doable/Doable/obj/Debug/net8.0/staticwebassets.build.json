@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hYitXRCRK0BgNJREq6bGMUjYpdnPov67VuAJk7XLCVQ=",
+  "Hash": "Nu/saIpCTnKpXZiW8usnBXwKTfR9DxW+d1lIuKUTmbs=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -1687,6 +1687,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\445374209_485923443875587_2856461052699380112_n.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\a4263dc4-735e-4ad9-a430-fa654055bcb9.jpg",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/a4263dc4-735e-4ad9-a430-fa654055bcb9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\a4263dc4-735e-4ad9-a430-fa654055bcb9.jpg"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Activity - Working with Files (1).docx",
