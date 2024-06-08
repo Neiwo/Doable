@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dIEeDn0fq1ixnXsUGxWL3OoIp71+8itQ7EBfJu8aKYE=",
+  "Hash": "QVJIdTiljebfQIWWbA9Yo4zB2+9LqwujK4QtkgEQw+M=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -1991,6 +1991,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2024-05-21 121158.png"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\sirtacata1.css",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/sirtacata1.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\sirtacata1.css"
     },
     {
       "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\style (1) (1).css",
