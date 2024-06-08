@@ -30,5 +30,9 @@ namespace Doable.Models
 
         [Required]
         public string Status { get; set; } = "Active"; // Default to "Active"
+
+        // Make these properties nullable
+        public string? FileName { get; set; }
+        public string? FilePath { get; set; }
     }
 }

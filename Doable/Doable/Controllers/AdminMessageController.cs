@@ -6,16 +6,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace Doable.Controllers
 {
     public class AdminMessageController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AdminMessageController(ApplicationDbContext context)
+        public AdminMessageController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public async Task<IActionResult> Index()
@@ -56,7 +60,7 @@ namespace Doable.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SendMessage(int receiverId, string content)
+        public async Task<IActionResult> SendMessage(int receiverId, string content, IFormFile file)
         {
             int? senderId = HttpContext.Session.GetInt32("UserId");
             if (senderId == null)
@@ -64,12 +68,29 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
+            string filePath = null;
+            string fileName = null;
+
+            if (file != null && file.Length > 0)
+            {
+                fileName = Path.GetFileName(file.FileName);
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+            }
+
             var message = new Message
             {
                 SenderId = senderId.Value,
                 ReceiverId = receiverId,
                 Content = content,
-                Timestamp = DateTime.Now
+                Timestamp = DateTime.Now,
+                FileName = fileName,
+                FilePath = filePath
             };
 
             _context.Messages.Add(message);
@@ -104,7 +125,7 @@ namespace Doable.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ReplyMessage(int originalMessageId, string content)
+        public async Task<IActionResult> ReplyMessage(int originalMessageId, string content, IFormFile file)
         {
             int? adminId = HttpContext.Session.GetInt32("UserId");
             if (adminId == null)
@@ -124,13 +145,30 @@ namespace Doable.Controllers
 
             var receiverId = originalMessage.SenderId == adminId ? originalMessage.ReceiverId : originalMessage.SenderId;
 
+            string filePath = null;
+            string fileName = null;
+
+            if (file != null && file.Length > 0)
+            {
+                fileName = Path.GetFileName(file.FileName);
+                string uploadsFolder = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                filePath = Path.Combine(uploadsFolder, fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(fileStream);
+                }
+            }
+
             var replyMessage = new Message
             {
                 SenderId = adminId.Value,
                 ReceiverId = receiverId,
                 Content = content,
                 Timestamp = DateTime.Now,
-                ParentMessageId = originalMessageId
+                ParentMessageId = originalMessageId,
+                FileName = fileName,
+                FilePath = filePath
             };
 
             _context.Messages.Add(replyMessage);
@@ -138,6 +176,7 @@ namespace Doable.Controllers
 
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
+
         [HttpPost]
         public async Task<IActionResult> ArchiveMessage(int id)
         {
@@ -169,4 +208,3 @@ namespace Doable.Controllers
         }
     }
 }
-
