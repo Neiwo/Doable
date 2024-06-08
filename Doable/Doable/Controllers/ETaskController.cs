@@ -219,14 +219,13 @@ namespace Doable.Controllers
             }
         }
 
-        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             try
             {
                 var task = await _context.Tasklists
                     .Include(t => t.Notes)
-                    .Include(t => t.Docus) // Include the Docus navigation property
+                    .Include(t => t.Docus)
                     .FirstOrDefaultAsync(t => t.ID == id);
 
                 if (task == null)
@@ -240,11 +239,16 @@ namespace Doable.Controllers
                 // Allow members to upload files if the status is not "Completed"
                 var canUploadFiles = task.Status != "Completed";
 
+                var adminFiles = task.Docus.Where(d => _context.Users.Any(u => u.Username == d.Uploadedby && u.Role == "Admin")).ToList();
+                var employeeFiles = task.Docus.Where(d => _context.Users.Any(u => u.Username == d.Uploadedby && u.Role == "Employee")).ToList();
+
                 var viewModel = new TaskDetailsViewModel
                 {
                     Task = task,
                     CanEdit = canEdit,
-                    CanUploadFiles = canUploadFiles
+                    CanUploadFiles = canUploadFiles,
+                    AdminFiles = adminFiles,
+                    EmployeeFiles = employeeFiles
                 };
 
                 return View("/Views/Employee/Task/Details.cshtml", viewModel);
@@ -254,6 +258,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
 
 

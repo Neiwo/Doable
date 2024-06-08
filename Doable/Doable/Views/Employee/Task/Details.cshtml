@@ -104,12 +104,29 @@
             @Model.Task.Description
         </div>
 
-        @if (Model.Task.Docus != null && Model.Task.Docus.Any())
+        @if (Model.AdminFiles.Any())
         {
             <div class="files-section">
-                <h5>Attached Files</h5>
+                <h5>Admin Files</h5>
                 <div>
-                    @foreach (var docu in Model.Task.Docus)
+                    @foreach (var docu in Model.AdminFiles)
+                    {
+                        <div class="file-item">
+                            <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+
+        @if (Model.EmployeeFiles.Any())
+        {
+            <div class="files-section">
+                <h5>Employee Files</h5>
+                <div>
+                    @foreach (var docu in Model.EmployeeFiles)
                     {
                         <div class="file-item">
                             <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>

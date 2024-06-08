@@ -340,7 +340,7 @@ namespace Doable.Controllers
             {
                 var task = await _context.Tasklists
                     .Include(t => t.Notes)
-                    .Include(t => t.Docus) // Include the Docus navigation property
+                    .Include(t => t.Docus) // Ensure Docus are included
                     .FirstOrDefaultAsync(t => t.ID == id);
                 if (task == null)
                 {
@@ -354,6 +354,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
 
         [HttpPost]
@@ -475,6 +476,7 @@ namespace Doable.Controllers
             ViewBag.TasklistID = tasklistId;
             return View("/Views/Admin/TaskList/AddFiles.cshtml");
         }
+
         [HttpPost]
         public async Task<IActionResult> DeleteNote(int id)
         {
