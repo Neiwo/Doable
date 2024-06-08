@@ -239,8 +239,9 @@ namespace Doable.Controllers
                 // Allow members to upload files if the status is not "Completed"
                 var canUploadFiles = task.Status != "Completed";
 
-                var adminFiles = task.Docus.Where(d => _context.Users.Any(u => u.Username == d.Uploadedby && u.Role == "Admin")).ToList();
-                var employeeFiles = task.Docus.Where(d => _context.Users.Any(u => u.Username == d.Uploadedby && u.Role == "Employee")).ToList();
+                var adminFiles = task.Docus.Where(d => d.UploadedbyRole == "Admin").ToList();
+                var employeeFiles = task.Docus.Where(d => d.UploadedbyRole == "Employee").ToList();
+                var clientFiles = task.Docus.Where(d => d.UploadedbyRole == "Client").ToList(); // New line for Client files
 
                 var viewModel = new TaskDetailsViewModel
                 {
@@ -248,7 +249,8 @@ namespace Doable.Controllers
                     CanEdit = canEdit,
                     CanUploadFiles = canUploadFiles,
                     AdminFiles = adminFiles,
-                    EmployeeFiles = employeeFiles
+                    EmployeeFiles = employeeFiles,
+                    ClientFiles = clientFiles // Add Client files to the view model
                 };
 
                 return View("/Views/Employee/Task/Details.cshtml", viewModel);
@@ -258,6 +260,8 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
+
 
 
 
@@ -313,13 +317,15 @@ namespace Doable.Controllers
                     await file.CopyToAsync(stream);
                 }
 
+                var user = _context.Users.FirstOrDefault(u => u.Username == username);
                 var docu = new Docu
                 {
                     TasklistID = tasklistId,
                     FileName = file.FileName,
                     FilePath = filePath,
                     UploadedDate = DateTime.Now,
-                    Uploadedby = username // Save the uploader's username
+                    Uploadedby = username,
+                    UploadedbyRole = user?.Role // Set the role of the uploader
                 };
 
                 _context.Docus.Add(docu);
@@ -331,6 +337,7 @@ namespace Doable.Controllers
             ViewBag.TasklistID = tasklistId;
             return View("/Views/Employee/Task/AddFiles.cshtml");
         }
+
 
 
 

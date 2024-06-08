@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "b0fJLswNfsV38w/sm0izp97dpZ4CkT6DwTedeHqFjtc=",
+  "Hash": "dIEeDn0fq1ixnXsUGxWL3OoIp71+8itQ7EBfJu8aKYE=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -1765,25 +1765,6 @@
       "OriginalItemSpec": "wwwroot\\uploads\\CF-AAR-005-PRACTICUM INCIDENT REPORT.docx"
     },
     {
-      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx",
-      "SourceId": "Doable",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\",
-      "BasePath": "_content/Doable",
-      "RelativePath": "uploads/Copy of Copy of MORALITA -2A.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\Copy of Copy of MORALITA -2A.docx"
-    },
-    {
       "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Copy of Copy of MORALITA -2A.pdf",
       "SourceId": "Doable",
       "SourceType": "Discovered",
@@ -1841,25 +1822,6 @@
       "OriginalItemSpec": "wwwroot\\uploads\\Laboratory Activity 4.docx"
     },
     {
-      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Laboratory Midterm.docx",
-      "SourceId": "Doable",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\",
-      "BasePath": "_content/Doable",
-      "RelativePath": "uploads/Laboratory Midterm.docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\Laboratory Midterm.docx"
-    },
-    {
       "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\login-pic (1).jpg",
       "SourceId": "Doable",
       "SourceType": "Discovered",
@@ -1879,12 +1841,12 @@
       "OriginalItemSpec": "wwwroot\\uploads\\login-pic (1).jpg"
     },
     {
-      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\man-3 (1).png",
+      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\Manuscript - revised.docx",
       "SourceId": "Doable",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\",
       "BasePath": "_content/Doable",
-      "RelativePath": "uploads/man-3 (1).png",
+      "RelativePath": "uploads/Manuscript - revised.docx",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1895,7 +1857,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\man-3 (1).png"
+      "OriginalItemSpec": "wwwroot\\uploads\\Manuscript - revised.docx"
     },
     {
       "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\mini-logo.png",
@@ -1915,25 +1877,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\mini-logo.png"
-    },
-    {
-      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\PAOLO-MORALITA_APPLICANT (1).docx",
-      "SourceId": "Doable",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\",
-      "BasePath": "_content/Doable",
-      "RelativePath": "uploads/PAOLO-MORALITA_APPLICANT (1).docx",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\uploads\\PAOLO-MORALITA_APPLICANT (1).docx"
     },
     {
       "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\sample.jpg",
@@ -2105,6 +2048,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\telephone (1).png"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\uploads\\The Beauty of Generation Type of Loving.docx",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\Source\\Repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "uploads/The Beauty of Generation Type of Loving.docx",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\The Beauty of Generation Type of Loving.docx"
     }
   ]
 }

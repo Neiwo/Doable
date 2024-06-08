@@ -107,7 +107,7 @@
         @if (Model.AdminFiles.Any())
         {
             <div class="files-section">
-                <h5>Admin Files</h5>
+                <h5>Clipped Files</h5>
                 <div>
                     @foreach (var docu in Model.AdminFiles)
                     {
@@ -124,9 +124,26 @@
         @if (Model.EmployeeFiles.Any())
         {
             <div class="files-section">
-                <h5>Employee Files</h5>
+                <h5>Team Files</h5>
                 <div>
                     @foreach (var docu in Model.EmployeeFiles)
+                    {
+                        <div class="file-item">
+                            <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+
+        @if (Model.ClientFiles.Any())
+        {
+            <div class="files-section">
+                <h5>Client Files</h5>
+                <div>
+                    @foreach (var docu in Model.ClientFiles)
                     {
                         <div class="file-item">
                             <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>

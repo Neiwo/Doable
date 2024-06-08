@@ -9,5 +9,6 @@ namespace Doable.Controllers
         public bool CanUploadFiles { get; set; }
         public IEnumerable<Docu> AdminFiles { get; set; }
         public IEnumerable<Docu> EmployeeFiles { get; set; }
+        public List<Docu> ClientFiles { get; set; }
     }
 }

@@ -23,7 +23,10 @@ namespace Doable.Models
 
         public string Uploadedby { get; set; }
 
+        public string UploadedbyRole { get; set; } // New property for uploader's role
+
         // Navigation property
         public Tasklist Tasklist { get; set; }
     }
+
 }

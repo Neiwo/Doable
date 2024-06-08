@@ -456,7 +456,9 @@ namespace Doable.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
+
                 var uploadedby = HttpContext.Session.GetString("Username");
+                var uploadedbyRole = _context.Users.FirstOrDefault(u => u.Username == uploadedby)?.Role;
 
                 var docu = new Docu
                 {
@@ -464,7 +466,8 @@ namespace Doable.Controllers
                     FileName = file.FileName,
                     FilePath = filePath,
                     UploadedDate = DateTime.Now,
-                    Uploadedby = uploadedby
+                    Uploadedby = uploadedby,
+                    UploadedbyRole = uploadedbyRole // Set the role of the uploader
                 };
 
                 _context.Docus.Add(docu);
@@ -476,6 +479,7 @@ namespace Doable.Controllers
             ViewBag.TasklistID = tasklistId;
             return View("/Views/Admin/TaskList/AddFiles.cshtml");
         }
+
 
         [HttpPost]
         public async Task<IActionResult> DeleteNote(int id)
