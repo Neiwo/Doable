@@ -27,7 +27,7 @@
                             </p>
                         }
                     </li>
-                    @foreach (var reply in Model.Replies.OrderBy(r => r.Timestamp).Take(5))
+                    @foreach (var reply in Model.Replies.OrderBy(r => r.Timestamp))
                     {
                         <li class="mb-3">
                             <p><strong>@(reply.SenderId == userId ? "You" : reply.Sender?.Username ?? "Unknown Sender"):</strong></p>

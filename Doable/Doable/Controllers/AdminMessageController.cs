@@ -59,6 +59,7 @@ namespace Doable.Controllers
             return View("~/Views/Admin/Message/SendMessage.cshtml");
         }
 
+        [HttpPost]
         public async Task<IActionResult> SendMessage(int receiverId, string content, IFormFile file)
         {
             int? senderId = HttpContext.Session.GetInt32("UserId");
@@ -86,10 +87,10 @@ namespace Doable.Controllers
             {
                 SenderId = senderId.Value,
                 ReceiverId = receiverId,
-                Content = content,
+                Content = string.IsNullOrWhiteSpace(content) ? null : content, // Handle null content
                 Timestamp = DateTime.Now,
-                FileName = fileName,
-                FilePath = filePath
+                FileName = fileName, // This can be null
+                FilePath = filePath // This can be null
             };
 
             _context.Messages.Add(message);
@@ -97,6 +98,7 @@ namespace Doable.Controllers
 
             return RedirectToAction("Index");
         }
+
 
 
         public async Task<IActionResult> ViewMessage(int id)
@@ -164,11 +166,11 @@ namespace Doable.Controllers
             {
                 SenderId = adminId.Value,
                 ReceiverId = receiverId,
-                Content = content,
+                Content = string.IsNullOrWhiteSpace(content) ? null : content, // Handle null content
                 Timestamp = DateTime.Now,
                 ParentMessageId = originalMessageId,
-                FileName = fileName,
-                FilePath = filePath
+                FileName = fileName, // This can be null
+                FilePath = filePath // This can be null
             };
 
             _context.Messages.Add(replyMessage);
@@ -176,6 +178,7 @@ namespace Doable.Controllers
 
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
+
 
         [HttpPost]
         public async Task<IActionResult> ArchiveMessage(int id)

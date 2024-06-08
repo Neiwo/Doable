@@ -15,9 +15,8 @@ namespace Doable.Models
         [Required]
         public int ReceiverId { get; set; }
 
-        [Required]
         [StringLength(500)]
-        public string Content { get; set; }
+        public string? Content { get; set; } // Make Content nullable
 
         public DateTime Timestamp { get; set; }
 
