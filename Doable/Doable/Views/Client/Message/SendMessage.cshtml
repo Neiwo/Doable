@@ -6,7 +6,7 @@
 
 <div class="container mt-4">
     <h2 class="mb-4">Send Message</h2>
-    <form asp-controller="AdminMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data">
+    <form asp-controller="CMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data">
         <div class="mb-3">
             <label asp-for="ReceiverId" class="form-label">To</label>
             <select asp-for="ReceiverId" class="form-select" asp-items="@(new SelectList(ViewBag.Users, "ID", "Username"))">
@@ -25,7 +25,7 @@
         </div>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
             <button type="submit" class="btn btn-primary">Send</button>
-            <a asp-controller="AdminMessage" asp-action="Index" class="btn btn-secondary">Cancel</a>
+            <a asp-controller="CMessage" asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
 </div>

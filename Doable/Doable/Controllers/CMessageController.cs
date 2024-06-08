@@ -11,12 +11,12 @@ using System.IO;
 
 namespace Doable.Controllers
 {
-    public class EMessageController : Controller
+    public class CMessageController : Controller
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public EMessageController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
+        public CMessageController(ApplicationDbContext context, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _webHostEnvironment = webHostEnvironment;
@@ -24,14 +24,14 @@ namespace Doable.Controllers
 
         public async Task<IActionResult> Index()
         {
-            int? employeeId = HttpContext.Session.GetInt32("UserId");
-            if (employeeId == null)
+            int? clientId = HttpContext.Session.GetInt32("UserId");
+            if (clientId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
 
             var messages = await _context.Messages
-                .Where(m => (m.ReceiverId == employeeId || m.SenderId == employeeId) && m.ParentMessageId == null && m.Status != "Archived")
+                .Where(m => (m.ReceiverId == clientId || m.SenderId == clientId) && m.ParentMessageId == null && m.Status != "Archived")
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .Include(m => m.Replies)
@@ -48,7 +48,7 @@ namespace Doable.Controllers
                 .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View("~/Views/Employee/Message/Index.cshtml", sortedMessages);
+            return View("~/Views/Client/Message/Index.cshtml", sortedMessages);
         }
 
         [HttpGet]
@@ -56,7 +56,7 @@ namespace Doable.Controllers
         {
             var users = await _context.Users.ToListAsync();
             ViewBag.Users = users;
-            return View("~/Views/Employee/Message/SendMessage.cshtml");
+            return View("~/Views/Client/Message/SendMessage.cshtml");
         }
 
         [HttpPost]
@@ -101,8 +101,8 @@ namespace Doable.Controllers
 
         public async Task<IActionResult> ViewMessage(int id)
         {
-            int? employeeId = HttpContext.Session.GetInt32("UserId");
-            if (employeeId == null)
+            int? clientId = HttpContext.Session.GetInt32("UserId");
+            if (clientId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -116,19 +116,19 @@ namespace Doable.Controllers
                     .ThenInclude(r => r.Receiver)
                 .FirstOrDefaultAsync(m => m.MessageId == id);
 
-            if (message == null || (message.ReceiverId != employeeId && message.SenderId != employeeId))
+            if (message == null || (message.ReceiverId != clientId && message.SenderId != clientId))
             {
                 return NotFound();
             }
 
-            return View("~/Views/Employee/Message/ViewMessage.cshtml", message);
+            return View("~/Views/Client/Message/ViewMessage.cshtml", message);
         }
 
         [HttpPost]
         public async Task<IActionResult> ReplyMessage(int originalMessageId, string content, IFormFile file)
         {
-            int? employeeId = HttpContext.Session.GetInt32("UserId");
-            if (employeeId == null)
+            int? clientId = HttpContext.Session.GetInt32("UserId");
+            if (clientId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
@@ -143,7 +143,7 @@ namespace Doable.Controllers
                 return NotFound();
             }
 
-            var receiverId = originalMessage.SenderId == employeeId ? originalMessage.ReceiverId : originalMessage.SenderId;
+            var receiverId = originalMessage.SenderId == clientId ? originalMessage.ReceiverId : originalMessage.SenderId;
 
             string filePath = null;
             string fileName = null;
@@ -162,7 +162,7 @@ namespace Doable.Controllers
 
             var replyMessage = new Message
             {
-                SenderId = employeeId.Value,
+                SenderId = clientId.Value,
                 ReceiverId = receiverId,
                 Content = string.IsNullOrWhiteSpace(content) ? null : content, // Handle null content
                 Timestamp = DateTime.Now,
