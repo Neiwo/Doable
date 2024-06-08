@@ -113,6 +113,7 @@
                     {
                         <div class="file-item">
                             <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
                         </div>
                     }
                 </div>
