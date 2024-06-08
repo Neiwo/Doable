@@ -59,7 +59,6 @@ namespace Doable.Controllers
             return View("~/Views/Admin/Message/SendMessage.cshtml");
         }
 
-        [HttpPost]
         public async Task<IActionResult> SendMessage(int receiverId, string content, IFormFile file)
         {
             int? senderId = HttpContext.Session.GetInt32("UserId");
@@ -98,6 +97,7 @@ namespace Doable.Controllers
 
             return RedirectToAction("Index");
         }
+
 
         public async Task<IActionResult> ViewMessage(int id)
         {

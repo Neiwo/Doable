@@ -136,11 +136,9 @@ namespace Doable.Migrations
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("FileName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FilePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ParentMessageId")
