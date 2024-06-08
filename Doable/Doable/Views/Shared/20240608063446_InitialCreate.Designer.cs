@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Doable.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240605165639_AddNotesRelationship")]
-    partial class AddNotesRelationship
+    [Migration("20240608063446_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,6 +62,107 @@ namespace Doable.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Bookings");
+                });
+
+            modelBuilder.Entity("Doable.Models.Docu", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<string>("FilePath")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TasklistID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("UploadedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Uploadedby")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UploadedbyRole")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TasklistID");
+
+                    b.ToTable("Docus");
+                });
+
+            modelBuilder.Entity("Doable.Models.Member", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("TasklistID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("TasklistID");
+
+                    b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("Doable.Models.Message", b =>
+                {
+                    b.Property<int>("MessageId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MessageId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<int?>("ParentMessageId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReceiverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SenderId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("MessageId");
+
+                    b.HasIndex("ParentMessageId");
+
+                    b.HasIndex("ReceiverId");
+
+                    b.HasIndex("SenderId");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("Doable.Models.Notes", b =>
@@ -185,6 +286,54 @@ namespace Doable.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("Doable.Models.Docu", b =>
+                {
+                    b.HasOne("Doable.Models.Tasklist", "Tasklist")
+                        .WithMany("Docus")
+                        .HasForeignKey("TasklistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tasklist");
+                });
+
+            modelBuilder.Entity("Doable.Models.Member", b =>
+                {
+                    b.HasOne("Doable.Models.Tasklist", "Tasklist")
+                        .WithMany("Members")
+                        .HasForeignKey("TasklistID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Tasklist");
+                });
+
+            modelBuilder.Entity("Doable.Models.Message", b =>
+                {
+                    b.HasOne("Doable.Models.Message", "ParentMessage")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentMessageId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Doable.Models.User", "Receiver")
+                        .WithMany()
+                        .HasForeignKey("ReceiverId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Doable.Models.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ParentMessage");
+
+                    b.Navigation("Receiver");
+
+                    b.Navigation("Sender");
+                });
+
             modelBuilder.Entity("Doable.Models.Notes", b =>
                 {
                     b.HasOne("Doable.Models.Tasklist", "Tasklist")
@@ -196,8 +345,17 @@ namespace Doable.Migrations
                     b.Navigation("Tasklist");
                 });
 
+            modelBuilder.Entity("Doable.Models.Message", b =>
+                {
+                    b.Navigation("Replies");
+                });
+
             modelBuilder.Entity("Doable.Models.Tasklist", b =>
                 {
+                    b.Navigation("Docus");
+
+                    b.Navigation("Members");
+
                     b.Navigation("Notes");
                 });
 #pragma warning restore 612, 618

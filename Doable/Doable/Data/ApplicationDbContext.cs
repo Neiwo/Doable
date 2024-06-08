@@ -36,13 +36,13 @@ namespace Doable.Data
                 .HasOne(m => m.Sender)
                 .WithMany()
                 .HasForeignKey(m => m.SenderId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Cascade); // Use Cascade for Sender
 
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.Receiver)
                 .WithMany()
                 .HasForeignKey(m => m.ReceiverId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict); // Use Restrict for Receiver
 
             modelBuilder.Entity<Message>()
                 .HasOne(m => m.ParentMessage)

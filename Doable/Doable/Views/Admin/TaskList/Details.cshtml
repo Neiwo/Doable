@@ -119,7 +119,12 @@
                         </div>
                     }
                 </div>
-                <hr />
+            </div>
+            <hr />
+        }
+        @if (Model.Docus != null && Model.Docus.Any())
+        {
+            <div class="files-section">
                 <h5>Employee Uploaded Files</h5>
                 <div>
                     @foreach (var docu in Model.Docus.Where(d => d.UploadedbyRole == "Employee"))
@@ -133,7 +138,13 @@
                         </div>
                     }
                 </div>
-                <hr />
+            </div>
+            <hr />
+        }
+        @if (Model.Docus != null && Model.Docus.Any())
+        {
+            <div class="files-section">
+      
                 <h5>Client Uploaded Files</h5>
                 <div>
                     @foreach (var docu in Model.Docus.Where(d => d.UploadedbyRole == "Client"))
@@ -150,6 +161,7 @@
             </div>
             <hr />
         }
+
 
         @if (Model.Notes != null && Model.Notes.Any())
         {

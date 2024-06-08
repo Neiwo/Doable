@@ -321,7 +321,7 @@ namespace Doable.Migrations
                     b.HasOne("Doable.Models.User", "Sender")
                         .WithMany()
                         .HasForeignKey("SenderId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("ParentMessage");
