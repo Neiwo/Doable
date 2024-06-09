@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Edit Task";
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+
+    Func<string, string, string> IsSelected = (username, assignedTo) => 
+        username == assignedTo ? "selected" : string.Empty;
 }
 
 <!DOCTYPE html>
@@ -51,7 +54,7 @@
                         <select asp-for="AssignedTo" class="form-control">
                             @foreach (var employee in ViewBag.Employees)
                             {
-                                <option value="@employee.Username" @(employee.Username == Model.AssignedTo ? "selected" : "")>
+                                <option value="@employee.Username">
                                     @employee.Username
                                 </option>
                             }
