@@ -1,0 +1,193 @@
+﻿@model Doable.Controllers.TaskDetailsViewModel
+
+@{
+    Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
+    ViewData["Title"] = Model.Task.Title;
+    var userId = Context.Session.GetInt32("UserId");
+    var username = Context.Session.GetString("Username");
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/details.css" asp-append-version="true" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container-custom {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .description-box {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .files-section, .notes-section {
+            margin-top: 20px;
+        }
+
+            .files-section h5, .notes-section h5 {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+
+        .file-item, .note-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            margin-bottom: 5px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            font-size: 14px;
+        }
+
+            .file-item a, .note-item span {
+                flex-grow: 1;
+                margin-right: 10px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .file-item form, .note-item form {
+                margin: 0;
+            }
+
+        .button-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 20px;
+        }
+
+            .button-container a, .button-container form {
+                margin-left: 10px;
+            }
+
+        .dl {
+            border: none;
+            background: none;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-custom">
+        <h2>@Model.Task.Title</h2>
+        <hr />
+
+        <div class="description-box">
+            @Model.Task.Description
+        </div>
+
+        @if (Model.AdminFiles.Any())
+        {
+            <div class="files-section">
+                <h5>Clipped Files</h5>
+                <div>
+                    @foreach (var docu in Model.AdminFiles)
+                    {
+                        <div class="file-item">
+                            <a href="@Url.Action("DownloadFile", "CTask", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+
+        @if (Model.EmployeeFiles.Any())
+        {
+            <div class="files-section">
+                <h5>Team Files</h5>
+                <div>
+                    @foreach (var docu in Model.EmployeeFiles)
+                    {
+                        <div class="file-item">
+                            <a href="@Url.Action("DownloadFile", "CTask", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+
+        @if (Model.ClientFiles.Any())
+        {
+            <div class="files-section">
+                <h5>Client Files</h5>
+                <div>
+                    @foreach (var docu in Model.ClientFiles)
+                    {
+                        <div class="file-item">
+                            <a href="@Url.Action("DownloadFile", "CTask", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+
+        @if (Model.Task.Notes != null && Model.Task.Notes.Any())
+        {
+            <div class="notes-section">
+                <h5>Remarks</h5>
+                <div>
+                    @foreach (var note in Model.Task.Notes)
+                    {
+                        <div class="note-item">
+                            <span>@note.Remarks (@note.CreatedDate.ToShortDateString())</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
+
+        <div class="button-container">
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+
+            @if (Model.CanUploadFiles)
+            {
+                <a asp-action="AddFiles" asp-route-tasklistId="@Model.Task.ID" class="btn btn-primary" style="color: white">+ Files</a>
+            }
+
+            @if (Model.CanEdit)
+            {
+                <form asp-action="CompleteTask" method="post" class="mb-0">
+                    <input type="hidden" name="id" value="@Model.Task.ID" />
+                    <button type="submit" class="btn btn-success">Complete Task</button>
+                </form>
+            }
+        </div>
+    </div>
+
+</body>
+</html>

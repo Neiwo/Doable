@@ -34,6 +34,10 @@
                                 <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "CMessage" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
                                    asp-area="" asp-controller="CMessage" asp-action="Index">Messages</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link @((ViewContext.RouteData.Values["controller"]?.ToString() == "CTask" && ViewContext.RouteData.Values["action"]?.ToString() == "Index") ? "active" : "")"
+                                   asp-area="" asp-controller="CTask" asp-action="Index">Customer Service</a>
+                            </li>
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
