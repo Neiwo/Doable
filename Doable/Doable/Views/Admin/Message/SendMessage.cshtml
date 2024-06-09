@@ -15,7 +15,7 @@
         </script>
     }
 
-    <form id="sendMessageForm" asp-controller="AdminMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data">
+    <form id="sendMessageForm" asp-controller="AdminMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <div class="mb-3 position-relative">
             <label asp-for="ReceiverId" class="form-label">To</label>
             <input type="text" id="userFilter" class="form-control" placeholder="Type to filter recipients..." onkeyup="filterUsers()" autocomplete="off" />
@@ -90,14 +90,25 @@
             }
         });
 
-        // Client-side validation for recipient
-        document.getElementById('sendMessageForm').addEventListener('submit', function (event) {
+        function validateForm() {
             var userSelect = document.getElementById('userSelect');
-            if (!userSelect.value) {
-                event.preventDefault();
-                document.getElementById('recipientError').style.display = "inline";
+            var recipientError = document.getElementById('recipientError');
+            var content = document.querySelector('textarea[name="Content"]').value.trim();
+            var file = document.querySelector('input[type="file"]').value.trim();
+
+            if (userSelect.value === "") {
+                recipientError.style.display = "inline";
+                return false;
+            } else {
+                recipientError.style.display = "none";
+            }
+
+            if (content === "" && file === "") {
+                alert("Please provide a message or attach a file.");
                 return false;
             }
-        });
+
+            return true;
+        }
     </script>
 }

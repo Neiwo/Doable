@@ -15,7 +15,7 @@
         </script>
     }
 
-    <form id="sendMessageForm" asp-controller="CMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data">
+    <form id="sendMessageForm" asp-controller="CMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <div class="mb-3 position-relative">
             <label asp-for="ReceiverId" class="form-label">To</label>
             <input type="text" id="userFilter" class="form-control" placeholder="Type to filter recipients..." onkeyup="filterUsers()" autocomplete="off" />
@@ -46,7 +46,7 @@
         </div>
 
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-primary" onclick="return validateForm()">Send</button>
+            <button type="submit" class="btn btn-primary">Send</button>
             <a asp-controller="CMessage" asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
@@ -86,14 +86,22 @@
         function validateForm() {
             var userSelect = document.getElementById("userSelect");
             var recipientError = document.getElementById("recipientError");
+            var content = document.querySelector('textarea[name="Content"]').value.trim();
+            var file = document.querySelector('input[type="file"]').value.trim();
 
             if (userSelect.value === "") {
                 recipientError.style.display = "block";
                 return false;
             } else {
                 recipientError.style.display = "none";
-                return true;
             }
+
+            if (content === "" && file === "") {
+                alert("Please provide a message or attach a file.");
+                return false;
+            }
+
+            return true;
         }
     </script>
 }

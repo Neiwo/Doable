@@ -137,7 +137,10 @@ namespace Doable.Controllers
         [HttpGet]
         public async Task<IActionResult> SendMessage()
         {
-            var users = await _context.Users.Select(u => new { u.ID, u.Username, u.Role }).ToListAsync();
+            var users = await _context.Users
+                .Where(u => u.Role != "Client")
+                .Select(u => new { u.ID, u.Username, u.Role })
+                .ToListAsync();
             ViewBag.Users = users;
             return View("~/Views/Client/Message/SendMessage.cshtml");
         }
