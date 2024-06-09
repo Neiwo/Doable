@@ -1,8 +1,8 @@
 ﻿@model IEnumerable<dynamic>
 
 @{
-    ViewData["Title"] = "Archived Messages";
-    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Trash Messages";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
 
 @if (TempData["SuccessMessage"] != null)
@@ -11,22 +11,28 @@
         @TempData["SuccessMessage"]
     </div>
 }
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @TempData["ErrorMessage"]
+    </div>
+}
 
 <br />
-<h4>Archived Messages</h4>
+<h4>Trash</h4>
 <br />
 <div class="mb-3">
-    <a class="btn btn-primary" asp-controller="AdminMessage" asp-action="SendMessage">Send New Message</a>
-    <a class="btn btn-secondary ms-2" asp-controller="AdminMessage" asp-action="Index">Inbox</a>
-    @if (ViewBag.ShowArchived ?? true)
+    <a class="btn btn-primary" asp-controller="CMessage" asp-action="SendMessage">Send New Message</a>
+    <a class="btn btn-secondary ms-2" asp-controller="CMessage" asp-action="Index">Inbox</a>
+    @if (ViewBag.ShowArchived ?? false)
     {
-        <a class="btn btn-warning ms-2" asp-controller="AdminMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
+        <a class="btn btn-secondary ms-2" asp-controller="CMessage" asp-action="Index">Active Messages</a>
     }
     else
     {
-        <a class="btn btn-warning ms-2" asp-controller="AdminMessage" asp-action="TrashMessages" asp-route-showArchived="true">Trash</a>
+        <a class="btn btn-warning ms-2" asp-controller="CMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
     }
-    <a class="btn btn-danger ms-2" asp-controller="AdminMessage" asp-action="TrashMessages">Trash</a>
+    <a class="btn btn-danger ms-2" asp-controller="CMessage" asp-action="TrashMessages">Trash</a>
 </div>
 
 <div class="list-group">
@@ -44,7 +50,7 @@
         var otherUserRole = message.SenderId == Context.Session.GetInt32("UserId") ? receiverRole : senderRole;
 
         <div class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="@Url.Action("ViewMessage", "AdminMessage", new { id = message.MessageId })" class="flex-grow-1 text-decoration-none text-reset">
+            <a href="@Url.Action("ViewMessage", "CMessage", new { id = message.MessageId })" class="flex-grow-1 text-decoration-none text-reset">
                 <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver?.Username : message.Sender?.Username) ?? "Unknown") <small style="font-size: 15px">(@otherUserRole)</small> </h5>
                 </div>
@@ -55,15 +61,15 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                     <li>
-                        <form asp-controller="AdminMessage" asp-action="RestoreMessage" method="post" style="display:inline;">
+                        <form asp-controller="CMessage" asp-action="RestoreMessage" method="post" style="display:inline;">
                             <input type="hidden" name="id" value="@message.MessageId" />
                             <button type="submit" class="dropdown-item">Restore</button>
                         </form>
                     </li>
                     <li>
-                        <form asp-controller="AdminMessage" asp-action="DeleteMessage" method="post" style="display:inline;">
+                        <form asp-controller="CMessage" asp-action="DeletePermanently" method="post" style="display:inline;">
                             <input type="hidden" name="id" value="@message.MessageId" />
-                            <button type="submit" class="dropdown-item">Move to Trash</button>
+                            <button type="submit" class="dropdown-item">Delete Permanently</button>
                         </form>
                     </li>
                 </ul>

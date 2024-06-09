@@ -112,9 +112,10 @@ namespace Doable.Controllers
             message.Status = "Active"; // Restore message to "Active" status
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
-        }
+            TempData["SuccessMessage"] = "Restored Successfully";
 
+            return RedirectToAction("TrashMessages");
+        }
 
         [HttpPost]
         public async Task<IActionResult> DeletePermanently(int id)
@@ -128,9 +129,10 @@ namespace Doable.Controllers
             _context.Messages.Remove(message);
             await _context.SaveChangesAsync();
 
+            TempData["ErrorMessage"] = "Deleted Permanently";
+
             return RedirectToAction("TrashMessages");
         }
-
 
         [HttpGet]
         public async Task<IActionResult> SendMessage()
@@ -180,10 +182,6 @@ namespace Doable.Controllers
             TempData["MessageSent"] = "Message sent!";
             return RedirectToAction("SendMessage");
         }
-
-
-
-
 
         public async Task<IActionResult> ViewMessage(int id)
         {
@@ -263,7 +261,6 @@ namespace Doable.Controllers
             return RedirectToAction("ViewMessage", new { id = originalMessageId });
         }
 
-
         [HttpPost]
         public async Task<IActionResult> ArchiveMessage(int id)
         {
@@ -275,6 +272,8 @@ namespace Doable.Controllers
 
             message.Status = "Archived";
             await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Archived Successfully";
 
             return RedirectToAction("Index");
         }
@@ -291,13 +290,9 @@ namespace Doable.Controllers
             message.Status = "Trash";
             await _context.SaveChangesAsync();
 
+            TempData["SuccessMessage"] = "Moved to trash successfully";
+
             return RedirectToAction("Index");
         }
-
-
-
     }
-
-
-
 }

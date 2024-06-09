@@ -22,7 +22,7 @@ namespace Doable.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool showArchived = false)
         {
             int? clientId = HttpContext.Session.GetInt32("UserId");
             if (clientId == null)
@@ -30,8 +30,19 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var messages = await _context.Messages
-                .Where(m => (m.ReceiverId == clientId || m.SenderId == clientId) && m.ParentMessageId == null && m.Status != "Archived")
+            IQueryable<Message> messagesQuery = _context.Messages
+                .Where(m => (m.ReceiverId == clientId || m.SenderId == clientId) && m.ParentMessageId == null);
+
+            if (showArchived)
+            {
+                messagesQuery = messagesQuery.Where(m => m.Status == "Archived");
+            }
+            else
+            {
+                messagesQuery = messagesQuery.Where(m => m.Status != "Archived" && m.Status != "Trash");
+            }
+
+            var messages = await messagesQuery
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .Include(m => m.Replies)
@@ -48,13 +59,85 @@ namespace Doable.Controllers
                 .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View("~/Views/Client/Message/Index.cshtml", sortedMessages);
+            ViewBag.ShowArchived = showArchived; // Pass this to the view
+
+            if (showArchived)
+            {
+                return View("~/Views/Client/Message/ArchivedMessages.cshtml", sortedMessages);
+            }
+            else
+            {
+                return View("~/Views/Client/Message/Index.cshtml", sortedMessages);
+            }
+        }
+
+        public async Task<IActionResult> TrashMessages()
+        {
+            int? clientId = HttpContext.Session.GetInt32("UserId");
+            if (clientId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var messages = await _context.Messages
+                .Where(m => (m.ReceiverId == clientId || m.SenderId == clientId) && m.Status == "Trash")
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
+                .Include(m => m.Replies)
+                .ToListAsync();
+
+            var sortedMessages = messages
+                .Select(m => new
+                {
+                    Message = m,
+                    LatestReply = m.Replies.OrderByDescending(r => r.Timestamp).FirstOrDefault(),
+                    SenderRole = m.Sender?.Role,
+                    ReceiverRole = m.Receiver?.Role
+                })
+                .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
+                .ToList();
+
+            return View("~/Views/Client/Message/TrashMessages.cshtml", sortedMessages);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RestoreMessage(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            message.Status = "Active"; // Restore message to "Active" status
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Restored Successfully";
+
+            return RedirectToAction("TrashMessages");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePermanently(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            _context.Messages.Remove(message);
+            await _context.SaveChangesAsync();
+
+            TempData["ErrorMessage"] = "Deleted Permanently";
+
+            return RedirectToAction("TrashMessages");
         }
 
         [HttpGet]
         public async Task<IActionResult> SendMessage()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.Users.Select(u => new { u.ID, u.Username, u.Role }).ToListAsync();
             ViewBag.Users = users;
             return View("~/Views/Client/Message/SendMessage.cshtml");
         }
@@ -190,6 +273,8 @@ namespace Doable.Controllers
             message.Status = "Archived";
             await _context.SaveChangesAsync();
 
+            TempData["SuccessMessage"] = "Archived Successfully";
+
             return RedirectToAction("Index");
         }
 
@@ -202,8 +287,10 @@ namespace Doable.Controllers
                 return NotFound();
             }
 
-            _context.Messages.Remove(message);
+            message.Status = "Trash";
             await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Moved to trash";
 
             return RedirectToAction("Index");
         }

@@ -4,10 +4,29 @@
     ViewData["Title"] = "Client Messages";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
 }
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
 <br />
+<h4>Inbox</h4>
 <br />
 <div class="mb-3">
     <a class="btn btn-primary" asp-controller="CMessage" asp-action="SendMessage">Send New Message</a>
+    <a class="btn btn-secondary ms-2" asp-controller="CMessage" asp-action="Index">Inbox</a>
+    @if (ViewBag.ShowArchived ?? false)
+    {
+        <a class="btn btn-secondary ms-2" asp-controller="CMessage" asp-action="Index">Active Messages</a>
+    }
+    else
+    {
+        <a class="btn btn-warning ms-2" asp-controller="CMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
+    }
+    <a class="btn btn-danger ms-2" asp-controller="CMessage" asp-action="TrashMessages">Trash</a>
 </div>
 
 <div class="list-group">
@@ -44,7 +63,7 @@
                     <li>
                         <form asp-controller="CMessage" asp-action="DeleteMessage" method="post" style="display:inline;">
                             <input type="hidden" name="id" value="@message.MessageId" />
-                            <button type="submit" class="dropdown-item">Delete</button>
+                            <button type="submit" class="dropdown-item">Move to Trash</button>
                         </form>
                     </li>
                 </ul>

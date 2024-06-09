@@ -146,12 +146,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XENsaWVudERhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Client/Message/ArchivedMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XE1lc3NhZ2VcQXJjaGl2ZWRNZXNzYWdlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Client/Message/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XE1lc3NhZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Client/Message/SendMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XE1lc3NhZ2VcU2VuZE1lc3NhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Client/Message/TrashMessages.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XE1lc3NhZ2VcVHJhc2hNZXNzYWdlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/admin/source/repos/Doable/Doable/Doable/Views/Client/Message/ViewMessage.cshtml]
