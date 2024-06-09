@@ -22,7 +22,7 @@ namespace Doable.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(bool showArchived = false)
         {
             int? adminId = HttpContext.Session.GetInt32("UserId");
             if (adminId == null)
@@ -30,8 +30,19 @@ namespace Doable.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            var messages = await _context.Messages
-                .Where(m => (m.ReceiverId == adminId || m.SenderId == adminId) && m.ParentMessageId == null && m.Status != "Archived")
+            IQueryable<Message> messagesQuery = _context.Messages
+                .Where(m => (m.ReceiverId == adminId || m.SenderId == adminId) && m.ParentMessageId == null);
+
+            if (showArchived)
+            {
+                messagesQuery = messagesQuery.Where(m => m.Status == "Archived");
+            }
+            else
+            {
+                messagesQuery = messagesQuery.Where(m => m.Status != "Archived" && m.Status != "Trash");
+            }
+
+            var messages = await messagesQuery
                 .Include(m => m.Sender)
                 .Include(m => m.Receiver)
                 .Include(m => m.Replies)
@@ -48,8 +59,78 @@ namespace Doable.Controllers
                 .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
                 .ToList();
 
-            return View("~/Views/Admin/Message/Index.cshtml", sortedMessages);
+            ViewBag.ShowArchived = showArchived; // Pass this to the view
+
+            if (showArchived)
+            {
+                return View("~/Views/Admin/Message/ArchivedMessages.cshtml", sortedMessages);
+            }
+            else
+            {
+                return View("~/Views/Admin/Message/Index.cshtml", sortedMessages);
+            }
         }
+
+        public async Task<IActionResult> TrashMessages()
+        {
+            int? adminId = HttpContext.Session.GetInt32("UserId");
+            if (adminId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var messages = await _context.Messages
+                .Where(m => (m.ReceiverId == adminId || m.SenderId == adminId) && m.Status == "Trash")
+                .Include(m => m.Sender)
+                .Include(m => m.Receiver)
+                .Include(m => m.Replies)
+                .ToListAsync();
+
+            var sortedMessages = messages
+                .Select(m => new
+                {
+                    Message = m,
+                    LatestReply = m.Replies.OrderByDescending(r => r.Timestamp).FirstOrDefault(),
+                    SenderRole = m.Sender?.Role,
+                    ReceiverRole = m.Receiver?.Role
+                })
+                .OrderByDescending(m => m.LatestReply?.Timestamp ?? m.Message.Timestamp)
+                .ToList();
+
+            return View("~/Views/Admin/Message/TrashMessages.cshtml", sortedMessages);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RestoreMessage(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            message.Status = "Active"; // Restore message to "Active" status
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Index");
+        }
+
+
+        [HttpPost]
+        public async Task<IActionResult> DeletePermanently(int id)
+        {
+            var message = await _context.Messages.FindAsync(id);
+            if (message == null)
+            {
+                return NotFound();
+            }
+
+            _context.Messages.Remove(message);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("TrashMessages");
+        }
+
 
         [HttpGet]
         public async Task<IActionResult> SendMessage()
@@ -207,10 +288,16 @@ namespace Doable.Controllers
                 return NotFound();
             }
 
-            _context.Messages.Remove(message);
+            message.Status = "Trash";
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
         }
+
+
+
     }
+
+
+
 }

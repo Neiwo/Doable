@@ -4,10 +4,23 @@
     ViewData["Title"] = "Admin Messages";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
 <br />
+<h4>Inbox</h4>
 <br />
 <div class="mb-3">
     <a class="btn btn-primary" asp-controller="AdminMessage" asp-action="SendMessage">Send New Message</a>
+    <a class="btn btn-secondary ms-2" asp-controller="AdminMessage" asp-action="Index">Inbox</a>
+    @if (ViewBag.ShowArchived ?? false)
+    {
+        <a class="btn btn-secondary ms-2" asp-controller="AdminMessage" asp-action="Index">Active Messages</a>
+    }
+    else 
+    {
+        <a class="btn btn-warning ms-2" asp-controller="AdminMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
+    }
+    <a class="btn btn-danger ms-2" asp-controller="AdminMessage" asp-action="TrashMessages">Trash</a>
+    
 </div>
 
 <div class="list-group">
@@ -33,7 +46,6 @@
             </a>
             <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                     <li>

@@ -2,6 +2,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     ViewData["Title"] = "Admin";
     var userId = Context.Session.GetInt32("UserId");
+    var username = Context.Session.GetString("Username");
 
     var totalTasks = ViewData["TotalTasks"];
     var pendingTasks = ViewData["PendingTasks"];
@@ -20,6 +21,9 @@
     <link rel="stylesheet" href="~/css/Admindashboard.css" />
 </head>
 <body>
+
+    <br />
+    <h3>Welcome @username!</h3>
     <br />
     <div>
         <h5 class="display-4">Tasks</h5>
