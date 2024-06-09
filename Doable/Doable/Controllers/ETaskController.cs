@@ -292,6 +292,32 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+        [HttpPost]
+        public async Task<IActionResult> DeleteFile(int id)
+        {
+            var docu = await _context.Docus.FindAsync(id);
+            if (docu == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                // Delete the file from the file system
+                System.IO.File.Delete(docu.FilePath);
+
+                // Remove the file entry from the database
+                _context.Docus.Remove(docu);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Details", new { id = docu.TasklistID });
+            }
+            catch (Exception ex)
+            {
+                // Handle any errors
+                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            }
+        }
         [HttpGet]
         public IActionResult AddFiles(int tasklistId)
         {

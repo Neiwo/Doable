@@ -131,6 +131,9 @@
                         <div class="file-item">
                             <a href="@Url.Action("DownloadFile", "TaskList", new { id = docu.ID })">@docu.FileName</a>
                             <span>Uploaded by: @docu.Uploadedby</span>
+                            <form method="post" asp-action="DeleteFile" asp-route-id="@docu.ID" style="display:inline;">
+                                <input type="submit" value="Delete" class="dl" onclick="return confirm('Are you sure you want to delete this file?');" />
+                            </form>
                         </div>
                     }
                 </div>

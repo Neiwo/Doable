@@ -103,6 +103,22 @@
         <div class="description-box">
             @Model.Task.Description
         </div>
+        @if (Model.ClientFiles.Any())
+        {
+            <div class="files-section">
+                <h5>Your Files</h5>
+                <div>
+                    @foreach (var docu in Model.ClientFiles)
+                    {
+                        <div class="file-item">
+                            <a href="@Url.Action("DownloadFile", "CTask", new { id = docu.ID })">@docu.FileName</a>
+                            <span>Uploaded by: @docu.Uploadedby</span>
+                        </div>
+                    }
+                </div>
+            </div>
+            <hr />
+        }
 
         @if (Model.AdminFiles.Any())
         {
@@ -138,38 +154,8 @@
             <hr />
         }
 
-        @if (Model.ClientFiles.Any())
-        {
-            <div class="files-section">
-                <h5>Client Files</h5>
-                <div>
-                    @foreach (var docu in Model.ClientFiles)
-                    {
-                        <div class="file-item">
-                            <a href="@Url.Action("DownloadFile", "CTask", new { id = docu.ID })">@docu.FileName</a>
-                            <span>Uploaded by: @docu.Uploadedby</span>
-                        </div>
-                    }
-                </div>
-            </div>
-            <hr />
-        }
+        
 
-        @if (Model.Task.Notes != null && Model.Task.Notes.Any())
-        {
-            <div class="notes-section">
-                <h5>Remarks</h5>
-                <div>
-                    @foreach (var note in Model.Task.Notes)
-                    {
-                        <div class="note-item">
-                            <span>@note.Remarks (@note.CreatedDate.ToShortDateString())</span>
-                        </div>
-                    }
-                </div>
-            </div>
-            <hr />
-        }
 
         <div class="button-container">
             <a asp-action="Index" class="btn btn-secondary">Back to List</a>

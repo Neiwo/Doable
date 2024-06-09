@@ -48,7 +48,14 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="AssignedTo" class="control-label">Leader</label>
-                        <input asp-for="AssignedTo" class="form-control" readonly />
+                        <select asp-for="AssignedTo" class="form-control">
+                            @foreach (var employee in ViewBag.Employees)
+                            {
+                                <option value="@employee.Username" @(employee.Username == Model.AssignedTo ? "selected" : "")>
+                                    @employee.Username
+                                </option>
+                            }
+                        </select>
                         <span asp-validation-for="AssignedTo" class="text-danger"></span>
                     </div>
                     <div class="form-group">
