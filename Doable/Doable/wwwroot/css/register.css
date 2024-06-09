@@ -1,0 +1,34 @@
+﻿.u-p {
+    margin-top: 10px;
+}
+
+.buton {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.fp {
+    font-size: 10px;
+}
+
+.col-md-6 {
+    margin-top: 50px;
+    border: solid 1px;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+.btn {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.text-center img {
+    max-width: 150px;
+    margin-bottom: 15px;
+}
+
+.text-center p {
+    margin-bottom: 20px;
+}

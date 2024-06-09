@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "PXx/7P01s22scfsu/eKIi0NRPhD5Jwpcr4GnSLIjB6k=",
+  "Hash": "x+lTgnJcDvw1CUwKp7vzb23T5mW7+Lt4ot+5Nu59EPA=",
   "Source": "Doable",
   "BasePath": "_content/Doable",
   "Mode": "Default",
@@ -224,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\login.css"
+    },
+    {
+      "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\register.css",
+      "SourceId": "Doable",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\",
+      "BasePath": "_content/Doable",
+      "RelativePath": "css/register.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\register.css"
     },
     {
       "Identity": "C:\\Users\\admin\\source\\repos\\Doable\\Doable\\Doable\\wwwroot\\css\\site.css",

@@ -1,4 +1,5 @@
-﻿using Doable.Data;
+﻿using System;
+using Doable.Data;
 using Doable.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -35,24 +36,81 @@ namespace Doable.Controllers
                     HttpContext.Session.SetInt32("UserId", user.ID);
                     HttpContext.Session.SetString("Username", user.Username);
 
+                    TempData["LoginSuccess"] = true;
+
                     if (user.Role == "Admin")
                     {
-                        return RedirectToAction("AdminDashboard", "Admin");
+                        TempData["RedirectUrl"] = Url.Action("AdminDashboard", "Admin");
                     }
                     else if (user.Role == "Employee")
                     {
-                        return RedirectToAction("EmployeeDashboard", "Employee");
+                        TempData["RedirectUrl"] = Url.Action("EmployeeDashboard", "Employee");
                     }
                     else if (user.Role == "Client")
                     {
-                        return RedirectToAction("ClientDashboard", "Client");
+                        TempData["RedirectUrl"] = Url.Action("ClientDashboard", "Client");
                     }
+
+                    return View();
                 }
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                ModelState.AddModelError("Username", "Incorrect Username or Password");
             }
 
             return View(model);
         }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Check if the username is already taken
+                var existingUserByUsername = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Username == model.Username);
+                if (existingUserByUsername != null)
+                {
+                    ModelState.AddModelError("Username", "Username is already taken.");
+                    return View(model);
+                }
+
+                // Check if the email is already taken
+                var existingUserByEmail = await _context.Users
+                    .FirstOrDefaultAsync(u => u.Email == model.Email);
+                if (existingUserByEmail != null)
+                {
+                    ModelState.AddModelError("Email", "Email is already taken.");
+                    return View(model);
+                }
+
+                var user = new User
+                {
+                    Username = model.Username,
+                    Email = model.Email,
+                    Password = model.Password,
+                    Role = model.Role,
+                    PhoneNumber = model.PhoneNumber,
+                    CreatedBy = "Registration",
+                    CreationDate = DateTime.Now
+                };
+
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+
+                TempData["RegisterSuccess"] = true; // Set success flag
+
+                return RedirectToAction("Register");
+            }
+
+            return View(model);
+        }
+
+
 
         [HttpGet]
         public IActionResult Logout()

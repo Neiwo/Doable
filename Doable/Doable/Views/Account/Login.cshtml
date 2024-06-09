@@ -3,7 +3,6 @@
 @{
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     ViewData["Title"] = "Login";
-
 }
 <!DOCTYPE html>
 <html>
@@ -11,11 +10,22 @@
     <meta name="viewport" content="width=device-width" />
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="~/css/login.css" />
-   
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 </head>
-
 <body>
+    <br />
+    <br />
+    <br />
+    <br />
     <div class="container">
+        @if (TempData["LoginSuccess"] != null && TempData["LoginSuccess"].ToString() == "True")
+        {
+            <script type="text/javascript">
+                var redirectUrl = '@TempData["RedirectUrl"]';
+                alert("Login successful!");
+                window.location.href = redirectUrl;
+            </script>
+        }
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="text-center">
@@ -24,12 +34,12 @@
                 </div>
                 <form asp-action="Login" method="post">
                     <div class="u-p">
-                        <label asp-for="Username">Username</label>
-                        <input asp-for="Username" class="form-control" placeholder="Enter your Username"/>
+                        <label asp-for="Username" class="form-label">Username</label>
+                        <input asp-for="Username" class="form-control" placeholder="Enter your Username" />
                         <span asp-validation-for="Username" class="text-danger"></span>
                     </div>
                     <div class="u-p">
-                        <label asp-for="Password">Password</label>
+                        <label asp-for="Password" class="form-label">Password</label>
                         <input asp-for="Password" class="form-control" type="password" placeholder="Enter your Password" />
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
@@ -37,18 +47,18 @@
                         <a href="#">Forgot Password?</a>
                     </div>
                     <div class="buton">
-
                         <button type="submit" class="btn btn-primary">Sign In</button>
                     </div>
-
-                    
-                    
+                    <div class="text-center mt-3">
+                        <p>Don't have an account? <a href="@Url.Action("Register", "Account")">Sign up here</a></p>
+                    </div>
                 </form>
             </div>
         </div>
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
 </html>
