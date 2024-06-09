@@ -54,7 +54,7 @@ namespace Doable.Controllers
         [HttpGet]
         public async Task<IActionResult> SendMessage()
         {
-            var users = await _context.Users.ToListAsync();
+            var users = await _context.Users.Select(u => new { u.ID, u.Username, u.Role }).ToListAsync();
             ViewBag.Users = users;
             return View("~/Views/Admin/Message/SendMessage.cshtml");
         }
@@ -96,8 +96,11 @@ namespace Doable.Controllers
             _context.Messages.Add(message);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            TempData["MessageSent"] = "Message sent!";
+            return RedirectToAction("SendMessage");
         }
+
+
 
 
 

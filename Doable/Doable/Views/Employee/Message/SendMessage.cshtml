@@ -6,25 +6,47 @@
 
 <div class="container mt-4">
     <h2 class="mb-4">Send Message</h2>
-    <form asp-controller="EMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data">
-        <div class="mb-3">
+
+    @if (TempData["MessageSent"] != null)
+    {
+        <script>
+            alert("@TempData["MessageSent"]");
+            window.location.href = '@Url.Action("Index", "EMessage")';
+        </script>
+    }
+
+    <form id="sendMessageForm" asp-controller="EMessage" asp-action="SendMessage" method="post" enctype="multipart/form-data">
+        <div class="mb-3 position-relative">
             <label asp-for="ReceiverId" class="form-label">To</label>
-            <select asp-for="ReceiverId" class="form-select" asp-items="@(new SelectList(ViewBag.Users, "ID", "Username"))">
+            <input type="text" id="userFilter" class="form-control" placeholder="Type to filter recipients..." onkeyup="filterUsers()" autocomplete="off" />
+            <div id="filterDropdown" class="dropdown-menu w-100 mt-1" style="display: none; position: absolute;">
+                @foreach (var user in (IEnumerable<dynamic>)ViewBag.Users)
+                {
+                    <a class="dropdown-item" href="javascript:void(0)" onclick="selectUser('@user.Username', @user.ID)">
+                        @user.Username (@user.Role)
+                    </a>
+                }
+            </div>
+            <select asp-for="ReceiverId" id="userSelect" class="form-select d-none" asp-items="@(new SelectList(ViewBag.Users, "ID", "Username"))">
                 <option value="">Select a recipient</option>
             </select>
             <span asp-validation-for="ReceiverId" class="text-danger"></span>
+            <span id="recipientError" class="text-danger" style="display: none;">Please select a recipient.</span>
         </div>
+
         <div class="mb-3">
             <label asp-for="Content" class="form-label">Message</label>
             <textarea asp-for="Content" class="form-control" rows="5" placeholder="Type your message here..."></textarea>
             <span asp-validation-for="Content" class="text-danger"></span>
         </div>
+
         <div class="mb-3">
             <label class="form-label">Upload File</label>
             <input type="file" name="file" class="form-control">
         </div>
+
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button type="submit" class="btn btn-primary" onclick="return validateForm()">Send</button>
             <a asp-controller="EMessage" asp-action="Index" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
@@ -32,4 +54,46 @@
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        function filterUsers() {
+            var input, filter, dropdown, items, i;
+            input = document.getElementById("userFilter");
+            filter = input.value.toLowerCase();
+            dropdown = document.getElementById("filterDropdown");
+            items = dropdown.getElementsByTagName("a");
+
+            if (filter.length === 0) {
+                dropdown.style.display = "none";
+                return;
+            }
+
+            dropdown.style.display = "block";
+            for (i = 0; i < items.length; i++) {
+                if (items[i].innerText.toLowerCase().indexOf(filter) > -1) {
+                    items[i].style.display = "";
+                } else {
+                    items[i].style.display = "none";
+                }
+            }
+        }
+
+        function selectUser(username, userId) {
+            document.getElementById("userFilter").value = username;
+            document.getElementById("userSelect").value = userId;
+            document.getElementById("filterDropdown").style.display = "none";
+        }
+
+        function validateForm() {
+            var userSelect = document.getElementById("userSelect");
+            var recipientError = document.getElementById("recipientError");
+
+            if (userSelect.value === "") {
+                recipientError.style.display = "block";
+                return false;
+            } else {
+                recipientError.style.display = "none";
+                return true;
+            }
+        }
+    </script>
 }

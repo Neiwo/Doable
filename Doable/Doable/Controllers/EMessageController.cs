@@ -96,7 +96,8 @@ namespace Doable.Controllers
             _context.Messages.Add(message);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction("Index");
+            TempData["MessageSent"] = "Message sent!";
+            return RedirectToAction("SendMessage");
         }
 
         public async Task<IActionResult> ViewMessage(int id)
