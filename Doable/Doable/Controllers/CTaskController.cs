@@ -7,18 +7,24 @@ using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System.Threading.Tasks;
+
 
 namespace Doable.Controllers
 {
     public class CTaskController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IWebHostEnvironment _environment;
 
-        public CTaskController(ApplicationDbContext context, IWebHostEnvironment environment)
+        public CTaskController(ApplicationDbContext context, IWebHostEnvironment environment, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _environment = environment;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         [HttpGet]
@@ -32,7 +38,6 @@ namespace Doable.Controllers
                     return RedirectToAction("Login", "Account");
                 }
 
-                // Query tasks created by the user and include members
                 var tasks = _context.Tasklists
                     .Where(t => t.CreatedBy == username)
                     .Include(t => t.Members)
@@ -60,7 +65,6 @@ namespace Doable.Controllers
                         t.Deadline.ToString().Contains(searchString));
                 }
 
-                // Always sort by CreatedDate in descending order
                 tasks = tasks.OrderByDescending(t => t.CreatedDate);
 
                 ViewData["CurrentFilter"] = searchString;
@@ -113,28 +117,53 @@ namespace Doable.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Tasklist task)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("Title,Description,AssignedTo,Priority,Deadline,Status,CreatedBy,CreatedDate")] Tasklist tasklist, List<IFormFile> files)
         {
-            try
+            string username = HttpContext.Session.GetString("Username");
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    // Get the current user's username to set as the creator
-                    var createdBy = HttpContext.Session.GetString("Username") ?? "Unknown User";
-                    task.CreatedBy = createdBy;
 
-                    _context.Tasklists.Add(task);
+                _context.Add(tasklist);
+                await _context.SaveChangesAsync();
+
+                // Handle file uploads
+                if (files != null && files.Count > 0)
+                {
+                    var uploads = Path.Combine(_webHostEnvironment.WebRootPath, "uploads");
+                    Directory.CreateDirectory(uploads); // Ensure the directory exists
+
+                    foreach (var file in files)
+                    {
+                        if (file.Length > 0)
+                        {
+                            var filePath = Path.Combine(uploads, file.FileName);
+                            using (var stream = new FileStream(filePath, FileMode.Create))
+                            {
+                                await file.CopyToAsync(stream);
+                            }
+                            var user = _context.Users.FirstOrDefault(u => u.Username == username);
+                            var docu = new Docu
+                            {
+                                TasklistID = tasklist.ID,
+                                FileName = file.FileName,
+                                FilePath = Path.Combine("uploads", file.FileName),
+                                UploadedDate = DateTime.Now,
+                                Uploadedby = username,
+                                UploadedbyRole = user?.Role // Replace with actual role if available
+                            };
+
+                            _context.Docus.Add(docu);
+                        }
+                    }
+
                     await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
                 }
 
-                ViewBag.Employees = _context.Users.Select(u => new { u.Username }).ToList();
-                return View("/Views/Client/Task/Create.cshtml", task);
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-            }
+
+            return View(tasklist);
         }
 
         [HttpGet]
