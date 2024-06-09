@@ -1,58 +1,73 @@
 ﻿@model IEnumerable<dynamic>
 
-    @{
-        ViewData["Title"] = "Archived Messages";
-        Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
-    }
-    <br />
-    <h4>Archived Messages</h4>
-    <br />
-    <div class="mb-3">
-        <a class="btn btn-primary" asp-controller="EMessage" asp-action="SendMessage">Send New Message</a>
+@{
+    ViewData["Title"] = "Employee Archived Messages";
+    Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<br />
+<h4>Archived Messages</h4>
+<br />
+<div class="mb-3">
+    <a class="btn btn-primary" asp-controller="EMessage" asp-action="SendMessage">Send New Message</a>
     <a class="btn btn-secondary ms-2" asp-controller="EMessage" asp-action="Index">Inbox</a>
-    <a class="btn btn-warning ms-2" asp-controller="EMessage" asp-action="ArchivedMessages">Archived</a>
+    @if (ViewBag.ShowArchived ?? true)
+    {
+        <a class="btn btn-warning ms-2" asp-controller="EMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
+    }
+    else
+    {
+        <a class="btn btn-warning ms-2" asp-controller="EMessage" asp-action="TrashMessages" asp-route-showArchived="true">Trash</a>
+    }
     <a class="btn btn-danger ms-2" asp-controller="EMessage" asp-action="TrashMessages">Trash</a>
-    </div>
+</div>
 
-    <div class="list-group">
-        @foreach (var item in Model)
-        {
-            var message = item.Message;
-            var latestReply = item.LatestReply;
-            var displayContent = latestReply != null ? latestReply.Content : message.Content;
-            var displayTimestamp = latestReply != null ? latestReply.Timestamp : message.Timestamp;
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        var message = item.Message;
+        var latestReply = item.LatestReply;
+        var displayContent = latestReply != null ? latestReply.Content : message.Content;
+        var displayTimestamp = latestReply != null ? latestReply.Timestamp : message.Timestamp;
 
-            var senderRole = item.SenderRole;
-            var receiverRole = item.ReceiverRole;
+        var senderRole = item.SenderRole;
+        var receiverRole = item.ReceiverRole;
 
-            var otherUser = message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver : message.Sender;
-            var otherUserRole = message.SenderId == Context.Session.GetInt32("UserId") ? receiverRole : senderRole;
+        var otherUser = message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver : message.Sender;
+        var otherUserRole = message.SenderId == Context.Session.GetInt32("UserId") ? receiverRole : senderRole;
 
-            <div class="list-group-item d-flex justify-content-between align-items-center">
+        <div class="list-group-item d-flex justify-content-between align-items-center">
             <a href="@Url.Action("ViewMessage", "EMessage", new { id = message.MessageId })" class="flex-grow-1 text-decoration-none text-reset">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver?.Username : message.Sender?.Username) ?? "Unknown") <small style="font-size: 15px">(@otherUserRole)</small> </h5>
-                    </div>
-                    <p class="mb-1">@displayContent - <small>@displayTimestamp</small></p>
-                </a>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
-                        <li>
-                        <form asp-controller="EMessage" asp-action="RestoreMessage" method="post" style="display:inline;">
-                                <input type="hidden" name="id" value="@message.MessageId" />
-                                <button type="submit" class="dropdown-item">Restore</button>
-                            </form>
-                        </li>
-                        <li>
-                        <form asp-controller="EMessage" asp-action="DeleteMessage" method="post" style="display:inline;">
-                                <input type="hidden" name="id" value="@message.MessageId" />
-                                <button type="submit" class="dropdown-item">Delete</button>
-                            </form>
-                        </li>
-                    </ul>
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">@((message.SenderId == Context.Session.GetInt32("UserId") ? message.Receiver?.Username : message.Sender?.Username) ?? "Unknown") <small style="font-size: 15px">(@otherUserRole)</small> </h5>
                 </div>
+                <p class="mb-1">@displayContent - <small>@displayTimestamp</small></p>
+            </a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                    <li>
+                        <form asp-controller="EMessage" asp-action="RestoreMessage" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@message.MessageId" />
+                            <button type="submit" class="dropdown-item">Restore</button>
+                        </form>
+                    </li>
+                    <li>
+                        <form asp-controller="EMessage" asp-action="DeleteMessage" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@message.MessageId" />
+                            <button type="submit" class="dropdown-item">Move to trash</button>
+                        </form>
+                    </li>
+                </ul>
             </div>
-        }
-    </div>
+        </div>
+    }
+    

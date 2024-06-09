@@ -1,8 +1,15 @@
 ﻿@model IEnumerable<dynamic>
 
 @{
-    ViewData["Title"] = "Admin Messages";
+    ViewData["Title"] = "Employee Messages";
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
 }
 
 <br />
@@ -20,7 +27,6 @@
         <a class="btn btn-warning ms-2" asp-controller="EMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
     }
     <a class="btn btn-danger ms-2" asp-controller="EMessage" asp-action="TrashMessages">Trash</a>
-
 </div>
 
 <div class="list-group">
@@ -57,7 +63,7 @@
                     <li>
                         <form asp-controller="EMessage" asp-action="DeleteMessage" method="post" style="display:inline;">
                             <input type="hidden" name="id" value="@message.MessageId" />
-                            <button type="submit" class="dropdown-item">Delete</button>
+                            <button type="submit" class="dropdown-item">Move to Trash</button>
                         </form>
                     </li>
                 </ul>
