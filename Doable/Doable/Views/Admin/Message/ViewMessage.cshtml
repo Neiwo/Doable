@@ -8,55 +8,91 @@
     bool isSender = userId == Model.SenderId;
     string otherUsername = isSender ? Model.Receiver?.Username : Model.Sender?.Username;
 }
+<html>
+    <head>
+    <style>
+        .message {
+            display: flex;
+            justify-content: flex-start;
+        }
 
-<div class="container mt-4">
-    <div class="card">
-        <div class="card-header">
-            <h3><strong>@otherUsername</strong></h3>
-        </div>
-        <div class="card-body">
-            <div style="max-height: 300px; overflow-y: scroll;">
-                <ul class="list-unstyled">
-                    <li class="mb-3">
-                        <p><strong>@(Model.SenderId == userId ? "You" : Model.Sender?.Username ?? "Unknown Sender"):</strong></p>
-                        <p>@Model.Content - <small class="text-muted">@Model.Timestamp</small></p>
-                        @if (!string.IsNullOrEmpty(Model.FileName))
-                        {
-                            <p>
-                                <strong>Attachment:</strong> <a href="~/uploads/@Model.FileName" target="_blank">@Model.FileName</a>
-                            </p>
-                        }
-                    </li>
-                    @foreach (var reply in Model.Replies.OrderBy(r => r.Timestamp))
-                    {
-                        <li class="mb-3">
-                            <p><strong>@(reply.SenderId == userId ? "You" : reply.Sender?.Username ?? "Unknown Sender"):</strong></p>
-                            <p>@reply.Content - <small class="text-muted">@reply.Timestamp</small></p>
-                            @if (!string.IsNullOrEmpty(reply.FileName))
-                            {
-                                <p>
-                                    <strong>Attachment:</strong> <a href="~/uploads/@reply.FileName" target="_blank">@reply.FileName</a>
-                                </p>
-                            }
-                        </li>
-                    }
-                </ul>
+            .message.you {
+                justify-content: flex-end;
+            }
+
+        .message-content {
+            max-width: 70%;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .message.you .message-content {
+            background-color: #8DE1E4;
+        }
+
+        .message.not-you .message-content {
+            background-color: #f1f0f0;*/
+        }
+    </style>
+
+    </head>
+    <body>
+    <div class="container mt-4">
+        <div class="card">
+            <div class="card-header">
+                <h3><strong>@otherUsername</strong></h3>
             </div>
+            <div class="card-body">
+                <div style="max-height: 300px; overflow-y: scroll;">
+                    <ul class="list-unstyled">
+                        <li class="mb-3 message @(Model.SenderId == userId ? "you" : "not-you")">
+                            <div class="message-content">
+                                <p><strong>@(Model.SenderId == userId ? "You" : Model.Sender?.Username ?? "Unknown Sender"):</strong></p>
+                                <p>@Model.Content - <small class="text-muted">@Model.Timestamp</small></p>
+                                @if (!string.IsNullOrEmpty(Model.FileName))
+                                {
+                                    <p>
+                                        <a href="~/uploads/@Model.FileName" target="_blank">@Model.FileName</a>
+                                    </p>
+                                }
+                            </div>
+                        </li>
+                        @foreach (var reply in Model.Replies.OrderBy(r => r.Timestamp))
+                        {
+                            <li class="mb-3 message @(reply.SenderId == userId ? "you" : "not-you")">
+                                <div class="message-content">
+                                    <p><strong>@(reply.SenderId == userId ? "You" : reply.Sender?.Username ?? "Unknown Sender"):</strong></p>
+                                    <p>@reply.Content - <small class="text-muted">@reply.Timestamp</small></p>
+                                    @if (!string.IsNullOrEmpty(reply.FileName))
+                                    {
+                                        <p>
+                                           <a href="~/uploads/@reply.FileName" target="_blank">@reply.FileName</a>
+                                        </p>
+                                    }
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
 
-            <form asp-action="ReplyMessage" method="post" class="form-horizontal mt-4" enctype="multipart/form-data">
-                <input type="hidden" name="originalMessageId" value="@Model.MessageId" />
-                <div class="form-group">
-                    <label for="content" class="control-label"></label>
-                    <textarea name="content" class="form-control" placeholder="Send a message"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="control-label">Upload File</label>
-                    <input type="file" name="file" class="form-control">
-                </div>
-                <div class="form-group mt-2">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </form>
+                <form asp-action="ReplyMessage" method="post" class="form-horizontal mt-4" enctype="multipart/form-data">
+                    <input type="hidden" name="originalMessageId" value="@Model.MessageId" />
+                    <div class="form-group">
+                        <label for="content" class="control-label"></label>
+                        <textarea name="content" class="form-control" placeholder="Send a message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">Upload File</label>
+                        <input type="file" name="file" class="form-control">
+                    </div>
+                    <div class="form-group mt-2">
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+
+    </body>
+</html>
+

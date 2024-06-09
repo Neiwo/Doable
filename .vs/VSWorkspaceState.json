@@ -1,13 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Doable",
-    "\\Doable\\Doable",
-    "\\Doable\\Doable\\Views",
-    "\\Doable\\Doable\\Views\\Employee",
-    "\\Doable\\Doable\\Views\\Employee\\Task",
-    "\\Doable\\Doable\\Views\\Shared"
+    ""
   ],
-  "SelectedNode": "\\Doable\\Doable\\Views\\Employee\\Task\\Index.cshtml",
+  "SelectedNode": "\\Doable.sln",
   "PreviewInSolutionExplorer": false
 }
