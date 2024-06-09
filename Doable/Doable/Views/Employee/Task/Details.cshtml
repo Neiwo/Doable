@@ -97,17 +97,18 @@
 <body>
 
     <div class="container-custom">
-        <h2>@Model.Task.Title</h2>
+        <h2>Subject: @Model.Task.Title</h2>
         <hr />
-
+        <p>Context:</p>
         <div class="description-box">
+            
             @Model.Task.Description
         </div>
 
         @if (Model.AdminFiles.Any())
         {
             <div class="files-section">
-                <h5>Clipped Files</h5>
+                <h5>Clipped Files</h5><small>by: admin</small>
                 <div>
                     @foreach (var docu in Model.AdminFiles)
                     {
@@ -144,7 +145,7 @@
         @if (Model.ClientFiles.Any())
         {
             <div class="files-section">
-                <h5>Client Files</h5>
+                <h5>Client attached files</h5>
                 <div>
                     @foreach (var docu in Model.ClientFiles)
                     {

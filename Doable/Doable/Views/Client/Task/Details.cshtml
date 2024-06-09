@@ -97,10 +97,11 @@
 <body>
 
     <div class="container-custom">
-        <h2>@Model.Task.Title</h2>
+        <h2>Subject: @Model.Task.Title</h2>
         <hr />
-
+        <p>Context:</p>
         <div class="description-box">
+            
             @Model.Task.Description
         </div>
         @if (Model.ClientFiles.Any())

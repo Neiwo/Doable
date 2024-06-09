@@ -250,8 +250,15 @@ namespace Doable.Controllers
                     CanUploadFiles = canUploadFiles,
                     AdminFiles = adminFiles,
                     EmployeeFiles = employeeFiles,
-                    ClientFiles = clientFiles // Add Client files to the view model
+                    ClientFiles = clientFiles 
                 };
+
+                if (task.Status != "Completed" && task.Status != "On going")
+                {
+                    task.Status = "On going";
+                    _context.Tasklists.Update(task);
+                    await _context.SaveChangesAsync();
+                }
 
                 return View("/Views/Employee/Task/Details.cshtml", viewModel);
             }
@@ -260,6 +267,7 @@ namespace Doable.Controllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
             }
         }
+
 
 
 

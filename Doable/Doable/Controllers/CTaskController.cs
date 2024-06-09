@@ -108,6 +108,10 @@ namespace Doable.Controllers
                     .Where(u => u.Role == "Employee")
                     .Select(u => new { u.Username })
                     .ToList();
+
+                // Example titles for the dropdown
+                ViewBag.Titles = new List<string> { "Concerns", "Bugs", "Recommendations","Others..." };
+
                 return View("/Views/Client/Task/Create.cshtml", new Tasklist());
             }
             catch (Exception ex)
@@ -116,14 +120,16 @@ namespace Doable.Controllers
             }
         }
 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,AssignedTo,Priority,Deadline,Status,CreatedBy,CreatedDate")] Tasklist tasklist, List<IFormFile> files)
+        public async Task<IActionResult> Create([Bind("Title,Description,AssignedTo,Priority,Deadline,Status,CreatedBy")] Tasklist tasklist, List<IFormFile> files)
         {
             string username = HttpContext.Session.GetString("Username");
             if (ModelState.IsValid)
             {
-
+                tasklist.CreatedDate = DateTime.Now; // Set the current date and time
+                tasklist.CreatedBy = username; // Set the CreatedBy field
                 _context.Add(tasklist);
                 await _context.SaveChangesAsync();
 
@@ -160,11 +166,14 @@ namespace Doable.Controllers
                     await _context.SaveChangesAsync();
                 }
 
-                return RedirectToAction(nameof(Index));
+                return Json(new { success = true });
             }
 
-            return View(tasklist);
+            return Json(new { success = false, message = "Failed to create task" });
         }
+
+
+
 
         [HttpGet]
         public async Task<IActionResult> Edit(int id)

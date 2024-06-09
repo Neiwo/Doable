@@ -1,7 +1,7 @@
 ﻿@model Doable.Models.Tasklist
 
 @{
-    ViewData["Title"] = "Create CTask";
+    ViewData["Title"] = "Submit a Ticket";
     Layout = "~/Views/Shared/_LayoutNoNav.cshtml";
     var userId = Context.Session.GetInt32("UserId");
     var username = Context.Session.GetString("Username");
@@ -28,83 +28,114 @@
             color: #495057;
             border-color: #ced4da;
         }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .centered-form {
+            max-width: 600px;
+            margin: auto;
+        }
     </style>
 </head>
 
 <body>
     <div class="container mt-5">
-        <h3 class="text-center">Create CTask</h3>
+        <h3 class="text-center">Submit a Ticket</h3>
         <hr />
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label asp-for="Title" class="control-label">Subject</label>
-                        <input asp-for="Title" class="form-control" />
-                        <span asp-validation-for="Title" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Description" class="control-label"></label>
-                        <textarea asp-for="Description" class="form-control"></textarea>
-                        <span asp-validation-for="Description" class="text-danger"></span>
-                    </div>
-                    <div class="form-group d-none">
-                        <label asp-for="AssignedTo" class="control-label">None</label>
-                        <input asp-for="AssignedTo" class="form-control" value="Assign a Leader" readonly />
-                        <span asp-validation-for="AssignedTo" class="text-danger"></span>
-                    </div>
-                    <div class="form-group d-none">
-                        <label asp-for="CreatedBy" class="control-label"></label>
-                        <input asp-for="CreatedBy" class="form-control" value="@username" readonly />
-                        <span asp-validation-for="CreatedBy" class="text-danger"></span>
-                    </div>
-                    <div class="form-group d-none">
-                        <label asp-for="Priority" class="control-label"></label>
-                        <select asp-for="Priority" class="form-control">
-                            <option value="Urgent">Urgent</option>
-                            <option value="High">High</option>
-                            <option value="Normal">Normal</option>
-                            <option value="Low">Low</option>
-                        </select>
-                        <span asp-validation-for="Priority" class="text-danger"></span>
-                    </div>
+        <div class="centered-form">
+            <form id="taskForm" asp-action="Create" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label">Subject</label>
+                    <select asp-for="Title" class="form-control" asp-items="@(new SelectList(ViewBag.Titles))">
+                        <option value="">Choose in the list</option>
+                    </select>
+                    <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group d-none">
-                        <label asp-for="Deadline" class="control-label"></label>
-                        <input asp-for="Deadline" class="form-control" />
-                        <span asp-validation-for="Deadline" class="text-danger"></span>
-                    </div>
-                    <div class="form-group d-none">
-                        <label asp-for="Status" class="control-label"></label>
-                        <input asp-for="Status" class="form-control" value="Pending" />
-                        <span asp-validation-for="Status" class="text-danger"></span>
-                    </div>
-                    <div class="form-group d-none">
-                        <label asp-for="CreatedDate" class="control-label"></label>
-                        <input asp-for="CreatedDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" readonly />
-                        <span asp-validation-for="CreatedDate" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="files" class="control-label">Upload Files</label>
-                        <input type="file" name="files" class="form-control" multiple />
-                    </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label">Description</label>
+                    <textarea asp-for="Description" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
-            </div>
-            <div class="form-group text-center mt-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
-                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-            </div>
-        </form>
+                <div class="form-group">
+                    <label for="files" class="control-label">Attach a file</label>
+                    <input type="file" name="files" class="form-control" multiple />
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="AssignedTo" class="control-label">None</label>
+                    <input asp-for="AssignedTo" class="form-control" value="Assign a Leader" readonly />
+                    <span asp-validation-for="AssignedTo" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="CreatedBy" class="control-label">Created By</label>
+                    <input asp-for="CreatedBy" class="form-control" value="@username" readonly />
+                    <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Priority" class="control-label">Priority</label>
+                    <select asp-for="Priority" class="form-control">
+                        <option value="Urgent">Urgent</option>
+                        <option value="High">High</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Low">Low</option>
+                    </select>
+                    <span asp-validation-for="Priority" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Deadline" class="control-label">Deadline</label>
+                    <input asp-for="Deadline" class="form-control" />
+                    <span asp-validation-for="Deadline" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="Status" class="control-label">Status</label>
+                    <input asp-for="Status" class="form-control" value="Pending" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
+                <div class="form-group d-none">
+                    <label asp-for="CreatedDate" class="control-label">Created Date</label>
+                    <input asp-for="CreatedDate" class="form-control" value="@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")" readonly />
+                    <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                </div>
+                <div class="form-group text-center mt-3">
+                    <input type="submit" value="Submit Ticket" class="btn btn-primary">
+                    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIqDMRHmRlLB7gSU5U1xT9Ge2m/1pAiIzA+fkF8t45z5/g2AMhZ" crossorigin="anonymous"></script>
     <script>
-        $(function () {
-            $('.btn-group-toggle .btn').on('click', function () {
-                $(this).siblings().removeClass('active');
-                $(this).addClass('active');
+        $(document).ready(function () {
+            $('#taskForm').on('submit', function (e) {
+                e.preventDefault(); // Prevent the default form submission
+
+                var formData = new FormData(this);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("Create", "CTask")',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        if (response.success) {
+                            alert("Ticket Sent Succesfully!");
+                            window.location.href = '@Url.Action("Index", "CTask")';
+                        } else {
+                            alert(response.message || "Failed to create a ticket");
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while creating the ticket.");
+                    }
+                });
             });
         });
     </script>
