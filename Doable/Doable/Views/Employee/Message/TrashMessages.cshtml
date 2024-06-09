@@ -1,12 +1,11 @@
 ﻿@model IEnumerable<dynamic>
 
 @{
-    ViewData["Title"] = "Admin Messages";
+    ViewData["Title"] = "Trash Messages";
     Layout = "~/Views/Shared/_LayoutEmployee.cshtml";
 }
-
 <br />
-<h4>Inbox</h4>
+<h4>Trash</h4>
 <br />
 <div class="mb-3">
     <a class="btn btn-primary" asp-controller="EMessage" asp-action="SendMessage">Send New Message</a>
@@ -20,7 +19,6 @@
         <a class="btn btn-warning ms-2" asp-controller="EMessage" asp-action="Index" asp-route-showArchived="true">Archived</a>
     }
     <a class="btn btn-danger ms-2" asp-controller="EMessage" asp-action="TrashMessages">Trash</a>
-
 </div>
 
 <div class="list-group">
@@ -49,15 +47,15 @@
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
                     <li>
-                        <form asp-controller="EMessage" asp-action="ArchiveMessage" method="post" style="display:inline;">
+                        <form asp-controller="EMessage" asp-action="RestoreMessage" method="post" style="display:inline;">
                             <input type="hidden" name="id" value="@message.MessageId" />
-                            <button type="submit" class="dropdown-item">Archive</button>
+                            <button type="submit" class="dropdown-item">Restore</button>
                         </form>
                     </li>
                     <li>
-                        <form asp-controller="EMessage" asp-action="DeleteMessage" method="post" style="display:inline;">
+                        <form asp-controller="EMessage" asp-action="DeletePermanently" method="post" style="display:inline;">
                             <input type="hidden" name="id" value="@message.MessageId" />
-                            <button type="submit" class="dropdown-item">Delete</button>
+                            <button type="submit" class="dropdown-item">Delete Permanently</button>
                         </form>
                     </li>
                 </ul>
