@@ -503,3 +503,6 @@ C:\Users\admin\Source\Repos\Doable\Doable\Doable\obj\Debug\net8.0\refint\Doable.
 C:\Users\admin\Source\Repos\Doable\Doable\Doable\obj\Debug\net8.0\Doable.pdb
 C:\Users\admin\Source\Repos\Doable\Doable\Doable\obj\Debug\net8.0\Doable.genruntimeconfig.cache
 C:\Users\admin\Source\Repos\Doable\Doable\Doable\obj\Debug\net8.0\ref\Doable.dll
+C:\Users\admin\Source\Repos\Doable\Doable\Doable\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\admin\Source\Repos\Doable\Doable\Doable\bin\Debug\net8.0\MailKit.dll
+C:\Users\admin\Source\Repos\Doable\Doable\Doable\bin\Debug\net8.0\MimeKit.dll

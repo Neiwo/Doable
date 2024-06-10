@@ -109,7 +109,6 @@ namespace Doable.Controllers
                     .Select(u => new { u.Username })
                     .ToList();
 
-                // Example titles for the dropdown
                 ViewBag.Titles = new List<string> { "Concerns", "Bugs", "Recommendations","Others..." };
 
                 return View("/Views/Client/Task/Create.cshtml", new Tasklist());
@@ -273,7 +272,6 @@ namespace Doable.Controllers
                 var username = HttpContext.Session.GetString("Username");
                 var canEdit = task.Status != "Completed" && task.AssignedTo == username;
 
-                // Allow members to upload files if the status is not "Completed"
                 var canUploadFiles = task.Status != "Completed";
 
                 var adminFiles = task.Docus.Where(d => d.UploadedbyRole == "Admin").ToList();
@@ -287,7 +285,7 @@ namespace Doable.Controllers
                     CanUploadFiles = canUploadFiles,
                     AdminFiles = adminFiles,
                     EmployeeFiles = employeeFiles,
-                    ClientFiles = clientFiles // Add Client files to the view model
+                    ClientFiles = clientFiles 
                 };
 
                 return View("/Views/Client/Task/Details.cshtml", viewModel);
@@ -355,7 +353,7 @@ namespace Doable.Controllers
                     FilePath = filePath,
                     UploadedDate = DateTime.Now,
                     Uploadedby = username,
-                    UploadedbyRole = user?.Role // Set the role of the uploader
+                    UploadedbyRole = user?.Role 
                 };
 
                 _context.Docus.Add(docu);

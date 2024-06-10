@@ -16,6 +16,7 @@
     <br />
     <br />
     <br />
+
     <br />
     <div class="container">
         @if (TempData["LoginSuccess"] != null && TempData["LoginSuccess"].ToString() == "True")
@@ -44,8 +45,9 @@
                         <span asp-validation-for="Password" class="text-danger"></span>
                     </div>
                     <div class="fp">
-                        <a href="#">Forgot Password?</a>
+                        <a href="@Url.Action("ForgotPassword", "Account")">Forgot Password?</a>
                     </div>
+
                     <div class="buton">
                         <button type="submit" class="btn btn-primary">Sign In</button>
                     </div>

@@ -1,14 +1,14 @@
 using Doable.Data;
+using Doable.Services;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -18,11 +18,12 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-
 builder.Services.AddHttpContextAccessor();
 
-var app = builder.Build();
+builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.AddTransient<EmailService>();
 
+var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
@@ -35,7 +36,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession(); 
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -109,7 +109,7 @@ namespace Doable.Controllers
                 return NotFound();
             }
 
-            message.Status = "Active"; // Restore message to "Active" status
+            message.Status = "Active"; 
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Restored Successfully";
@@ -170,10 +170,10 @@ namespace Doable.Controllers
             {
                 SenderId = senderId.Value,
                 ReceiverId = receiverId,
-                Content = string.IsNullOrWhiteSpace(content) ? null : content, // Handle null content
+                Content = string.IsNullOrWhiteSpace(content) ? null : content, 
                 Timestamp = DateTime.Now,
-                FileName = fileName, // This can be null
-                FilePath = filePath // This can be null
+                FileName = fileName, 
+                FilePath = filePath 
             };
 
             _context.Messages.Add(message);
@@ -248,11 +248,11 @@ namespace Doable.Controllers
             {
                 SenderId = adminId.Value,
                 ReceiverId = receiverId,
-                Content = string.IsNullOrWhiteSpace(content) ? null : content, // Handle null content
+                Content = string.IsNullOrWhiteSpace(content) ? null : content, 
                 Timestamp = DateTime.Now,
                 ParentMessageId = originalMessageId,
-                FileName = fileName, // This can be null
-                FilePath = filePath // This can be null
+                FileName = fileName,
+                FilePath = filePath 
             };
 
             _context.Messages.Add(replyMessage);
